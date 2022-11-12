@@ -19,7 +19,7 @@ class _FinancialsState extends State<Financials> {
       appBar: AppBar(
         title: Text("Finance"),
       ),
-      body: const DefaultTabController(
+      body:  DefaultTabController(
           length: 3,
           child: SafeArea(
             child: Scaffold(
@@ -67,8 +67,8 @@ class _FinancialsState extends State<Financials> {
               ),
               body: TabBarView(
                 children: [
-                  ProfitAndLoss(),
-                  BalanceSheet(),
+                  ProfitAndLoss(title: 'Profit and Loss',isVisible: true,),
+                  ProfitAndLoss(title: 'Balance Sheet',isVisible: false,),
                   CompanyRatio()
                 ],
               ),
