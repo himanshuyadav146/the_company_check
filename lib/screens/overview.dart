@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:the_company_check/routs/common_navigation.dart';
+import 'package:the_company_check/routs/route_name.dart';
 import 'package:the_company_check/theme/app_theme.dart';
 import 'package:the_company_check/widgets/custom_compac_button.dart';
 
@@ -26,8 +28,8 @@ class _OverViewState extends State<OverView> {
               child: Column(
                 children: [
                   Card(
+                    margin: EdgeInsets.only(left: 0.0,right: 0.0,top: 0.0),
                     child: Column(
-                      mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         ListTile(
                           leading: Image.asset('assets/images/googleimg.png'),
@@ -107,6 +109,7 @@ class _OverViewState extends State<OverView> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
                               CustomCompacButton("Follow", () {
+                                CommonNavigation().navigateScreens(context, RouteName.routNameFinancials);
 
                               },59,89,161,1,
                                   255,252,248,1),
@@ -123,6 +126,7 @@ class _OverViewState extends State<OverView> {
                   // Contains
                   Card(
                     elevation: 0,
+                    margin: EdgeInsets.only(left: 0.0,right: 0.0,top: 2.0),
                     child: Padding(
                       padding: const EdgeInsets.all(14.0),
                       child: Column(
@@ -156,6 +160,7 @@ class _OverViewState extends State<OverView> {
                   ),
                   Card(
                     elevation: 0,
+                    margin: EdgeInsets.only(left: 0.0,right: 0.0,top: 2.0),
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(14.0, 22.0, 14.0, 22.0),
                       child: Column(
@@ -237,6 +242,7 @@ class _OverViewState extends State<OverView> {
                   // Segment Industry
                   Card(
                     elevation: 0,
+                    margin: EdgeInsets.only(left: 0.0,right: 0.0,top: 2.0),
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(14.0, 22.0, 14.0, 22.0),
                       child: Column(
@@ -311,6 +317,7 @@ class _OverViewState extends State<OverView> {
 
                   Card(
                     elevation: 0,
+                    margin: EdgeInsets.only(left: 0.0,right: 0.0,top: 2.0),
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(14.0, 22.0, 14.0, 22.0),
                       child: Column(
@@ -500,6 +507,7 @@ class _OverViewState extends State<OverView> {
 
                   Card(
                     elevation: 0,
+                    margin: EdgeInsets.only(left: 0.0,right: 0.0,top: 2.0),
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(14.0, 22.0, 14.0, 22.0),
                       child: Column(
