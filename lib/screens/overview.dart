@@ -3,6 +3,7 @@ import 'package:the_company_check/routs/common_navigation.dart';
 import 'package:the_company_check/routs/route_name.dart';
 import 'package:the_company_check/theme/app_theme.dart';
 import 'package:the_company_check/widgets/custom_compac_button.dart';
+import 'package:the_company_check/widgets/custom_search_bar.dart';
 
 class OverView extends StatefulWidget {
   const OverView({Key? key}) : super(key: key);
@@ -15,9 +16,7 @@ class _OverViewState extends State<OverView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Overview"),
-      ),
+      appBar: CustomSearch(),
       body: Container(
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
