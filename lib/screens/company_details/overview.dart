@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:the_company_check/routs/common_navigation.dart';
 import 'package:the_company_check/routs/route_name.dart';
+import 'package:the_company_check/screens/company_details/store/company_details_store.dart';
 import 'package:the_company_check/theme/app_theme.dart';
 import 'package:the_company_check/widgets/custom_compac_button.dart';
 import 'package:the_company_check/widgets/custom_search_bar.dart';
@@ -13,6 +14,18 @@ class OverView extends StatefulWidget {
 }
 
 class _OverViewState extends State<OverView> {
+  CompanyDetailsStore companyDetailsStore = CompanyDetailsStore();
+
+  @override
+  void initState() {
+    super.initState();
+    _getData();
+  }
+
+  void _getData() async {
+    companyDetailsStore.getCompanyDetails();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

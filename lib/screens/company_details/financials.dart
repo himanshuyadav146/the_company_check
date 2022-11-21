@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:the_company_check/screens/balance_sheet.dart';
-import 'package:the_company_check/screens/company_ratio.dart';
-import 'package:the_company_check/screens/overview.dart';
-import 'package:the_company_check/screens/profit_and_loss.dart';
+import 'package:the_company_check/screens/company_details/profit_and_loss.dart';
 import 'package:the_company_check/theme/app_theme.dart';
+
+import 'company_ratio.dart';
 
 class Financials extends StatefulWidget {
   const Financials({Key? key}) : super(key: key);
