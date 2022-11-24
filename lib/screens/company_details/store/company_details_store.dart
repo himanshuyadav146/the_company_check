@@ -17,12 +17,18 @@ abstract class _CompanyDetailsStore with Store{
   @observable
   late CompanyDetailsModel response;
 
+  @observable
+  late Datum? companyData;
+
 
   @action
   Future<String> getCompanyDetails() async{
     isLoading = true;
-    response = (await CompanyDetailsRepository().fetchCompanyDetails()) as CompanyDetailsModel;
-    print("Getting Data $response");
+    response = (await CompanyDetailsRepository().fetchCompanyDetails());
+    var data = response.data ?? [];
+    companyData = data.elementAt(0);
+    print("Getting Data ${response.message}");
+    // print("Company Data ${companyData.elementAt(0).legalName}");
     return "";
 
   }

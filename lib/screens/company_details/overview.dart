@@ -23,13 +23,15 @@ class _OverViewState extends State<OverView> {
   }
 
   void _getData() async {
-    companyDetailsStore.getCompanyDetails();
+    await companyDetailsStore.getCompanyDetails();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomSearch(),
+      appBar: AppBar(
+        title: Text("Overview"),
+      ),
       body: Container(
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
@@ -49,9 +51,9 @@ class _OverViewState extends State<OverView> {
                             elevation: 0,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const <Widget>[
+                              children:<Widget>[
                                 Text(
-                                  "Google Software Solutions",
+                                  "${companyDetailsStore.companyData?.legalName}",
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     color: AppTheme.lightGray138_1,
@@ -62,7 +64,7 @@ class _OverViewState extends State<OverView> {
                                     height: 1.5,
                                   ),
                                 ),
-                                Text("Gurgaon, Haryana",
+                                Text("${companyDetailsStore.companyData?.address?.registeredAddress}",
                                     style: TextStyle(
                                         color: Color.fromRGBO(59, 89, 161, 1),
                                         fontFamily: 'RobotoRegular',
@@ -72,7 +74,7 @@ class _OverViewState extends State<OverView> {
                                         fontWeight: FontWeight.normal,
                                         height: 1.5 /*PERCENT not supported*/
                                     )),
-                                Text("www.google.com",
+                                Text("${companyDetailsStore.companyData?.website}",
                                     style: TextStyle(
                                         color: Color.fromRGBO(59, 89, 161, 1),
                                         fontFamily: 'RobotoRegular',
@@ -122,11 +124,9 @@ class _OverViewState extends State<OverView> {
                             children: <Widget>[
                               CustomCompacButton("Follow", () {
                                 CommonNavigation().navigateScreens(context, RouteName.routNameFinancials);
-
                               },59,89,161,1,
                                   255,252,248,1),
                               CustomCompacButton("Buy Report", () {
-
                               },255, 252, 248, 1,
                                   59,89,161,1)
                             ],
@@ -204,7 +204,7 @@ class _OverViewState extends State<OverView> {
                                       )
                                   ),
                                 ), ),
-                                const Expanded(child: Text("SIN",
+                                const Expanded(child: Text("CIN",
                                     style: TextStyle(
                                         color: Color.fromRGBO(138, 138, 138, 1),
                                         fontFamily: 'RobotoBold',
@@ -221,7 +221,7 @@ class _OverViewState extends State<OverView> {
                             child: Row(
                               children: <Widget>[
                                 Expanded(child:Container(
-                                  child: const Text("Active",
+                                  child:  Text("${companyDetailsStore.companyData?.companyStatus}",
                                       style: TextStyle(
                                           color: Color.fromRGBO(138, 138, 138, 1),
                                           fontFamily: 'RobotoBold',
@@ -232,7 +232,178 @@ class _OverViewState extends State<OverView> {
                                       )
                                   ),
                                 ), ),
-                                const Expanded(child: Text("L27100MH1907PLC000260",
+                                 Expanded(child: Text("${companyDetailsStore.companyData?.currentCin}",
+                                    style: TextStyle(
+                                        color: Color.fromRGBO(138, 138, 138, 1),
+                                        fontFamily: 'RobotoBold',
+                                        fontSize: 10,
+                                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                        fontWeight: FontWeight.normal,
+                                        height: 1.5 /*PERCENT not supported*/
+                                    )
+                                )),
+                              ],
+                            ),
+                          ),
+                          Padding (
+                            padding: const EdgeInsets.only(top: 20.0),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(child:Container(
+                                  child: const Text("Company Age",
+                                      style: TextStyle(
+                                          color: Color.fromRGBO(138, 138, 138, 1),
+                                          fontFamily: 'RobotoBold',
+                                          fontSize: 10,
+                                          letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                          fontWeight: FontWeight.normal,
+                                          height: 1.5 /*PERCENT not supported*/
+                                      )
+                                  ),
+                                ), ),
+                                const Expanded(child: Text("Incorporation Date",
+                                    style: TextStyle(
+                                        color: Color.fromRGBO(138, 138, 138, 1),
+                                        fontFamily: 'RobotoBold',
+                                        fontSize: 10,
+                                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                        fontWeight: FontWeight.normal,
+                                        height: 1.5 /*PERCENT not supported*/
+                                    )
+                                )),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(child:Container(
+                                  child:  Text("10 year",
+                                      style: TextStyle(
+                                          color: Color.fromRGBO(138, 138, 138, 1),
+                                          fontFamily: 'RobotoBold',
+                                          fontSize: 10,
+                                          letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                          fontWeight: FontWeight.normal,
+                                          height: 1.5 /*PERCENT not supported*/
+                                      )
+                                  ),
+                                ), ),
+                                Expanded(child: Text("${companyDetailsStore.companyData?.dateOfIncorporation}",
+                                    style: TextStyle(
+                                        color: Color.fromRGBO(138, 138, 138, 1),
+                                        fontFamily: 'RobotoBold',
+                                        fontSize: 10,
+                                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                        fontWeight: FontWeight.normal,
+                                        height: 1.5 /*PERCENT not supported*/
+                                    )
+                                )),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20.0),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(child:Container(
+                                  child: const Text("Date of Balance Sheet",
+                                      style: TextStyle(
+                                          color: Color.fromRGBO(138, 138, 138, 1),
+                                          fontFamily: 'RobotoBold',
+                                          fontSize: 10,
+                                          letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                          fontWeight: FontWeight.normal,
+                                          height: 1.5 /*PERCENT not supported*/
+                                      )
+                                  ),
+                                ), ),
+                                const Expanded(child: Text("Date of AGM",
+                                    style: TextStyle(
+                                        color: Color.fromRGBO(138, 138, 138, 1),
+                                        fontFamily: 'RobotoBold',
+                                        fontSize: 10,
+                                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                        fontWeight: FontWeight.normal,
+                                        height: 1.5 /*PERCENT not supported*/
+                                    )
+                                )),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(child:Container(
+                                  child:  Text("${companyDetailsStore.companyData?.dateOfBalanceSheet}",
+                                      style: TextStyle(
+                                          color: Color.fromRGBO(138, 138, 138, 1),
+                                          fontFamily: 'RobotoBold',
+                                          fontSize: 10,
+                                          letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                          fontWeight: FontWeight.normal,
+                                          height: 1.5 /*PERCENT not supported*/
+                                      )
+                                  ),
+                                ), ),
+                                Expanded(child: Text("${companyDetailsStore.companyData?.dateOfLastAgm}",
+                                    style: TextStyle(
+                                        color: Color.fromRGBO(138, 138, 138, 1),
+                                        fontFamily: 'RobotoBold',
+                                        fontSize: 10,
+                                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                        fontWeight: FontWeight.normal,
+                                        height: 1.5 /*PERCENT not supported*/
+                                    )
+                                )),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20.0),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(child:Container(
+                                  child: const Text("Paid up Capital",
+                                      style: TextStyle(
+                                          color: Color.fromRGBO(138, 138, 138, 1),
+                                          fontFamily: 'RobotoBold',
+                                          fontSize: 10,
+                                          letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                          fontWeight: FontWeight.normal,
+                                          height: 1.5 /*PERCENT not supported*/
+                                      )
+                                  ),
+                                ), ),
+                                const Expanded(child: Text("Authorised Capital",
+                                    style: TextStyle(
+                                        color: Color.fromRGBO(138, 138, 138, 1),
+                                        fontFamily: 'RobotoBold',
+                                        fontSize: 10,
+                                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                        fontWeight: FontWeight.normal,
+                                        height: 1.5 /*PERCENT not supported*/
+                                    )
+                                )),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(child:Container(
+                                  child:  Text("${companyDetailsStore.companyData?.paidUpCapital}",
+                                      style: TextStyle(
+                                          color: Color.fromRGBO(138, 138, 138, 1),
+                                          fontFamily: 'RobotoBold',
+                                          fontSize: 10,
+                                          letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                          fontWeight: FontWeight.normal,
+                                          height: 1.5 /*PERCENT not supported*/
+                                      )
+                                  ),
+                                ), ),
+                                Expanded(child: Text("${companyDetailsStore.companyData?.authorisedCapital}",
                                     style: TextStyle(
                                         color: Color.fromRGBO(138, 138, 138, 1),
                                         fontFamily: 'RobotoBold',
@@ -363,7 +534,7 @@ class _OverViewState extends State<OverView> {
                                     ),
                                   )
                                   ),
-                                  const Text("Surendra Nagar, Gujarat",
+                                   Text("${companyDetailsStore.companyData?.address?.registeredCity},${companyDetailsStore.companyData?.address?.registeredState}",
                                       style: TextStyle(
                                           color: Color.fromRGBO(138, 138, 138, 1),
                                           fontFamily: 'RobotoRegular',
@@ -384,7 +555,7 @@ class _OverViewState extends State<OverView> {
                               child: Row(
                                 children: <Widget>[
                                   Expanded(child:Container(
-                                    child: const Text("Location",
+                                    child: const Text("Country",
                                         style: TextStyle(
                                             color: Color.fromRGBO(138, 138, 138, 1),
                                             fontFamily: 'RobotoRegular',
@@ -417,7 +588,7 @@ class _OverViewState extends State<OverView> {
                               child: Row(
                                 children: <Widget>[
                                   Expanded(child:Container(
-                                    child: const Text("Location",
+                                    child: const Text("Telephone",
                                         style: TextStyle(
                                             color: Color.fromRGBO(138, 138, 138, 1),
                                             fontFamily: 'RobotoRegular',
@@ -429,7 +600,7 @@ class _OverViewState extends State<OverView> {
                                     ),
                                   )
                                   ),
-                                  const Text("Surendra Nagar, Gujarat",
+                                   Text("${companyDetailsStore.companyData?.nseNumber}",
                                       style: TextStyle(
                                           color: Color.fromRGBO(138, 138, 138, 1),
                                           fontFamily: 'RobotoRegular',
@@ -450,7 +621,7 @@ class _OverViewState extends State<OverView> {
                               child: Row(
                                 children: <Widget>[
                                   Expanded(child:Container(
-                                    child: const Text("Location",
+                                    child: const Text("Email Address",
                                         style: TextStyle(
                                             color: Color.fromRGBO(138, 138, 138, 1),
                                             fontFamily: 'RobotoRegular',
@@ -462,7 +633,7 @@ class _OverViewState extends State<OverView> {
                                     ),
                                   )
                                   ),
-                                  const Text("Surendra Nagar, Gujarat",
+                                   Text("${companyDetailsStore.companyData?.website}",
                                       style: TextStyle(
                                           color: Color.fromRGBO(138, 138, 138, 1),
                                           fontFamily: 'RobotoRegular',
@@ -483,7 +654,7 @@ class _OverViewState extends State<OverView> {
                               child: Row(
                                 children: <Widget>[
                                   Expanded(child:Container(
-                                    child: const Text("Location",
+                                    child: const Text("Website",
                                         style: TextStyle(
                                             color: Color.fromRGBO(138, 138, 138, 1),
                                             fontFamily: 'RobotoRegular',
@@ -495,7 +666,7 @@ class _OverViewState extends State<OverView> {
                                     ),
                                   )
                                   ),
-                                  const Text("Surendra Nagar, Gujarat",
+                                   Text("${companyDetailsStore.companyData?.website}",
                                       style: TextStyle(
                                           color: Color.fromRGBO(138, 138, 138, 1),
                                           fontFamily: 'RobotoRegular',
@@ -586,49 +757,16 @@ class _OverViewState extends State<OverView> {
                                     ),
                                   )
                                   ),
-                                  const Text("27 Mar 1945",
-                                      style: TextStyle(
-                                          color: Color.fromRGBO(138, 138, 138, 1),
-                                          fontFamily: 'RobotoRegular',
-                                          fontSize: 10,
-                                          letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                          fontWeight: FontWeight.normal,
-                                          height: 1.5 /*PERCENT not supported*/
-                                      )
-                                  ),
-
-                                ],
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 18.0),
-                            child: Container(
-                              child: Row(
-                                children: <Widget>[
-                                  Expanded(child:Container(
-                                    child: const Text("The Tata Iron And Steel Company Limited",
-                                        style: TextStyle(
-                                            color: Color.fromRGBO(138, 138, 138, 1),
-                                            fontFamily: 'RobotoRegular',
-                                            fontSize: 10,
-                                            letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                            fontWeight: FontWeight.normal,
-                                            height: 1.5 /*PERCENT not supported*/
-                                        )
-                                    ),
-                                  )
-                                  ),
-                                  const Text("27 Jul 2005",
-                                      style: TextStyle(
-                                          color: Color.fromRGBO(138, 138, 138, 1),
-                                          fontFamily: 'RobotoRegular',
-                                          fontSize: 10,
-                                          letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                          fontWeight: FontWeight.normal,
-                                          height: 1.5 /*PERCENT not supported*/
-                                      )
-                                  ),
+                                  // const Text("27 Mar 1945",
+                                  //     style: TextStyle(
+                                  //         color: Color.fromRGBO(138, 138, 138, 1),
+                                  //         fontFamily: 'RobotoRegular',
+                                  //         fontSize: 10,
+                                  //         letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                  //         fontWeight: FontWeight.normal,
+                                  //         height: 1.5 /*PERCENT not supported*/
+                                  //     )
+                                  // ),
 
                                 ],
                               ),
