@@ -16,15 +16,15 @@ class OverView extends StatefulWidget {
 class _OverViewState extends State<OverView> {
   CompanyDetailsStore companyDetailsStore = CompanyDetailsStore();
 
-  @override
-  void initState() {
-    super.initState();
-    _getData();
-  }
-
-  void _getData() async {
-    await companyDetailsStore.getCompanyDetails();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _getData();
+  // }
+  //
+  // void _getData() async {
+  //   await companyDetailsStore.getCompanyDetails();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -744,19 +744,19 @@ class _OverViewState extends State<OverView> {
                             child: Container(
                               child: Row(
                                 children: <Widget>[
-                                  Expanded(child:Container(
-                                    child: const Text("West Bokaro Limited",
-                                        style: TextStyle(
-                                            color: Color.fromRGBO(138, 138, 138, 1),
-                                            fontFamily: 'RobotoRegular',
-                                            fontSize: 10,
-                                            letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                            fontWeight: FontWeight.normal,
-                                            height: 1.5 /*PERCENT not supported*/
-                                        )
-                                    ),
-                                  )
+                                  ListView.builder(
+                                    //itemCount: companyDetailsStore.companyData?.nameHistory?.length,
+                                    itemCount: 5,
+                                  itemBuilder: (context,i){
+                                      return ListTile(
+                                        //title: Text("${companyDetailsStore.companyData?.nameHistory?[i]}"),
+                                        title: Text("hello $i"),
+                                      );
+                                  }
                                   ),
+                                  ]
+                                  ),
+                          )
                                   // const Text("27 Mar 1945",
                                   //     style: TextStyle(
                                   //         color: Color.fromRGBO(138, 138, 138, 1),
@@ -767,11 +767,7 @@ class _OverViewState extends State<OverView> {
                                   //         height: 1.5 /*PERCENT not supported*/
                                   //     )
                                   // ),
-
-                                ],
                               ),
-                            ),
-                          ),
                         ],
                       ),
                     ),

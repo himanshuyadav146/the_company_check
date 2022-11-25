@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_company_check/routs/route_name.dart';
+import 'package:the_company_check/screens/company_details/company_details_container.dart';
 import 'package:the_company_check/screens/company_details/financials.dart';
 import 'package:the_company_check/screens/company_details/overview.dart';
 import 'package:the_company_check/theme/app_theme.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       initialRoute: '/',
       routes: {
-        '/':(ctx) => OverView(),
+        '/':(ctx) => CompanyDetailsContainer(),
         RouteName.routNameFinancials:(context) => const Financials()
       },
     );
