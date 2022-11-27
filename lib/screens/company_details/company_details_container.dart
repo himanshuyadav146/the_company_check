@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:the_company_check/screens/company_details/financials.dart';
 import 'package:the_company_check/screens/company_details/overview.dart';
 import 'package:the_company_check/screens/company_details/store/company_details_store.dart';
+import 'package:the_company_check/screens/people/people.dart';
 import '../../theme/app_theme.dart';
 
 
@@ -24,6 +25,9 @@ class _CompanyDetailsContainerState extends State<CompanyDetailsContainer> {
 
   void _getData() async {
     await companyDetailsStore.getCompanyDetails();
+    setState(() {
+
+    });
   }
 
   @override
@@ -35,15 +39,20 @@ class _CompanyDetailsContainerState extends State<CompanyDetailsContainer> {
               bottomNavigationBar: menu(),
               body: TabBarView(
                 children: [
-                  OverView(),
-                  Text("People"),
-                  Text("Charges"),
-                  Financials()
+                  if(companyDetailsStore?.companyData!=null) ...[
+                    OverView(companyDetailsStore?.companyData),
+                    People(companyDetailsStore?.companyData),
+                    Text("Charges"),
+                    Financials()
+                  ] else ...[
+                    Text("No data found on overview"),
+                    Text("No data found on peoples"),
+                    Text("No data found on changes"),
+                    Text("No data found on financials"),
+                  ]
                 ],
               ),
             ),
-
-
       ),
     );
   }
@@ -57,7 +66,7 @@ class _CompanyDetailsContainerState extends State<CompanyDetailsContainer> {
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorPadding: EdgeInsets.all(5.0),
         indicatorColor: AppTheme.tabTextColor,
-        labelPadding: EdgeInsets.all(16),
+        labelPadding: EdgeInsets.all(0),
         tabs: [
           Tab(
             text: "Overview",

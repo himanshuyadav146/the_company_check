@@ -18,7 +18,7 @@ abstract class _CompanyDetailsStore with Store{
   late CompanyDetailsModel response;
 
   @observable
-  late Datum? companyData;
+  Datum? companyData;
 
 
   @action

@@ -1,30 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:the_company_check/models/company_details_model.dart';
 import 'package:the_company_check/routs/common_navigation.dart';
 import 'package:the_company_check/routs/route_name.dart';
-import 'package:the_company_check/screens/company_details/store/company_details_store.dart';
 import 'package:the_company_check/theme/app_theme.dart';
 import 'package:the_company_check/widgets/custom_compac_button.dart';
-import 'package:the_company_check/widgets/custom_search_bar.dart';
 
 class OverView extends StatefulWidget {
-  const OverView({Key? key}) : super(key: key);
+
+    const OverView(@required this.companyData, {super.key});
+
+   final Datum? companyData;
+
 
   @override
   State<OverView> createState() => _OverViewState();
 }
 
 class _OverViewState extends State<OverView> {
-  CompanyDetailsStore companyDetailsStore = CompanyDetailsStore();
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _getData();
-  // }
-  //
-  // void _getData() async {
-  //   await companyDetailsStore.getCompanyDetails();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +34,7 @@ class _OverViewState extends State<OverView> {
               child: Column(
                 children: [
                   Card(
-                    margin: EdgeInsets.only(left: 0.0,right: 0.0,top: 0.0),
+                     margin: EdgeInsets.only(left: 0.0,right: 0.0,top: 0.0),
                     child: Column(
                       children: <Widget>[
                         ListTile(
@@ -53,7 +45,7 @@ class _OverViewState extends State<OverView> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children:<Widget>[
                                 Text(
-                                  "${companyDetailsStore.companyData?.legalName}",
+                                  "${widget.companyData?.legalName}",
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     color: AppTheme.lightGray138_1,
@@ -64,7 +56,7 @@ class _OverViewState extends State<OverView> {
                                     height: 1.5,
                                   ),
                                 ),
-                                Text("${companyDetailsStore.companyData?.address?.registeredAddress}",
+                                Text("${widget.companyData?.address?.registeredAddress}",
                                     style: TextStyle(
                                         color: Color.fromRGBO(59, 89, 161, 1),
                                         fontFamily: 'RobotoRegular',
@@ -74,7 +66,7 @@ class _OverViewState extends State<OverView> {
                                         fontWeight: FontWeight.normal,
                                         height: 1.5 /*PERCENT not supported*/
                                     )),
-                                Text("${companyDetailsStore.companyData?.website}",
+                                Text("${widget.companyData?.website}",
                                     style: TextStyle(
                                         color: Color.fromRGBO(59, 89, 161, 1),
                                         fontFamily: 'RobotoRegular',
@@ -221,7 +213,7 @@ class _OverViewState extends State<OverView> {
                             child: Row(
                               children: <Widget>[
                                 Expanded(child:Container(
-                                  child:  Text("${companyDetailsStore.companyData?.companyStatus}",
+                                  child:  Text("${widget.companyData?.companyStatus}",
                                       style: TextStyle(
                                           color: Color.fromRGBO(138, 138, 138, 1),
                                           fontFamily: 'RobotoBold',
@@ -232,7 +224,7 @@ class _OverViewState extends State<OverView> {
                                       )
                                   ),
                                 ), ),
-                                 Expanded(child: Text("${companyDetailsStore.companyData?.currentCin}",
+                                 Expanded(child: Text("${widget.companyData?.currentCin}",
                                     style: TextStyle(
                                         color: Color.fromRGBO(138, 138, 138, 1),
                                         fontFamily: 'RobotoBold',
@@ -289,7 +281,7 @@ class _OverViewState extends State<OverView> {
                                       )
                                   ),
                                 ), ),
-                                Expanded(child: Text("${companyDetailsStore.companyData?.dateOfIncorporation}",
+                                Expanded(child: Text("${widget.companyData?.dateOfIncorporation}",
                                     style: TextStyle(
                                         color: Color.fromRGBO(138, 138, 138, 1),
                                         fontFamily: 'RobotoBold',
@@ -335,7 +327,7 @@ class _OverViewState extends State<OverView> {
                             child: Row(
                               children: <Widget>[
                                 Expanded(child:Container(
-                                  child:  Text("${companyDetailsStore.companyData?.dateOfBalanceSheet}",
+                                  child:  Text("${widget.companyData?.dateOfBalanceSheet}",
                                       style: TextStyle(
                                           color: Color.fromRGBO(138, 138, 138, 1),
                                           fontFamily: 'RobotoBold',
@@ -346,7 +338,7 @@ class _OverViewState extends State<OverView> {
                                       )
                                   ),
                                 ), ),
-                                Expanded(child: Text("${companyDetailsStore.companyData?.dateOfLastAgm}",
+                                Expanded(child: Text("${widget.companyData?.dateOfLastAgm}",
                                     style: TextStyle(
                                         color: Color.fromRGBO(138, 138, 138, 1),
                                         fontFamily: 'RobotoBold',
@@ -392,7 +384,7 @@ class _OverViewState extends State<OverView> {
                             child: Row(
                               children: <Widget>[
                                 Expanded(child:Container(
-                                  child:  Text("${companyDetailsStore.companyData?.paidUpCapital}",
+                                  child:  Text("${widget.companyData?.paidUpCapital}",
                                       style: TextStyle(
                                           color: Color.fromRGBO(138, 138, 138, 1),
                                           fontFamily: 'RobotoBold',
@@ -403,7 +395,7 @@ class _OverViewState extends State<OverView> {
                                       )
                                   ),
                                 ), ),
-                                Expanded(child: Text("${companyDetailsStore.companyData?.authorisedCapital}",
+                                Expanded(child: Text("${widget.companyData?.authorisedCapital}",
                                     style: TextStyle(
                                         color: Color.fromRGBO(138, 138, 138, 1),
                                         fontFamily: 'RobotoBold',
@@ -534,7 +526,7 @@ class _OverViewState extends State<OverView> {
                                     ),
                                   )
                                   ),
-                                   Text("${companyDetailsStore.companyData?.address?.registeredCity},${companyDetailsStore.companyData?.address?.registeredState}",
+                                   Text("${widget.companyData?.address?.registeredCity},${widget.companyData?.address?.registeredState}",
                                       style: TextStyle(
                                           color: Color.fromRGBO(138, 138, 138, 1),
                                           fontFamily: 'RobotoRegular',
@@ -600,7 +592,7 @@ class _OverViewState extends State<OverView> {
                                     ),
                                   )
                                   ),
-                                   Text("${companyDetailsStore.companyData?.nseNumber}",
+                                   Text("${widget.companyData?.nseNumber}",
                                       style: TextStyle(
                                           color: Color.fromRGBO(138, 138, 138, 1),
                                           fontFamily: 'RobotoRegular',
@@ -633,7 +625,7 @@ class _OverViewState extends State<OverView> {
                                     ),
                                   )
                                   ),
-                                   Text("${companyDetailsStore.companyData?.website}",
+                                   Text("${widget.companyData?.website}",
                                       style: TextStyle(
                                           color: Color.fromRGBO(138, 138, 138, 1),
                                           fontFamily: 'RobotoRegular',
@@ -666,7 +658,7 @@ class _OverViewState extends State<OverView> {
                                     ),
                                   )
                                   ),
-                                   Text("${companyDetailsStore.companyData?.website}",
+                                   Text("${widget.companyData?.website}",
                                       style: TextStyle(
                                           color: Color.fromRGBO(138, 138, 138, 1),
                                           fontFamily: 'RobotoRegular',
@@ -739,35 +731,35 @@ class _OverViewState extends State<OverView> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 18.0),
-                            child: Container(
-                              child: Row(
-                                children: <Widget>[
-                                  ListView.builder(
-                                    //itemCount: companyDetailsStore.companyData?.nameHistory?.length,
-                                    itemCount: 5,
-                                  itemBuilder: (context,i){
-                                      return ListTile(
-                                        //title: Text("${companyDetailsStore.companyData?.nameHistory?[i]}"),
-                                        title: Text("hello $i"),
-                                      );
-                                  }
-                                  ),
-                                  ]
-                                  ),
-                          )
-                                  // const Text("27 Mar 1945",
-                                  //     style: TextStyle(
-                                  //         color: Color.fromRGBO(138, 138, 138, 1),
-                                  //         fontFamily: 'RobotoRegular',
-                                  //         fontSize: 10,
-                                  //         letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                  //         fontWeight: FontWeight.normal,
-                                  //         height: 1.5 /*PERCENT not supported*/
-                                  //     )
-                                  // ),
-                              ),
+                          // Padding(
+                          //   padding: const EdgeInsets.only(top: 18.0),
+                          //   child: Container(
+                          //     child: Row(
+                          //       children: <Widget>[
+                          //         ListView.builder(
+                          //           //itemCount: widget.companyData?.nameHistory?.length,
+                          //           itemCount: 3,
+                          //         itemBuilder: (context,i){
+                          //             return ListTile(
+                          //               //title: Text("${widget.companyData?.nameHistory?[i]}"),
+                          //               title: Text("hello $i"),
+                          //             );
+                          //         }
+                          //         ),
+                          //         ]
+                          //         ),
+                          // )
+                          //         // const Text("27 Mar 1945",
+                          //         //     style: TextStyle(
+                          //         //         color: Color.fromRGBO(138, 138, 138, 1),
+                          //         //         fontFamily: 'RobotoRegular',
+                          //         //         fontSize: 10,
+                          //         //         letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                          //         //         fontWeight: FontWeight.normal,
+                          //         //         height: 1.5 /*PERCENT not supported*/
+                          //         //     )
+                          //         // ),
+                          //     ),
                         ],
                       ),
                     ),
