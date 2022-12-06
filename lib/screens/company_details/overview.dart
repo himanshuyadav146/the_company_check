@@ -5,6 +5,9 @@ import 'package:the_company_check/routs/route_name.dart';
 import 'package:the_company_check/theme/app_theme.dart';
 import 'package:the_company_check/widgets/custom_compac_button.dart';
 
+import '../../widgets/custom_appbar.dart';
+
+
 class OverView extends StatefulWidget {
 
     const OverView(@required this.companyData, {super.key});
@@ -21,8 +24,10 @@ class _OverViewState extends State<OverView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Overview"),
+      appBar: CustomAppBar(
+          onChanged: (value) {
+            debugPrint(value);
+          }
       ),
       body: Container(
           width: MediaQuery.of(context).size.width,
@@ -49,7 +54,7 @@ class _OverViewState extends State<OverView> {
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     color: AppTheme.lightGray138_1,
-                                    fontFamily: 'RobotoRegular',
+                                    fontFamily: 'RobotoMedium',
                                     fontSize: 16,
                                     letterSpacing: 0,
                                     fontWeight: FontWeight.normal,

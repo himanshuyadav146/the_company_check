@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_company_check/screens/charges/charges.dart';
 import 'package:the_company_check/screens/company_details/financials.dart';
 import 'package:the_company_check/screens/company_details/overview.dart';
 import 'package:the_company_check/screens/company_details/store/company_details_store.dart';
@@ -42,7 +43,7 @@ class _CompanyDetailsContainerState extends State<CompanyDetailsContainer> {
                   if(companyDetailsStore?.companyData!=null) ...[
                     OverView(companyDetailsStore?.companyData),
                     People(companyDetailsStore?.companyData),
-                    Text("Charges"),
+                    Charges(companyDetailsStore?.companyData?.charges),
                     Financials()
                   ] else ...[
                     Text("No data found on overview"),

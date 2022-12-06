@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'company_details_store.dart';
+part of 'company_search_store.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,9 +8,9 @@ part of 'company_details_store.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$CompanyDetailsStore on _CompanyDetailsStore, Store {
+mixin _$CompanySearchStore on _CompanySearchStore, Store {
   late final _$isLoadingAtom =
-      Atom(name: '_CompanyDetailsStore.isLoading', context: context);
+      Atom(name: '_CompanySearchStore.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -26,7 +26,7 @@ mixin _$CompanyDetailsStore on _CompanyDetailsStore, Store {
   }
 
   late final _$isLoginAtom =
-      Atom(name: '_CompanyDetailsStore.isLogin', context: context);
+      Atom(name: '_CompanySearchStore.isLogin', context: context);
 
   @override
   bool get isLogin {
@@ -42,43 +42,27 @@ mixin _$CompanyDetailsStore on _CompanyDetailsStore, Store {
   }
 
   late final _$responseAtom =
-      Atom(name: '_CompanyDetailsStore.response', context: context);
+      Atom(name: '_CompanySearchStore.response', context: context);
 
   @override
-  CompanyDetailsModel get response {
+  SearchListModel get response {
     _$responseAtom.reportRead();
     return super.response;
   }
 
   @override
-  set response(CompanyDetailsModel value) {
+  set response(SearchListModel value) {
     _$responseAtom.reportWrite(value, super.response, () {
       super.response = value;
     });
   }
 
-  late final _$companyDataAtom =
-      Atom(name: '_CompanyDetailsStore.companyData', context: context);
+  late final _$getComanySearchAsyncAction =
+      AsyncAction('_CompanySearchStore.getComanySearch', context: context);
 
   @override
-  Datum? get companyData {
-    _$companyDataAtom.reportRead();
-    return super.companyData;
-  }
-
-  @override
-  set companyData(Datum? value) {
-    _$companyDataAtom.reportWrite(value, super.companyData, () {
-      super.companyData = value;
-    });
-  }
-
-  late final _$getCompanyDetailsAsyncAction =
-      AsyncAction('_CompanyDetailsStore.getCompanyDetails', context: context);
-
-  @override
-  Future<String> getCompanyDetails() {
-    return _$getCompanyDetailsAsyncAction.run(() => super.getCompanyDetails());
+  Future<String> getComanySearch(String str) {
+    return _$getComanySearchAsyncAction.run(() => super.getComanySearch(str));
   }
 
   @override
@@ -86,8 +70,7 @@ mixin _$CompanyDetailsStore on _CompanyDetailsStore, Store {
     return '''
 isLoading: ${isLoading},
 isLogin: ${isLogin},
-response: ${response},
-companyData: ${companyData}
+response: ${response}
     ''';
   }
 }

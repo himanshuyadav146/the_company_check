@@ -15,7 +15,10 @@ abstract class _CompanyDetailsStore with Store{
   bool isLogin = false;
 
   @observable
-  late CompanyDetailsModel response;
+   CompanyDetailsModel response = CompanyDetailsModel();
+
+  // @observable
+  // late CompanyDetailsModel response;
 
   @observable
   Datum? companyData;
@@ -30,7 +33,6 @@ abstract class _CompanyDetailsStore with Store{
     print("Getting Data ${response.message}");
     // print("Company Data ${companyData.elementAt(0).legalName}");
     return "";
-
   }
 
 }
