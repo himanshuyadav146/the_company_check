@@ -3,6 +3,7 @@ import 'package:the_company_check/routs/route_name.dart';
 import 'package:the_company_check/screens/company_details/company_details_container.dart';
 import 'package:the_company_check/screens/company_details/financials.dart';
 import 'package:the_company_check/screens/company_details/overview.dart';
+import 'package:the_company_check/screens/company_search/company_search.dart';
 import 'package:the_company_check/theme/app_theme.dart';
 
 void main() {
@@ -21,8 +22,19 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/':(ctx) => CompanyDetailsContainer(),
-        RouteName.routNameFinancials:(context) => const Financials()
+        RouteName.routNameFinancials:(context) => const Financials(),
+        RouteName.routNameCompanySearch:(context) => const CompanySearchScreen(),
       },
+      // onGenerateRoute: (settings){
+      // if (settings.name == RouteName.routNameOverview) {
+      //   final args = settings.arguments as RouteName;
+      //   return MaterialPageRoute(
+      //       builder: (ctx){
+      //        return CompanyDetailsContainer(args.toString());
+      //       }
+      //   );
+      // }
+      // },
     );
   }
 }

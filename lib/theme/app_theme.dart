@@ -23,6 +23,11 @@ class AppTheme{
   static const Color bar2tColor = Color.fromRGBO(48,204,242, 1);
   static const Color colorActive = Color.fromRGBO(106,178,23, 1);
   static const Color colorClose = Color.fromRGBO(194,65,59, 1);
+  static const Color colorGray = Color.fromRGBO(138,138,138, 1);
+  static const Color colorNavylue = Color.fromRGBO(23,70,162, 1);
+  static const Color colorLight = Color.fromRGBO(241, 240, 250, 1);
+  static const Color colorLightGray = Color.fromRGBO(217, 217, 217, 1);
+  static const Color colorGrayText = Color.fromRGBO(174, 168, 168, 1);
 
 
   static final ThemeData lightTheme = ThemeData(

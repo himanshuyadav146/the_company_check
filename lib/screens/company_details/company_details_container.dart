@@ -3,12 +3,14 @@ import 'package:the_company_check/screens/charges/charges.dart';
 import 'package:the_company_check/screens/company_details/financials.dart';
 import 'package:the_company_check/screens/company_details/overview.dart';
 import 'package:the_company_check/screens/company_details/store/company_details_store.dart';
+import 'package:the_company_check/screens/loader/loading_page.dart';
 import 'package:the_company_check/screens/people/people.dart';
+import 'package:the_company_check/utils/AppSingleton.dart';
 import '../../theme/app_theme.dart';
 
 
 class CompanyDetailsContainer extends StatefulWidget {
-  const CompanyDetailsContainer({Key? key}) : super(key: key);
+ const CompanyDetailsContainer({Key? key}) : super(key: key);
 
   @override
   State<CompanyDetailsContainer> createState() => _CompanyDetailsContainerState();
@@ -25,15 +27,15 @@ class _CompanyDetailsContainerState extends State<CompanyDetailsContainer> {
   }
 
   void _getData() async {
-    await companyDetailsStore.getCompanyDetails();
+    var appSingleton = AppSingleton();
+    await companyDetailsStore.getCompanyDetails(appSingleton.cinNo);
     setState(() {
-
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return companyDetailsStore.isLoading ? LoadingPage() : Scaffold(
       body: DefaultTabController(
         length: 4,
             child: Scaffold(

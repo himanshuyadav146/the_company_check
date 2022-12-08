@@ -77,8 +77,9 @@ mixin _$CompanyDetailsStore on _CompanyDetailsStore, Store {
       AsyncAction('_CompanyDetailsStore.getCompanyDetails', context: context);
 
   @override
-  Future<String> getCompanyDetails() {
-    return _$getCompanyDetailsAsyncAction.run(() => super.getCompanyDetails());
+  Future<String> getCompanyDetails(String str) {
+    return _$getCompanyDetailsAsyncAction
+        .run(() => super.getCompanyDetails(str));
   }
 
   @override

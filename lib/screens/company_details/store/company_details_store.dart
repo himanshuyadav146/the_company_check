@@ -9,7 +9,7 @@ class CompanyDetailsStore = _CompanyDetailsStore with _$CompanyDetailsStore;
 abstract class _CompanyDetailsStore with Store{
 
   @observable
-  bool isLoading = false;
+  bool isLoading = true;
 
   @observable
   bool isLogin = false;
@@ -25,13 +25,14 @@ abstract class _CompanyDetailsStore with Store{
 
 
   @action
-  Future<String> getCompanyDetails() async{
+  Future<String> getCompanyDetails(String str) async{
     isLoading = true;
-    response = (await CompanyDetailsRepository().fetchCompanyDetails());
+    response = (await CompanyDetailsRepository().fetchCompanyDetails(str));
     var data = response.data ?? [];
     companyData = data.elementAt(0);
     print("Getting Data ${response.message}");
     // print("Company Data ${companyData.elementAt(0).legalName}");
+    isLoading = false;
     return "";
   }
 

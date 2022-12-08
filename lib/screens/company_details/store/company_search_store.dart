@@ -9,19 +9,23 @@ class CompanySearchStore = _CompanySearchStore with _$CompanySearchStore;
 abstract class _CompanySearchStore with Store {
 
   @observable
-  bool isLoading = false;
+  bool isLoading = true;
 
   @observable
   bool isLogin = false;
 
+  // @observable
+  // late SearchListModel response;
+
   @observable
-  late SearchListModel response;
+   SearchListModel response = SearchListModel();
 
   @action
-  Future<String> getComanySearch(String str) async {
+  Future<String> getCompanySearch(String str) async {
     isLoading = true;
     response = (await CompanyDetailsRepository().getSearchCompanyList(str));
     print("Search Data ${response.message}");
+    isLoading = false;
     return "";
   }
 

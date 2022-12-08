@@ -57,12 +57,12 @@ mixin _$CompanySearchStore on _CompanySearchStore, Store {
     });
   }
 
-  late final _$getComanySearchAsyncAction =
-      AsyncAction('_CompanySearchStore.getComanySearch', context: context);
+  late final _$getCompanySearchAsyncAction =
+      AsyncAction('_CompanySearchStore.getCompanySearch', context: context);
 
   @override
-  Future<String> getComanySearch(String str) {
-    return _$getComanySearchAsyncAction.run(() => super.getComanySearch(str));
+  Future<String> getCompanySearch(String str) {
+    return _$getCompanySearchAsyncAction.run(() => super.getCompanySearch(str));
   }
 
   @override

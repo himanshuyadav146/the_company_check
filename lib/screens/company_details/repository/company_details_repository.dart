@@ -4,8 +4,8 @@ import '../../../models/search_list_model.dart';
 
 class CompanyDetailsRepository{
   final ApiService _apiService = ApiService();
-  Future<CompanyDetailsModel> fetchCompanyDetails() async{
-   final response = await _apiService.get("api/companydetails/L15491WB1962PLC031425");
+  Future<CompanyDetailsModel> fetchCompanyDetails(String str) async{
+   final response = await _apiService.get("api/companydetails/$str");
    return CompanyDetailsModel.fromJson(response);
   }
   
