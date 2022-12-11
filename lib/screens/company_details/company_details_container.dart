@@ -35,22 +35,24 @@ class _CompanyDetailsContainerState extends State<CompanyDetailsContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return companyDetailsStore.isLoading ? LoadingPage() : Scaffold(
+    return companyDetailsStore.isLoading ? const LoadingPage() : Scaffold(
       body: DefaultTabController(
-        length: 4,
+        length: 5,
             child: Scaffold(
               bottomNavigationBar: menu(),
               body: TabBarView(
                 children: [
                   if(companyDetailsStore?.companyData!=null) ...[
                     OverView(companyDetailsStore?.companyData),
-                    People(companyDetailsStore?.companyData),
+                    People(companyDetailsStore?.directorsList),
                     Charges(companyDetailsStore?.companyData?.charges),
-                    Financials()
+                    Financials(),
+                    Financials(),
                   ] else ...[
                     Text("No data found on overview"),
                     Text("No data found on peoples"),
                     Text("No data found on changes"),
+                    Text("No data found on financials"),
                     Text("No data found on financials"),
                   ]
                 ],
@@ -64,12 +66,13 @@ class _CompanyDetailsContainerState extends State<CompanyDetailsContainer> {
     return Container(
       color: Colors.white,
       child: TabBar(
+        isScrollable: true,
         labelColor: Color.fromRGBO(59, 89, 161, 1),
         unselectedLabelColor: Color.fromRGBO(59, 89, 161, 1),
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorPadding: EdgeInsets.all(5.0),
         indicatorColor: AppTheme.tabTextColor,
-        labelPadding: EdgeInsets.all(0),
+        labelPadding: EdgeInsets.only(left: 12.0,right: 12.0,top: 8.0,bottom: 8.0),
         tabs: [
           Tab(
             text: "Overview",
@@ -82,6 +85,9 @@ class _CompanyDetailsContainerState extends State<CompanyDetailsContainer> {
           ),
           Tab(
             text: "Financials",
+          ),
+          Tab(
+            text: "Control",
           ),
         ],
       ),

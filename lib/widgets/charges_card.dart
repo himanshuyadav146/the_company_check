@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:the_company_check/models/company_details_model.dart';
 import 'package:the_company_check/theme/app_theme.dart';
 
+import '../utils/app_utils.dart';
+
 class ChargesCard extends StatefulWidget {
   const ChargesCard(this.charg, {Key? key}) : super(key: key);
   final Charge? charg;
@@ -97,116 +99,159 @@ class _ChargesCardState extends State<ChargesCard> {
               ],
             ),
           ),
-          Container(
-            padding:  EdgeInsets.only(left: 26,top: 6,bottom: 6),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Expanded(child:  const Text("Creation Date",textAlign: TextAlign.start,
-                  style: TextStyle(
-                      color: Color.fromRGBO(107, 107, 107, 1),
-                      fontFamily: 'RobotoBold',
-                      fontSize: 12,
-                      letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                      fontWeight: FontWeight.normal,
-                      height: 1.5 /*PERCENT not supported*/
-                  ),
-                ),),
-                Expanded(child:  Text("${widget.charg?.dateOfCreation}",
-                  style: const TextStyle(
-                      color: Color.fromRGBO(107, 107, 107, 1),
-                      fontFamily: 'RobotoRegular',
-                      fontSize: 12,
-                      letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                      fontWeight: FontWeight.normal,
-                      height: 1.5 /*PERCENT not supported*/
-                  ),
-                ))
-              ],
+          Visibility(
+            visible: widget.charg?.chargeHolderName !="" ? true : false,
+            child: Container(
+              padding:  EdgeInsets.only(left: 26,top: 6,bottom: 6),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Expanded(child:  const Text("Bank Name",textAlign: TextAlign.start,
+                    style: TextStyle(
+                        color: Color.fromRGBO(107, 107, 107, 1),
+                        fontFamily: 'RobotoBold',
+                        fontSize: 12,
+                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                        fontWeight: FontWeight.normal,
+                        height: 1.5 /*PERCENT not supported*/
+                    ),
+                  ),),
+                  Expanded(child:  Text("${widget.charg?.chargeHolderName}",
+                    style: const TextStyle(
+                        color: Color.fromRGBO(107, 107, 107, 1),
+                        fontFamily: 'RobotoRegular',
+                        fontSize: 12,
+                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                        fontWeight: FontWeight.normal,
+                        height: 1.5 /*PERCENT not supported*/
+                    ),
+                  ))
+                ],
+              ),
             ),
           ),
-          Container(
-            padding:  EdgeInsets.only(left: 26,top: 6,bottom: 6),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Expanded(child: const Text("Amount",textAlign: TextAlign.start,
-                  style: TextStyle(
-                      color: Color.fromRGBO(107, 107, 107, 1),
-                      fontFamily: 'RobotoBold',
-                      fontSize: 12,
-                      letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                      fontWeight: FontWeight.normal,
-                      height: 1.5 /*PERCENT not supported*/
-                  ),
-                ),),
-                Expanded(child: Text("${widget.charg?.amount}",
-                  style: const TextStyle(
-                      color: Color.fromRGBO(107, 107, 107, 1),
-                      fontFamily: 'RobotoRegular',
-                      fontSize: 12,
-                      letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                      fontWeight: FontWeight.normal,
-                      height: 1.5 /*PERCENT not supported*/
-                  ),
-                ))
-              ],
+          Visibility(
+            visible: widget.charg?.dateOfCreation !="" ? true : false,
+            child: Container(
+              padding:  EdgeInsets.only(left: 26,top: 6,bottom: 6),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Expanded(child:  const Text("Creation Date",textAlign: TextAlign.start,
+                    style: TextStyle(
+                        color: Color.fromRGBO(107, 107, 107, 1),
+                        fontFamily: 'RobotoBold',
+                        fontSize: 12,
+                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                        fontWeight: FontWeight.normal,
+                        height: 1.5 /*PERCENT not supported*/
+                    ),
+                  ),),
+                  Expanded(child:  Text("${AppUtils.getDDMMYY(widget.charg?.dateOfCreation)}",
+                    style: const TextStyle(
+                        color: Color.fromRGBO(107, 107, 107, 1),
+                        fontFamily: 'RobotoRegular',
+                        fontSize: 12,
+                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                        fontWeight: FontWeight.normal,
+                        height: 1.5 /*PERCENT not supported*/
+                    ),
+                  ))
+                ],
+              ),
             ),
           ),
-          Container(
-            padding:  EdgeInsets.only(left: 26,top: 6,bottom: 6),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Expanded(child: const Text("last Modified On",textAlign: TextAlign.start,
-                  style: TextStyle(
-                      color: Color.fromRGBO(107, 107, 107, 1),
-                      fontFamily: 'RobotoBold',
-                      fontSize: 12,
-                      letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                      fontWeight: FontWeight.normal,
-                      height: 1.5 /*PERCENT not supported*/
-                  ),
-                ),),
-                Expanded(child: Text("${widget.charg?.dateOfModification}",
-                  style: const TextStyle(
-                      color: Color.fromRGBO(107, 107, 107, 1),
-                      fontFamily: 'RobotoRegular',
-                      fontSize: 12,
-                      letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                      fontWeight: FontWeight.normal,
-                      height: 1.5 /*PERCENT not supported*/
-                  ),
-                )),
-              ],
+          Visibility(
+            visible: widget.charg?.amount !="" ? true : false,
+            child: Container(
+              padding:  EdgeInsets.only(left: 26,top: 6,bottom: 6),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Expanded(child: const Text("Amount",textAlign: TextAlign.start,
+                    style: TextStyle(
+                        color: Color.fromRGBO(107, 107, 107, 1),
+                        fontFamily: 'RobotoBold',
+                        fontSize: 12,
+                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                        fontWeight: FontWeight.normal,
+                        height: 1.5 /*PERCENT not supported*/
+                    ),
+                  ),),
+                  Expanded(child: Text("${widget.charg?.amount}",
+                    style: const TextStyle(
+                        color: Color.fromRGBO(107, 107, 107, 1),
+                        fontFamily: 'RobotoRegular',
+                        fontSize: 12,
+                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                        fontWeight: FontWeight.normal,
+                        height: 1.5 /*PERCENT not supported*/
+                    ),
+                  ))
+                ],
+              ),
             ),
           ),
-          Container(
-            padding:  EdgeInsets.only(left: 26,top: 6,bottom: 6),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Expanded(child: const Text("Satisfaction Date", textAlign: TextAlign.start,
-                  style: TextStyle(
-                      color: Color.fromRGBO(107, 107, 107, 1),
-                      fontFamily: 'RobotoBold',
-                      fontSize: 12,
-                      letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                      fontWeight: FontWeight.normal,
-                      height: 1.5 /*PERCENT not supported*/
-                  ),
-                ),),
-                Expanded(child: Text("${widget.charg?.dateOfSatisfaction}",
-                  style: const TextStyle(
-                      color: Color.fromRGBO(107, 107, 107, 1),
-                      fontFamily: 'RobotoRegular',
-                      fontSize: 12,
-                      letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                      fontWeight: FontWeight.normal,
-                      height: 1.5 /*PERCENT not supported*/
-                  ),
-                ))
-              ],
+          Visibility(
+            visible: widget.charg?.dateOfModification !="" ? true : false,
+            child: Container(
+              padding:  EdgeInsets.only(left: 26,top: 6,bottom: 6),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Expanded(child: const Text("last Modified On",textAlign: TextAlign.start,
+                    style: TextStyle(
+                        color: Color.fromRGBO(107, 107, 107, 1),
+                        fontFamily: 'RobotoBold',
+                        fontSize: 12,
+                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                        fontWeight: FontWeight.normal,
+                        height: 1.5 /*PERCENT not supported*/
+                    ),
+                  ),),
+                  Expanded(child: Text("${AppUtils.getDDMMYY(widget.charg?.dateOfModification)}",
+                    style: const TextStyle(
+                        color: Color.fromRGBO(107, 107, 107, 1),
+                        fontFamily: 'RobotoRegular',
+                        fontSize: 12,
+                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                        fontWeight: FontWeight.normal,
+                        height: 1.5 /*PERCENT not supported*/
+                    ),
+                  )),
+                ],
+              ),
+            ),
+          ),
+          Visibility(
+            visible: widget.charg?.dateOfSatisfaction !="" ? true : false,
+            child: Container(
+              padding:  EdgeInsets.only(left: 26,top: 6,bottom: 6),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Expanded(child: const Text("Satisfaction Date", textAlign: TextAlign.start,
+                    style: TextStyle(
+                        color: Color.fromRGBO(107, 107, 107, 1),
+                        fontFamily: 'RobotoBold',
+                        fontSize: 12,
+                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                        fontWeight: FontWeight.normal,
+                        height: 1.5 /*PERCENT not supported*/
+                    ),
+                  ),),
+                  Expanded(child: Text("${AppUtils.getDDMMYY(widget.charg?.dateOfSatisfaction)}",
+                    style: const TextStyle(
+                        color: Color.fromRGBO(107, 107, 107, 1),
+                        fontFamily: 'RobotoRegular',
+                        fontSize: 12,
+                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                        fontWeight: FontWeight.normal,
+                        height: 1.5 /*PERCENT not supported*/
+                    ),
+                  ))
+                ],
+              ),
             ),
           ),
         ],

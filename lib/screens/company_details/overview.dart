@@ -6,6 +6,7 @@ import 'package:the_company_check/theme/app_theme.dart';
 import 'package:the_company_check/widgets/custom_compac_button.dart';
 
 import '../../widgets/custom_appbar.dart';
+import 'package:the_company_check/utils/app_utils.dart';
 
 
 class OverView extends StatefulWidget {
@@ -286,7 +287,7 @@ class _OverViewState extends State<OverView> {
                                       )
                                   ),
                                 ), ),
-                                Expanded(child: Text("${widget.companyData?.dateOfIncorporation}",
+                                Expanded(child: Text("${AppUtils.getDDMMYY(widget.companyData?.dateOfIncorporation)}",
                                     style: TextStyle(
                                         color: Color.fromRGBO(138, 138, 138, 1),
                                         fontFamily: 'RobotoBold',
@@ -343,7 +344,7 @@ class _OverViewState extends State<OverView> {
                                       )
                                   ),
                                 ), ),
-                                Expanded(child: Text("${widget.companyData?.dateOfLastAgm}",
+                                Expanded(child: Text("${AppUtils.getDDMMYY(widget.companyData?.dateOfLastAgm)}",
                                     style: TextStyle(
                                         color: Color.fromRGBO(138, 138, 138, 1),
                                         fontFamily: 'RobotoBold',

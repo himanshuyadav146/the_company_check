@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';
 import 'package:the_company_check/screens/company_details/repository/company_details_repository.dart';
 
@@ -17,8 +20,8 @@ abstract class _CompanyDetailsStore with Store{
   @observable
    CompanyDetailsModel response = CompanyDetailsModel();
 
-  // @observable
-  // late CompanyDetailsModel response;
+  @observable
+  List<TDirector>? directorsList =[];
 
   @observable
   Datum? companyData;
@@ -26,10 +29,15 @@ abstract class _CompanyDetailsStore with Store{
 
   @action
   Future<String> getCompanyDetails(String str) async{
+    debugPrint("API call");
     isLoading = true;
     response = (await CompanyDetailsRepository().fetchCompanyDetails(str));
     var data = response.data ?? [];
     companyData = data.elementAt(0);
+    directorsList?.add(TDirector(title: 'Current Directors'));
+    directorsList?.addAll(companyData?.currentDirectors as List<TDirector>);
+    directorsList?.add(TDirector(title: 'Previous Directors'));
+    directorsList?.addAll(companyData?.pastDirectors as List<TDirector>);
     print("Getting Data ${response.message}");
     // print("Company Data ${companyData.elementAt(0).legalName}");
     isLoading = false;

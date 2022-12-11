@@ -379,6 +379,7 @@ class TDirector {
     this.pan,
     this.designation,
     this.nationality,
+    this.title
   });
 
   String? dinPan;
@@ -387,6 +388,7 @@ class TDirector {
   String? pan;
   String? designation;
   String? nationality;
+  String? title;
 
   factory TDirector.fromJson(Map<String, dynamic> json) => TDirector(
     dinPan: json["Din_Pan"],
@@ -476,15 +478,16 @@ class Gst {
   List<String>? gstLocation;
 
   factory Gst.fromJson(Map<String, dynamic> json) => Gst(
-    hsnCode: List<String>.from(json["Hsn_Code"].map((x) => x)),
-    gstBusiness: List<String>.from(json["Gst_Business"].map((x) => x)),
-    gstLocation: List<String>.from(json["Gst_Location"].map((x) => x)),
+   // hsnCode: List<String>.from(json["Hsn_Code"]) == null ? null : List<String>.from(json["Hsn_Code"]),
+   // gstBusiness: List<String>.from(json["Gst_Business"]),
+   // gstLocation: List<String>.from(json["Gst_Location"]),
   );
 
   Map<String, dynamic> toJson() => {
-    "Hsn_Code": List<dynamic>.from((hsnCode ?? []).map((x) => x)),
-    "Gst_Business": List<dynamic>.from((gstBusiness ?? []).map((x) => x)),
-    "Gst_Location": List<dynamic>.from((gstLocation ?? []).map((x) => x)),
+//    "Status_Filter": List<dynamic>.from((statusFilter ?? []).map((x) => x)),
+   // "Hsn_Code": List<dynamic>.from((hashCode ?? []).map((x) => x)),
+    //"Gst_Business": List<dynamic>.from((gstBusiness ?? []).map((x) => x)),
+   // "Gst_Location": List<dynamic>.from((gstLocation ?? []).map((x) => x)),
   };
 }
 
@@ -579,17 +582,3 @@ class Social {
     "Twitter": twitter,
   };
 }
-
-// class EnumValues<T> {
-//   Map<String, T> map;
-//   Map<T, String> reverseMap;
-//
-//   EnumValues(this.map,this.reverseMap);
-//
-//   Map<T, String> get reverse {
-//     if (reverseMap == null) {
-//       reverseMap = map.map((k, v) => new MapEntry(v, k));
-//     }
-//     return reverseMap;
-//   }
-// }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:the_company_check/models/company_details_model.dart';
 
 import '../../widgets/charges_card.dart';
+import '../../widgets/custom_appbar.dart';
 
 class Charges extends StatefulWidget {
  // const Charges(this.charges, {Key? key}) : super(key: key);
@@ -18,8 +19,10 @@ class _ChargesState extends State<Charges> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Charges"),
+      appBar: CustomAppBar(
+          onChanged: (value) {
+            debugPrint(value);
+          }
       ),
       body: Column(
         children: [

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'dart:math' as math;
+import 'package:intl/intl.dart';
 
 class AppUtils {
   factory AppUtils() {
@@ -47,6 +48,16 @@ class AppUtils {
       }
     }else{
       return Image.asset('assets/images/googleimg.png');
+    }
+  }
+
+  static getDDMMYY(String? inputDate){
+    try{
+      var date1 = DateFormat("yyyy-MM-dd").parse(inputDate!);
+      var outPutFormat = DateFormat('d MMM yyyy');
+      return outPutFormat.format(date1);
+    }catch(e){
+      return "";
     }
   }
 }

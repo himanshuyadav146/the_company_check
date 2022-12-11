@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:the_company_check/models/company_details_model.dart';
+import 'package:the_company_check/theme/app_theme.dart';
 import 'package:the_company_check/utils/app_utils.dart';
 
 class UserCard extends StatefulWidget {
-  UserCard(this.currentDirector);
+  UserCard(this.currentDirector, this.directorsList);
 
   TDirector? currentDirector;
+  List<TDirector>? directorsList;
 
   @override
   State<UserCard> createState() => _UserCardState();
@@ -14,8 +16,20 @@ class UserCard extends StatefulWidget {
 class _UserCardState extends State<UserCard> {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.only(left: 0,top: 12),
+    return widget.currentDirector?.title !=null
+        ? Container(
+      color: AppTheme.colorGray1,
+          padding: const EdgeInsets.only(top: 18.0,bottom: 18.0,left: 12.0),
+          child: Text("${widget.currentDirector?.title} "
+          "(${widget.directorsList?.length})",
+    style: TextStyle(
+      fontFamily: 'RobotoMedium',
+      fontSize: 18.0,
+      color: AppTheme.colorDarkGray,
+    ),
+    ),
+        ) : Card(
+      margin: EdgeInsets.only(left: 8,top: 12),
       elevation: 0,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5.0),

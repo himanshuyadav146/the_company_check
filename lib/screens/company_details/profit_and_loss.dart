@@ -80,7 +80,7 @@ class _ProfitAndLossState extends State<ProfitAndLoss> {
                  barColor: (barData, index, id) => id == 'Bar 1'
                      ? AppTheme.bar1tColor
                      : AppTheme.bar2tColor,
-                 barValue: (barData, index) => '${barData['measure']}%',
+                 // barValue: (barData, index) => '${barData['measure']}%',
                  showBarValue: true,
                  barValuePosition: BarValuePosition.outside,
                  verticalDirection: true,

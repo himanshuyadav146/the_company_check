@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:the_company_check/screens/company_details/profit_and_loss.dart';
 import 'package:the_company_check/theme/app_theme.dart';
 
+import '../../widgets/custom_appbar.dart';
 import 'company_ratio.dart';
 
 class Financials extends StatefulWidget {
@@ -15,8 +16,10 @@ class _FinancialsState extends State<Financials> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Finance"),
+      appBar: CustomAppBar(
+          onChanged: (value) {
+            debugPrint(value);
+          }
       ),
       body:  DefaultTabController(
           length: 3,
