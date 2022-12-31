@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:intl/intl.dart';
 
+import '../theme/app_theme.dart';
+
 class AppUtils {
   factory AppUtils() {
     return _singleton;
@@ -59,5 +61,15 @@ class AppUtils {
     }catch(e){
       return "";
     }
+  }
+
+  static Color getColorCode(String txt){
+    switch(txt){
+      case "open":
+        return AppTheme.colorActive;
+      case "Closed":
+        return AppTheme.colorClose;
+    }
+    return AppTheme.colorActive;
   }
 }

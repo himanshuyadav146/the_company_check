@@ -72,7 +72,7 @@ class _CompanyDetailsContainerState extends State<CompanyDetailsContainer> {
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorPadding: EdgeInsets.all(5.0),
         indicatorColor: AppTheme.tabTextColor,
-        labelPadding: EdgeInsets.only(left: 12.0,right: 12.0,top: 8.0,bottom: 8.0),
+        labelPadding: EdgeInsets.only(left: 12.0,right: 12.0,top: 8.0,bottom: 0.0),
         tabs: [
           Tab(
             text: "Overview",

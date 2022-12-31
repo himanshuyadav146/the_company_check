@@ -57,6 +57,22 @@ mixin _$CompanyDetailsStore on _CompanyDetailsStore, Store {
     });
   }
 
+  late final _$directorsListAtom =
+      Atom(name: '_CompanyDetailsStore.directorsList', context: context);
+
+  @override
+  List<TDirector>? get directorsList {
+    _$directorsListAtom.reportRead();
+    return super.directorsList;
+  }
+
+  @override
+  set directorsList(List<TDirector>? value) {
+    _$directorsListAtom.reportWrite(value, super.directorsList, () {
+      super.directorsList = value;
+    });
+  }
+
   late final _$companyDataAtom =
       Atom(name: '_CompanyDetailsStore.companyData', context: context);
 
@@ -88,6 +104,7 @@ mixin _$CompanyDetailsStore on _CompanyDetailsStore, Store {
 isLoading: ${isLoading},
 isLogin: ${isLogin},
 response: ${response},
+directorsList: ${directorsList},
 companyData: ${companyData}
     ''';
   }

@@ -43,5 +43,4 @@ abstract class _CompanyDetailsStore with Store{
     isLoading = false;
     return "";
   }
-
 }

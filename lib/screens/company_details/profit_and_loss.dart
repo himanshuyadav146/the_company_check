@@ -2,10 +2,16 @@ import 'package:d_chart/d_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:the_company_check/theme/app_theme.dart';
 
+import '../../models/financials_model.dart';
+
 class ProfitAndLoss extends StatefulWidget {
   final String title;
    bool isVisible = true;
-   ProfitAndLoss({Key? key,required this.title, required this.isVisible}) : super(key: key);
+   final FinancialsModel financialsModel;
+  ProfitAndLoss({Key? key,
+    required this.title,
+    required this.isVisible,
+    required this.financialsModel}) : super(key: key);
 
   @override
   State<ProfitAndLoss> createState() => _ProfitAndLossState();
@@ -139,8 +145,54 @@ class _ProfitAndLossState extends State<ProfitAndLoss> {
                    ),
                  ],
                ),
+             ),
+             Padding(
+                 padding: EdgeInsets.only(top: 8.0),
+               child: Row(
+                 children: <Widget>[
+                   Expanded(
+                     child: Align(
+                       alignment: Alignment.centerLeft,
+                       child: Text("Particulars",
+                       style: TextStyle(
+                           color: AppTheme.colorGray2,
+                           fontFamily: 'RobotoMedium',
+                           fontSize: 16,
+                           letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                           fontWeight: FontWeight.normal,
+                           height: 1.5 /*PERCENT not supported*/
+                       ),
+                       ),
+                     ),
+                   ),
+                   Expanded(
+                     child: Text("31,03, 2021",
+                       style: TextStyle(
+                           color: AppTheme.colorGray2,
+                           fontFamily: 'RobotoMedium',
+                           fontSize: 16,
+                           letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                           fontWeight: FontWeight.normal,
+                           height: 1.5 /*PERCENT not supported*/
+                       ),
+                     ),
+                   ),
+                   Text("Y/Y CHANGE",
+                     style: TextStyle(
+                         color: AppTheme.colorGray2,
+                         fontFamily: 'RobotoMedium',
+                         fontSize: 16,
+                         letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                         fontWeight: FontWeight.normal,
+                         height: 1.5 /*PERCENT not supported*/
+                     ),
+                   )
+                 ],
+               ),
+             ),
+             Divider(
+               color: AppTheme.colorGray,
              )
-
            ],
          ),
         )
