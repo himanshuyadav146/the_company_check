@@ -5,6 +5,7 @@ import 'package:the_company_check/theme/app_theme.dart';
 
 import '../../utils/AppSingleton.dart';
 import '../../widgets/custom_appbar.dart';
+import '../loader/loading_page.dart';
 import 'company_ratio.dart';
 
 class Financials extends StatefulWidget {
@@ -40,7 +41,7 @@ class _FinancialsState extends State<Financials> {
             debugPrint(value);
           }
       ),
-      body:  DefaultTabController(
+      body: financialsDetailsStore.isLoading ? const LoadingPage() : DefaultTabController(
           length: 3,
           child: SafeArea(
             child: Scaffold(

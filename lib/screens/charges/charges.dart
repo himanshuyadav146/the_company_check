@@ -1,6 +1,7 @@
 import 'package:d_chart/d_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:the_company_check/models/company_details_model.dart';
+import 'package:the_company_check/models/dchart_model.dart';
 import 'package:the_company_check/theme/app_theme.dart';
 
 import '../../widgets/charges_card.dart';
@@ -8,7 +9,7 @@ import '../../widgets/custom_appbar.dart';
 
 class Charges extends StatefulWidget {
  // const Charges(this.charges, {Key? key}) : super(key: key);
-  Charges(this.charges);
+  Charges(@required this.charges);
   final List<Charge>? charges;
 
   @override
@@ -16,6 +17,20 @@ class Charges extends StatefulWidget {
 }
 
 class _ChargesState extends State<Charges> {
+
+  getData(){
+  List<Map<String, dynamic>> dChartList = [];
+    for(var element in widget.charges!){
+      dChartList.add(
+        {
+            "domain":element.chargeHolderName,
+            "measure":element.amount
+        }
+      );
+    }
+   return dChartList;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,12 +71,7 @@ class _ChargesState extends State<Charges> {
               child: AspectRatio(
                 aspectRatio: 16 / 9,
                 child: DChartPie(
-                  data: [
-                    {'domain': 'Flutter', 'measure': 28},
-                    {'domain': 'React Native', 'measure': 27},
-                    {'domain': 'Ionic', 'measure': 20},
-                    {'domain': 'Cordova', 'measure': 15},
-                  ],
+                  data: getData(),
                   fillColor: (pieData, index) {
                     switch (pieData['domain']) {
                       case 'Flutter':

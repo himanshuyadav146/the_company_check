@@ -38,7 +38,7 @@ abstract class _CompanyDetailsStore with Store{
     directorsList?.addAll(companyData?.currentDirectors as List<TDirector>);
     directorsList?.add(TDirector(title: 'Previous Directors'));
     directorsList?.addAll(companyData?.pastDirectors as List<TDirector>);
-    print("Getting Data ${response.message}");
+    //print("Getting Data ${response.message}");
     // print("Company Data ${companyData.elementAt(0).legalName}");
     isLoading = false;
     return "";

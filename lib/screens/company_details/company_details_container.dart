@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_company_check/screens/charges/charges.dart';
+import 'package:the_company_check/screens/charges/mylist.dart';
 import 'package:the_company_check/screens/company_details/financials.dart';
 import 'package:the_company_check/screens/company_details/overview.dart';
 import 'package:the_company_check/screens/company_details/store/company_details_store.dart';

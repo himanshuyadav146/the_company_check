@@ -337,7 +337,7 @@ class ProfitNLossAoc {
   double? costOfMaterialConsumed;
   double? purchaseOfStockInTrade;
   double? changeInFinishedGoodsInventory;
-  String? changeInWorkInProgressInventory;
+  double? changeInWorkInProgressInventory;
   String? changeInStockInTradeInventory;
   double? employeeBenefitExpense;
   double? managerialRemuneration;
@@ -352,7 +352,7 @@ class ProfitNLossAoc {
   double? profitBeforeExceptionalAndExtraordinaryItemsAndTax;
   double? exceptionalItems;
   String? profitBeforeExtraordinaryItemsAndTax;
-  String? extraordinaryItems;
+  double? extraordinaryItems;
   double? profitBeforeTax;
   double? currentTax;
   double? deferredTax;
@@ -470,62 +470,59 @@ class ProfitNLossAoc {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['Type'] = this.type;
-    data['Category'] = this.category;
-    data['date_Amount'] = this.dateAmount;
-    data['FY_END_DATE'] = this.fYENDDATE;
-    data['DATE_OF_AGM'] = this.dATEOFAGM;
+    data['Type'] = type;
+    data['Category'] = category;
+    data['date_Amount'] = dateAmount;
+    data['FY_END_DATE'] = fYENDDATE;
+    data['DATE_OF_AGM'] = dATEOFAGM;
     data['Domestic_Sales_of_goods_manufactured'] =
-        this.domesticSalesOfGoodsManufactured;
-    data['Domestic_Sales_of_goods_traded'] = this.domesticSalesOfGoodsTraded;
-    data['Domestic_Supply_of_services'] = this.domesticSupplyOfServices;
+        domesticSalesOfGoodsManufactured;
+    data['Domestic_Sales_of_goods_traded'] = domesticSalesOfGoodsTraded;
+    data['Domestic_Supply_of_services'] = domesticSupplyOfServices;
     data['Export_Sales_of_goods_manufactured'] =
         this.exportSalesOfGoodsManufactured;
-    data['Export_Sales_of_goods_traded'] = this.exportSalesOfGoodsTraded;
-    data['Export_Supply_of_services'] = this.exportSupplyOfServices;
-    data['Other_Income'] = this.otherIncome;
-    data['Total_Revenue'] = this.totalRevenue;
-    data['Cost_of_Material_consumed'] = this.costOfMaterialConsumed;
-    data['Purchase_of_stock_in_trade'] = this.purchaseOfStockInTrade;
-    data['Change_in_Finished_goods_inventory'] =
-        this.changeInFinishedGoodsInventory;
-    data['Change_in_work_in_progress_inventory'] =
-        this.changeInWorkInProgressInventory;
-    data['Change_in_Stock_in_trade_inventory'] =
-        this.changeInStockInTradeInventory;
-    data['Employee_Benefit_Expense'] = this.employeeBenefitExpense;
-    data['Managerial_Remuneration'] = this.managerialRemuneration;
-    data['Payment_to_auditors'] = this.paymentToAuditors;
-    data['Insurance_Expenses'] = this.insuranceExpenses;
-    data['Power_Fuel'] = this.powerFuel;
-    data['Finance_Cost'] = this.financeCost;
+    data['Export_Sales_of_goods_traded'] = exportSalesOfGoodsTraded;
+    data['Export_Supply_of_services'] = exportSupplyOfServices;
+    data['Other_Income'] = otherIncome;
+    data['Total_Revenue'] = totalRevenue;
+    data['Cost_of_Material_consumed'] = costOfMaterialConsumed;
+    data['Purchase_of_stock_in_trade'] = purchaseOfStockInTrade;
+    data['Change_in_Finished_goods_inventory'] = changeInFinishedGoodsInventory;
+    data['Change_in_work_in_progress_inventory'] = changeInWorkInProgressInventory;
+    data['Change_in_Stock_in_trade_inventory'] = changeInStockInTradeInventory;
+    data['Employee_Benefit_Expense'] = employeeBenefitExpense;
+    data['Managerial_Remuneration'] = managerialRemuneration;
+    data['Payment_to_auditors'] = paymentToAuditors;
+    data['Insurance_Expenses'] = insuranceExpenses;
+    data['Power_Fuel'] = powerFuel;
+    data['Finance_Cost'] = financeCost;
     data['Depreciation_and_Amortisation_expense'] =
-        this.depreciationAndAmortisationExpense;
-    data['OTHER_EXPENSES'] = this.oTHEREXPENSES;
-    data['TOTAL_EXPENSES'] = this.tOTALEXPENSES;
-    data['Ebitda'] = this.ebitda;
+        depreciationAndAmortisationExpense;
+    data['OTHER_EXPENSES'] = oTHEREXPENSES;
+    data['TOTAL_EXPENSES'] = tOTALEXPENSES;
+    data['Ebitda'] = ebitda;
     data['Profit_before_exceptional_and_extraordinary_items_and_tax'] =
-        this.profitBeforeExceptionalAndExtraordinaryItemsAndTax;
-    data['Exceptional_items'] = this.exceptionalItems;
+        profitBeforeExceptionalAndExtraordinaryItemsAndTax;
+    data['Exceptional_items'] = exceptionalItems;
     data['Profit_before_extraordinary_items_and_tax'] =
-        this.profitBeforeExtraordinaryItemsAndTax;
-    data['Extraordinary_items'] = this.extraordinaryItems;
-    data['Profit_before_tax'] = this.profitBeforeTax;
-    data['Current_Tax'] = this.currentTax;
-    data['Deferred_Tax'] = this.deferredTax;
+        profitBeforeExtraordinaryItemsAndTax;
+    data['Extraordinary_items'] = extraordinaryItems;
+    data['Profit_before_tax'] = profitBeforeTax;
+    data['Current_Tax'] = currentTax;
+    data['Deferred_Tax'] = deferredTax;
     data['ProfitLoss_from_discontinuing_operations'] =
-        this.profitLossFromDiscontinuingOperations;
+        profitLossFromDiscontinuingOperations;
     data['Tax_expense_of_discontinuing_operations'] =
-        this.taxExpenseOfDiscontinuingOperations;
-    data['Profit_Loss'] = this.profitLoss;
-    data['CompanyLink'] = this.companyLink;
+        taxExpenseOfDiscontinuingOperations;
+    data['Profit_Loss'] = profitLoss;
+    data['CompanyLink'] = companyLink;
    // data['DocUrlId'] = this.docUrlId;
     data['NatureOfReportStandaloneConsolidated'] =
-        this.natureOfReportStandaloneConsolidated;
+        natureOfReportStandaloneConsolidated;
     data['Diluted_EPS_after_extraordinary_items'] =
-        this.dilutedEPSAfterExtraordinaryItems;
-    data['Income_in_foreign_currency'] = this.incomeInForeignCurrency;
-    data['Expenditure_in_foreign_currency'] = this.expenditureInForeignCurrency;
+        dilutedEPSAfterExtraordinaryItems;
+    data['Income_in_foreign_currency'] = incomeInForeignCurrency;
+    data['Expenditure_in_foreign_currency'] = expenditureInForeignCurrency;
     return data;
   }
 }

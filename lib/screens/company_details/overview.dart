@@ -53,7 +53,7 @@ class _OverViewState extends State<OverView> {
                                 Text(
                                   "${widget.companyData?.legalName}",
                                   textAlign: TextAlign.left,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: AppTheme.lightGray138_1,
                                     fontFamily: 'RobotoMedium',
                                     fontSize: 16,
@@ -63,7 +63,7 @@ class _OverViewState extends State<OverView> {
                                   ),
                                 ),
                                 Text("${widget.companyData?.address?.registeredAddress}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Color.fromRGBO(59, 89, 161, 1),
                                         fontFamily: 'RobotoRegular',
                                         fontSize: 10,
@@ -73,7 +73,7 @@ class _OverViewState extends State<OverView> {
                                         height: 1.5 /*PERCENT not supported*/
                                     )),
                                 Text("${widget.companyData?.website}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Color.fromRGBO(59, 89, 161, 1),
                                         fontFamily: 'RobotoRegular',
                                         fontSize: 10,
