@@ -9,8 +9,8 @@ class LoadingPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.blue,
       body: Center(
-        child: SpinKitCircle(
-          size: 140,
+        child: SpinKitWave(
+          size: 50,
           color: Colors.white,
         ),
       ),
