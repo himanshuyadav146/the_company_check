@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_company_check/theme/app_theme.dart';
 
 class MyRow extends StatelessWidget {
   const MyRow({
@@ -88,13 +89,48 @@ class MyRow extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          width: 180,
-          child: Text(getName()),
+          width: 150,
+          child: Text(getName(),
+            style: TextStyle(
+                color: AppTheme.lightGray138_1,
+                fontFamily: 'RobotoMedium',
+                fontSize: 16,
+                letterSpacing:
+                0 /*percentages not used in flutter. defaulting to zero*/,
+                fontWeight: FontWeight.normal,
+                height: 1.5 /*PERCENT not supported*/
+            ),
+
+          ),
+        ),
+        SizedBox(
+          width: 100,
+          child: Text(myValue,
+          style: TextStyle(
+              color: AppTheme.lightGray138_1,
+              fontFamily: 'RobotoMedium',
+              fontSize: 16,
+              letterSpacing:
+              0 /*percentages not used in flutter. defaulting to zero*/,
+              fontWeight: FontWeight.normal,
+              height: 1.5 /*PERCENT not supported*/
+          ),
+          ),
         ),
         const Spacer(),
         SizedBox(
-          width: 120,
-          child: Text(myValue),
+          width: 60,
+          child: Text("-5.50%",
+          style: TextStyle(
+              color: AppTheme.lightGray138_1,
+              fontFamily: 'RobotoMedium',
+              fontSize: 16,
+              letterSpacing:
+              0 /*percentages not used in flutter. defaulting to zero*/,
+              fontWeight: FontWeight.normal,
+              height: 1.5 /*PERCENT not supported*/
+          ),
+          ),
         ),
       ],
     );

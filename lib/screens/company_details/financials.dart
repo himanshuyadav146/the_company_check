@@ -89,9 +89,14 @@ class _FinancialsState extends State<Financials> {
               ),
               body: TabBarView(
                 children: [
-                  ProfitAndLoss(title: 'Profit and Loss',isVisible: true,financialsModel: financialsDetailsStore.response),
-                  ProfitAndLoss(title: 'Balance Sheet',isVisible: false,financialsModel: financialsDetailsStore.response),
-                  CompanyRatio()
+                  ProfitAndLoss(title: 'Profit and Loss',isProfitAndLoss: true,
+                      isBalanceSheet: false,isRatio: false,financialsModel: financialsDetailsStore.response),
+                  ProfitAndLoss(title: 'Balance Sheet',isProfitAndLoss: false,
+                      isBalanceSheet:true,isRatio: false,
+                      financialsModel: financialsDetailsStore.response),
+                  ProfitAndLoss(title: 'Balance Sheet',isProfitAndLoss: false,
+                      isBalanceSheet:false,isRatio: true,
+                      financialsModel: financialsDetailsStore.response),
                 ],
               ),
             ),

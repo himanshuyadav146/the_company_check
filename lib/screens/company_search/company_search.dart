@@ -51,28 +51,37 @@ class _CompanySearchScreenState extends State<CompanySearchScreen> {
           title: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4), color: Colors.white),
-              child: Padding(
-                  padding: const EdgeInsets.only(left: 12.0, right: 12),
-                  child: TextField(
-                      style: const TextStyle(
-                          color: Colors.black38, fontWeight: FontWeight.w500),
-                      onChanged: (value){
-                        print(value);
-                        _getData(value);
-                      },
-                      decoration: const InputDecoration(
-                        suffixIcon: Icon(Icons.search),
-                          hintText: 'Search your company',
-                          focusedBorder: InputBorder.none,
-                          border: InputBorder.none,
-                          hintStyle: TextStyle(
-                              color: AppTheme.colorGrayText,
-                              fontWeight: FontWeight.w500)
-                      )
-                  )
+              child: SizedBox(
+                height: 40,
+                child: Padding(
+                    padding: const EdgeInsets.only(left: 12.0, right: 12),
+                    child: TextField(
+                        style: const TextStyle(
+                            color: Colors.black38, fontWeight: FontWeight.w500),
+                        onChanged: (value){
+                          print(value);
+                          _getData(value);
+                        },
+                        decoration: const InputDecoration(
+                          suffixIcon: Icon(Icons.search),
+                            hintText: 'Search your company',
+                            focusedBorder: InputBorder.none,
+                            border: InputBorder.none,
+                            hintStyle: TextStyle(
+                                color: AppTheme.colorGrayText,
+                                fontFamily: 'RobotoRegular',
+                                fontSize: 14,
+                                letterSpacing:
+                                0 /*percentages not used in flutter. defaulting to zero*/,
+                                fontWeight: FontWeight.normal,
+                                height: 1.5)
+                        )
+                    )
 
+                ),
               ))),
       body: Container(
+        constraints: BoxConstraints.expand(),
         decoration: new BoxDecoration(
             color: AppTheme.colorLight
         ),

@@ -7,13 +7,18 @@ import '../charges/mywidget.dart';
 
 class ProfitAndLoss extends StatefulWidget {
   final String title;
-  bool isVisible = true;
+  // bool isVisible = true;
+  bool isProfitAndLoss = true;
+  bool isBalanceSheet = false;
+  bool isRatio = false;
   final FinancialsModel financialsModel;
 
   ProfitAndLoss(
       {Key? key,
       required this.title,
-      required this.isVisible,
+      required this.isProfitAndLoss,
+      required this.isBalanceSheet,
+      required this.isRatio,
       required this.financialsModel})
       : super(key: key);
 
@@ -36,7 +41,7 @@ class _ProfitAndLossState extends State<ProfitAndLoss> {
                   Row(
                     children: <Widget>[
                       Visibility(
-                          visible: widget.isVisible,
+                          visible: widget.isProfitAndLoss,
                           child: Image.asset(
                             'assets/images/pandl.png',
                             width: 50,
@@ -155,6 +160,38 @@ class _ProfitAndLossState extends State<ProfitAndLoss> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8.0),
+                    child: SizedBox (
+                      height: 38,
+                      child: ListView.builder(
+                          shrinkWrap: true, //just set this property
+                          itemCount:
+                          widget.financialsModel?.data?.ratioDetails?.length ?? 0,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (_, index) {
+                            var ratioDetail =
+                            widget.financialsModel?.data?.ratioDetails?[index];
+                            return Container(
+                              color: Colors.accents[index % 32],
+                              child: GestureDetector(
+                                onTap: () {
+                                  selectedIndex = index;
+                                  setState(() {});
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Center(
+                                    child: Text(
+                                      ratioDetail?.financialYear ?? "Av",
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          }),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
                     child: Row(
                       children: const <Widget>[
                         Expanded(
@@ -206,33 +243,33 @@ class _ProfitAndLossState extends State<ProfitAndLoss> {
                   const Divider(
                     color: AppTheme.colorGray,
                   ),
-                  Container(
-                      child: ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          itemCount: widget.financialsModel?.data
-                                  ?.balanceSheetAoc?[selectedIndex]
-                                  .toJson()
-                                  .keys
-                                  .length ??
-                              0,
-                          itemBuilder: (_, index) {
-                            var balanceSheetAoc = widget.financialsModel?.data
-                                ?.balanceSheetAoc?[selectedIndex];
-                            var balanceSheetAocData = balanceSheetAoc?.toJson();
-                            var mykey =
-                                balanceSheetAocData?.keys.toList()[index] ?? "";
-                            var myValue =
-                                balanceSheetAocData?.values.toList()[index] ?? "";
+                   ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: widget.financialsModel?.data
+                              ?.balanceSheetAoc?[selectedIndex]
+                              .toJson()
+                              .keys
+                              .length ??
+                          0,
+                      itemBuilder: (_, index) {
+                        var balanceSheetAoc = widget.financialsModel?.data
+                            ?.balanceSheetAoc?[selectedIndex];
+                        var balanceSheetAocData = balanceSheetAoc?.toJson();
+                        var mykey =
+                            balanceSheetAocData?.keys.toList()[index] ?? "";
+                        var myValue =
+                            balanceSheetAocData?.values.toList()[index] ?? "";
 
-                            return Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: MyRow(
-                                mykey: mykey,
-                                myValue: myValue.toString(),
-                              ),
-                            );
-                          }))
+                        return Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: MyRow(
+                            mykey: mykey,
+                            myValue: myValue.toString(),
+                          ),
+                        );
+                      })
                 ],
               ),
             )),
