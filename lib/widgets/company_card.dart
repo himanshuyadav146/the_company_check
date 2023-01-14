@@ -29,7 +29,7 @@ class _CompanyCardState extends State<CompanyCard> {
               child: SizedBox(
                 width: 70.0,
                 height: 70.0,
-                child: AppUtils.getImage("https://images.thecompanycheck.com/companylogo/${widget.resData?.legalName}"),
+                child: AppUtils.getImage("https://images.thecompanycheck.com/companylogo/${widget.resData?.legalName}",""),
               ),
             ),
             Expanded(

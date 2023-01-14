@@ -45,16 +45,18 @@ class _CompanyDetailsContainerState extends State<CompanyDetailsContainer> {
                 children: [
                   if(companyDetailsStore?.companyData!=null) ...[
                     OverView(companyDetailsStore?.companyData),
-                    People(companyDetailsStore?.directorsList),
+                    People(companyDetailsStore?.directorsList,companyDetailsStore?.companyData),
                     Charges(companyDetailsStore?.companyData?.charges),
                     Financials(),
-                    Financials(),
+                    Center(
+                      child: Text("Control"),
+                    ),
                   ] else ...[
                     Text("No data found on overview"),
                     Text("No data found on peoples"),
                     Text("No data found on changes"),
                     Text("No data found on financials"),
-                    Text("No data found on financials"),
+                    Text("No data found on Control"),
                   ]
                 ],
               ),

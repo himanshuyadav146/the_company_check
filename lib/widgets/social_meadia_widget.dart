@@ -1,20 +1,42 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:the_company_check/models/company_details_model.dart';
+import 'package:the_company_check/utils/app_utils.dart';
 
+import '../models/social_list_model.dart';
 import '../theme/app_theme.dart';
 
 class SocialMeadiaWidget extends StatefulWidget {
-   SocialMeadiaWidget(this.title, {Key? key}) : super(key: key);
+   SocialMeadiaWidget(this.title, this.social, {Key? key}) : super(key: key);
   String title;
-   // List<IndustrySegment>? list;
-
+  Social? social;
 
   @override
   State<SocialMeadiaWidget> createState() => _SocialMeadiaWidgetState();
 }
 
 class _SocialMeadiaWidgetState extends State<SocialMeadiaWidget> {
+   List<SocialListModel> list=[];
+
+  List<SocialListModel> getSocialList(){
+    if(widget?.social?.linkedin !=null){
+      list.add(SocialListModel(
+        title: "",
+        imglink: 'assets/images/social_linked.png',
+        link: widget.social?.linkedin
+      ));
+    }
+
+    if(widget?.social?.twitter !=null){
+      list.add(SocialListModel(
+          title: "",
+          imglink: 'assets/images/social_twitter.png',
+          link: widget.social?.twitter
+      ));
+    }
+    return list;
+  }
+
   @override
   Widget build(BuildContext context) {
     return  Card(
@@ -38,19 +60,24 @@ class _SocialMeadiaWidgetState extends State<SocialMeadiaWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(left: 0.0,top: 20.0),
               child: SizedBox(
                 height: 40,
                 child: ListView.builder(
-                    itemCount:5,
+                    itemCount: getSocialList().length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context,index){
-                      return Image.asset(
-                        'assets/images/googleimg.png',
-                        width: 50,
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: InkWell(
+                          onTap: (){
+                            AppUtils.launchInBrowser(getSocialList()[index].link);
+                          },
+                          child: Image.asset(getSocialList()[index].imglink),
+                        ),
                       );
                     }
-                ),
+                )
               )
             )
           ],

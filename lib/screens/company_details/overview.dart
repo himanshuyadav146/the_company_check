@@ -8,6 +8,7 @@ import 'package:the_company_check/widgets/custom_compac_button.dart';
 import '../../widgets/custom_appbar.dart';
 import 'package:the_company_check/utils/app_utils.dart';
 
+import '../../widgets/directors_signatories_widget.dart';
 import '../../widgets/industry_segment_widget.dart';
 import '../../widgets/social_meadia_widget.dart';
 
@@ -205,7 +206,7 @@ class _OverViewState extends State<OverView> {
                           children: [
                             Expanded(
                               child: Text(
-                                "${widget.companyData?.authorisedCapital}",
+                                "${AppUtils.getFormatedAmount(widget.companyData?.authorisedCapital,2)}",
                                 style: TextStyle(
                                   color: AppTheme.colorGray4,
                                   fontFamily: 'RobotoMedium',
@@ -218,7 +219,7 @@ class _OverViewState extends State<OverView> {
                             ),
                             Expanded(
                               child: Text(
-                                "${widget.companyData?.paidUpCapital}",
+                                "${AppUtils.getFormatedAmount(widget.companyData?.paidUpCapital,2)}",
                                 style: TextStyle(
                                   color: AppTheme.colorGray4,
                                   fontFamily: 'RobotoMedium',
@@ -230,7 +231,7 @@ class _OverViewState extends State<OverView> {
                               ),
                             ),
                             Text(
-                              "${widget.companyData?.openCharges}",
+                              "${AppUtils.getFormatedAmount(widget.companyData?.openCharges,2)}",
                               style: TextStyle(
                                 color: AppTheme.colorGray4,
                                 fontFamily: 'RobotoMedium',
@@ -336,7 +337,7 @@ class _OverViewState extends State<OverView> {
                                       child: Text(
                                           "${widget.companyData?.companyStatus}",
                                           style: TextStyle(
-                                              color: AppTheme.lightGray138_1,
+                                              color: AppUtils.getColorCode(widget.companyData?.companyStatus),
                                               fontFamily: 'RobotoRegular',
                                               fontSize: 12,
                                               letterSpacing:
@@ -823,8 +824,11 @@ class _OverViewState extends State<OverView> {
                 ),
                 // Segment Industry
                 Container(
-                  child: IndustrySegmentWidget("Industry & Segment", getList()),
+                  child: IndustrySegmentWidget("Industry & Segment",  getList()),
                 ),
+                // Container(
+                //   child: DirecorsSignatoryWidget("Directors & Signatories",widget.companyData?.currentDirectors),
+                // ),
 
                 // Contact Details
                 Card(
@@ -1041,7 +1045,7 @@ class _OverViewState extends State<OverView> {
 
                 // Social Meadia list
                 Container(
-                  child: SocialMeadiaWidget("Industry & Segment"),
+                  child: SocialMeadiaWidget("Social Media",widget.companyData?.social),
                 ),
                 // Name History details ********************************************************
                 Card(

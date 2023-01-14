@@ -34,12 +34,10 @@ abstract class _CompanyDetailsStore with Store{
     response = (await CompanyDetailsRepository().fetchCompanyDetails(str));
     var data = response.data ?? [];
     companyData = data.elementAt(0);
-    directorsList?.add(TDirector(title: 'Current Directors'));
+    directorsList?.add(TDirector(title: 'Current Directors(${companyData?.currentDirectors?.length})'));
     directorsList?.addAll(companyData?.currentDirectors as List<TDirector>);
-    directorsList?.add(TDirector(title: 'Previous Directors'));
+    directorsList?.add(TDirector(title: 'Previous Directors(${companyData?.pastDirectors?.length})'));
     directorsList?.addAll(companyData?.pastDirectors as List<TDirector>);
-    //print("Getting Data ${response.message}");
-    // print("Company Data ${companyData.elementAt(0).legalName}");
     isLoading = false;
     return "";
   }

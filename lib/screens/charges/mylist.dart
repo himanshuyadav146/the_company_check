@@ -100,6 +100,10 @@ class _MyListState extends State<MyList> {
                             child: MyRow(
                               mykey: mykey,
                               myValue: myValue.toString(),
+                              isBalanceSheet: false,
+                              isProfitAndLoss: true,
+                              isRatio: false,
+                              percentage:"" ,
                             ),
                           );
                         }),

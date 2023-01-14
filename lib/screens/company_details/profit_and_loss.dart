@@ -1,13 +1,13 @@
 import 'package:d_chart/d_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:the_company_check/theme/app_theme.dart';
+import 'package:the_company_check/utils/app_utils.dart';
 
 import '../../models/financials_model.dart';
 import '../charges/mywidget.dart';
 
 class ProfitAndLoss extends StatefulWidget {
   final String title;
-  // bool isVisible = true;
   bool isProfitAndLoss = true;
   bool isBalanceSheet = false;
   bool isRatio = false;
@@ -28,6 +28,47 @@ class ProfitAndLoss extends StatefulWidget {
 
 class _ProfitAndLossState extends State<ProfitAndLoss> {
   int selectedIndex = 0;
+
+  getList(int index) {
+    var balanceSheetAoc;
+    if (widget.isProfitAndLoss) {
+      balanceSheetAoc = widget.financialsModel?.data?.profitNLossAoc?[index];
+    }
+    if (widget.isBalanceSheet) {
+      balanceSheetAoc = widget.financialsModel?.data?.balanceSheetAoc?[index];
+    }
+    if (widget.isRatio) {
+      balanceSheetAoc = widget.financialsModel?.data?.ratioDetails?[index];
+    }
+    return balanceSheetAoc;
+  }
+
+  getListLength(int selectedInd) {
+    var index = 0;
+    if (widget.isProfitAndLoss) {
+      index = widget.financialsModel?.data?.profitNLossAoc?[selectedInd]
+              .toJson()
+              .keys
+              .length ??
+          0;
+    }
+    if (widget.isBalanceSheet) {
+      index = widget.financialsModel?.data?.balanceSheetAoc?[selectedInd]
+              .toJson()
+              .keys
+              .length ??
+          0;
+    }
+    if (widget.isRatio) {
+      index = widget.financialsModel?.data?.ratioDetails?[selectedInd]
+              .toJson()
+              .keys
+              .length ??
+          0;
+    }
+    return index;
+    // widget.financialsModel?.data?.balanceSheetAoc?[selectedIndex].toJson().keys.length ?? 0;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -160,16 +201,17 @@ class _ProfitAndLossState extends State<ProfitAndLoss> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8.0),
-                    child: SizedBox (
+                    child: SizedBox(
                       height: 38,
                       child: ListView.builder(
                           shrinkWrap: true, //just set this property
-                          itemCount:
-                          widget.financialsModel?.data?.ratioDetails?.length ?? 0,
+                          itemCount: widget.financialsModel?.data?.ratioDetails
+                                  ?.length ??
+                              0,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (_, index) {
-                            var ratioDetail =
-                            widget.financialsModel?.data?.ratioDetails?[index];
+                            var ratioDetail = widget
+                                .financialsModel?.data?.ratioDetails?[index];
                             return Container(
                               color: Colors.accents[index % 32],
                               child: GestureDetector(
@@ -243,33 +285,63 @@ class _ProfitAndLossState extends State<ProfitAndLoss> {
                   const Divider(
                     color: AppTheme.colorGray,
                   ),
-                   ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: widget.financialsModel?.data
-                              ?.balanceSheetAoc?[selectedIndex]
-                              .toJson()
-                              .keys
-                              .length ??
-                          0,
-                      itemBuilder: (_, index) {
-                        var balanceSheetAoc = widget.financialsModel?.data
-                            ?.balanceSheetAoc?[selectedIndex];
-                        var balanceSheetAocData = balanceSheetAoc?.toJson();
-                        var mykey =
-                            balanceSheetAocData?.keys.toList()[index] ?? "";
-                        var myValue =
-                            balanceSheetAocData?.values.toList()[index] ?? "";
-
-                        return Padding(
-                          padding: const EdgeInsets.all(6.0),
-                          child: MyRow(
-                            mykey: mykey,
-                            myValue: myValue.toString(),
-                          ),
-                        );
-                      })
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: getListLength(selectedIndex),
+                          itemBuilder: (_, index) {
+                            var balanceSheetAoc = getList(selectedIndex);
+                            var balanceSheetAocData = balanceSheetAoc?.toJson();
+                            var mykey;
+                            var myValue;
+                            var percentage="";
+                            if (balanceSheetAocData?.values.toList().length >
+                                index) {
+                              mykey =
+                                  balanceSheetAocData?.keys.toList()[index] ??
+                                      "";
+                              myValue =
+                                  balanceSheetAocData?.values.toList()[index] ??
+                                      "";
+                              if (selectedIndex > 0) {
+                                var preYearBalanceSheetAoc =
+                                    getList(selectedIndex - 1);
+                                var preYearBalanceSheetAocData =
+                                    preYearBalanceSheetAoc?.toJson();
+                                var preYearValue = preYearBalanceSheetAocData
+                                        ?.values
+                                        .toList()[index] ??
+                                    "";
+                                if (myValue != null && preYearValue != null) {
+                                  if (myValue != "" &&
+                                      preYearValue != "" &&
+                                      myValue.runtimeType != String &&
+                                      preYearValue.runtimeType != String) {
+                                    percentage = AppUtils.getPercentageOfyears(
+                                        myValue, preYearValue).toString();
+                                    print("Percentage : $percentage");
+                                  }
+                                }
+                              }
+                            } else {
+                              mykey = "";
+                              myValue = "";
+                            }
+                            return MyRow(
+                              mykey: mykey,
+                              myValue: myValue.toString(),
+                              isProfitAndLoss: widget.isProfitAndLoss,
+                              isBalanceSheet: widget.isBalanceSheet,
+                              isRatio: widget.isRatio,
+                              percentage: percentage,
+                            );
+                          }),
+                    ],
+                  )
                 ],
               ),
             )),

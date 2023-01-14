@@ -4,10 +4,11 @@ import 'package:the_company_check/theme/app_theme.dart';
 import 'package:the_company_check/utils/app_utils.dart';
 
 class UserCard extends StatefulWidget {
-  UserCard(this.currentDirector, this.directorsList);
+  UserCard(this.currentDirector, this.directorsList, this.companyData);
 
   TDirector? currentDirector;
   List<TDirector>? directorsList;
+  Datum? companyData;
 
   @override
   State<UserCard> createState() => _UserCardState();
@@ -17,18 +18,18 @@ class _UserCardState extends State<UserCard> {
   @override
   Widget build(BuildContext context) {
     return widget.currentDirector?.title !=null
-        ? Container(
+        ? (widget.currentDirector?.title =="Previous Directors(0)" ? Container() : Container(
       color: AppTheme.colorGray1,
-          padding: const EdgeInsets.only(top: 18.0,bottom: 18.0,left: 12.0),
-          child: Text("${widget.currentDirector?.title} "
-          "(${widget.directorsList?.length})",
-    style: TextStyle(
-      fontFamily: 'RobotoMedium',
-      fontSize: 18.0,
-      color: AppTheme.colorDarkGray,
-    ),
-    ),
-        ) : Card(
+      padding: const EdgeInsets.only(top: 18.0,bottom: 18.0,left: 12.0),
+      child: Text("${widget.currentDirector?.title}",
+        // "(${widget.companyData?.currentDirectors?.length})",
+        style: TextStyle(
+          fontFamily: 'RobotoMedium',
+          fontSize: 18.0,
+          color: AppTheme.colorDarkGray,
+        ),
+      ),
+    )) : Card(
       margin: EdgeInsets.only(left: 8,top: 12),
       elevation: 0,
       child: Padding(
@@ -41,7 +42,9 @@ class _UserCardState extends State<UserCard> {
               child: SizedBox(
                 width: 70.0,
                 height: 70.0,
-                child: AppUtils.getImage("https://images.thecompanycheck.com/directorimage/${widget.currentDirector?.profilePicUrl}"),
+                child: AppUtils.getImage("https://images.thecompanycheck.com/directorimage/${widget.currentDirector?.profilePicUrl}",
+                widget?.currentDirector?.directorName
+                ),
               ),
             ),
             Expanded(

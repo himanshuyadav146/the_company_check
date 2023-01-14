@@ -1,7 +1,7 @@
 import 'package:d_chart/d_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:the_company_check/models/company_details_model.dart';
-import 'package:the_company_check/models/dchart_model.dart';
+import 'package:the_company_check/models/social_list_model.dart';
 import 'package:the_company_check/theme/app_theme.dart';
 
 import '../../widgets/charges_card.dart';
@@ -113,6 +113,7 @@ class _ChargesState extends State<Charges> {
                           ),
                         ),
                       ),
+                      const Spacer(),
                       Expanded(
                         child: Text("Lender",
                           style: TextStyle(
@@ -125,6 +126,7 @@ class _ChargesState extends State<Charges> {
                           ),
                         ),
                       ),
+                      const Spacer(),
                       Expanded(
                         child: Text("Amount",
                           style: TextStyle(

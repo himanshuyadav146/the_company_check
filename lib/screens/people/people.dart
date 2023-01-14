@@ -5,9 +5,10 @@ import '../../widgets/custom_appbar.dart';
 import '../../widgets/user_card.dart';
 
 class People extends StatefulWidget {
- People(@required this.directorsList);
+ People(@required this.directorsList, @required this.companyData);
 
   final List<TDirector>? directorsList;
+  final Datum? companyData;
 
 
   @override
@@ -29,7 +30,7 @@ class _PeopleState extends State<People> {
           itemBuilder: (ctx,i){
           return ListTile(
             contentPadding: EdgeInsets.only(left: 0.0, right: 0.0),
-            title: UserCard(widget.directorsList?[i],widget.directorsList),
+            title: UserCard(widget.directorsList?[i],widget.directorsList,widget.companyData),
           );
           }
       )

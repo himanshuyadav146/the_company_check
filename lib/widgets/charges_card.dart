@@ -59,6 +59,7 @@ class _ChargesCardState extends State<ChargesCard> {
                    ),
                  ),
                ),
+               const Spacer(),
                Expanded(
                  child: Text("${widget.charg?.chargeHolderName}",
                    style: TextStyle(
@@ -71,8 +72,9 @@ class _ChargesCardState extends State<ChargesCard> {
                    ),
                  ),
                ),
+               const Spacer(),
                Expanded(
-                 child: Text("${widget.charg?.amount}",
+                 child: Text("${AppUtils.getFormatedAmount(widget?.charg?.amount, 2)}",
                    style: TextStyle(
                        color: AppTheme.colorGray3,
                        fontFamily: 'RobotoRegular',
