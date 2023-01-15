@@ -375,20 +375,24 @@ class _OverViewState extends State<OverView> {
                                     ),
                                     Expanded(
                                         child: Align(
-                                      alignment: Alignment.centerRight,
-                                      child: Text(
-                                          "${widget.companyData?.suspendedAtStockExchange}",
-                                          style: TextStyle(
-                                              color: AppTheme.lightGray138_1,
-                                              fontFamily: 'RobotoRegular',
-                                              fontSize: 12,
-                                              letterSpacing:
-                                                  0 /*percentages not used in flutter. defaulting to zero*/,
-                                              fontWeight: FontWeight.normal,
-                                              height:
-                                                  1.5 /*PERCENT not supported*/
-                                              )),
-                                    )),
+                                          alignment: Alignment.centerRight,
+                                          child: Expanded(
+                                            child: Column(
+                                              children: <Widget>[
+                                                Row(
+                                                  children: <Widget>[
+                                                    Text("BSE : 532301")
+                                                  ],
+                                                ),
+                                                Row(
+                                                  children: <Widget>[
+                                                    Text("NSE : TATACOFFEE ")
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        )),
                                   ],
                                 ),
                               ),
