@@ -95,7 +95,7 @@ class _MyRowState extends State<MyRow> {
         return 'Total Assets';
       default:
     }
-    return widget.mykey;
+    return "";
   }
 
   String getProfitAndLossName(){

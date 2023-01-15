@@ -19,6 +19,7 @@ class CompanyDetailsRepository{
   
   Future<FinancialsModel> getFinancialsDetails(String str) async{
     final response = await _apiService.get("api/CompanyFinancials/$str");
+    print("URL : api/CompanyFinancials/$str");
     //final data = await json.decode(response);
     return FinancialsModel.fromJson(response);
     // return FinancialsModel.fromJson(response);

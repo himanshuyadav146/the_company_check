@@ -4,8 +4,6 @@ import 'package:flutter_initicon/flutter_initicon.dart';
 
 import 'dart:math' as math;
 import 'package:intl/intl.dart';
-// import 'package:url_launcher/link.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../theme/app_theme.dart';
 
 class AppUtils {
@@ -148,8 +146,8 @@ class AppUtils {
   }
 
   static Future<void> launchInBrowser(String? url) async {
-    if (!await canLaunch(url)) {
-      throw 'Could not launch $url';
-    }
+    // if(await canLaunch(url)){
+    //   await launch(url);
+    // }
   }
 }

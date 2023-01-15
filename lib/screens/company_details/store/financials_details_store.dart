@@ -19,7 +19,7 @@ abstract class _FinancialsDetailsStore with Store{
   @action
   Future<String> getFinancialsDetails(String str) async{
     isLoading = true;
-    response = await (await CompanyDetailsRepository().getFinancialsDetails(str));
+    response = (await CompanyDetailsRepository().getFinancialsDetails(str));
     isLoading = false;
     return "";
   }

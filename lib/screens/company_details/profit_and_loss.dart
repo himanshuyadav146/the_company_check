@@ -320,7 +320,8 @@ class _ProfitAndLossState extends State<ProfitAndLoss> {
                                   if (myValue != "" &&
                                       preYearValue != "" &&
                                       myValue.runtimeType != String &&
-                                      preYearValue.runtimeType != String) {
+                                      preYearValue.runtimeType != String &&
+                                      myValue.runtimeType != bool) {
                                     percentage = AppUtils.getPercentageOfyears(
                                         myValue, preYearValue).toString();
                                     print("Percentage : $percentage");

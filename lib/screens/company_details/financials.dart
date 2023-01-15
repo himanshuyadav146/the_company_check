@@ -27,8 +27,8 @@ class _FinancialsState extends State<Financials> {
 
   void _getData() async {
     var appSingleton = AppSingleton();
-   // await financialsDetailsStore.getFinancialsDetails(appSingleton.cinNo);
-    await financialsDetailsStore.getFinancialsDetails("L15491WB1962PLC031425");
+   await financialsDetailsStore.getFinancialsDetails(appSingleton.cinNo);
+    // await financialsDetailsStore.getFinancialsDetails("L15491WB1962PLC031425");
     setState(() {
     });
   }
