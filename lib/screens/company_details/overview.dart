@@ -206,7 +206,7 @@ class _OverViewState extends State<OverView> {
                           children: [
                             Expanded(
                               child: Text(
-                                "${AppUtils.getFormatedAmount(widget.companyData?.authorisedCapital,2)}",
+                                "${AppUtils.getFormatedAmount(widget.companyData?.authorisedCapital, 2)}",
                                 style: TextStyle(
                                   color: AppTheme.colorGray4,
                                   fontFamily: 'RobotoMedium',
@@ -219,7 +219,7 @@ class _OverViewState extends State<OverView> {
                             ),
                             Expanded(
                               child: Text(
-                                "${AppUtils.getFormatedAmount(widget.companyData?.paidUpCapital,2)}",
+                                "${AppUtils.getFormatedAmount(widget.companyData?.paidUpCapital, 2)}",
                                 style: TextStyle(
                                   color: AppTheme.colorGray4,
                                   fontFamily: 'RobotoMedium',
@@ -231,7 +231,7 @@ class _OverViewState extends State<OverView> {
                               ),
                             ),
                             Text(
-                              "${AppUtils.getFormatedAmount(widget.companyData?.openCharges,2)}",
+                              "${AppUtils.getFormatedAmount(widget.companyData?.openCharges, 2)}",
                               style: TextStyle(
                                 color: AppTheme.colorGray4,
                                 fontFamily: 'RobotoMedium',
@@ -337,7 +337,9 @@ class _OverViewState extends State<OverView> {
                                       child: Text(
                                           "${widget.companyData?.companyStatus}",
                                           style: TextStyle(
-                                              color: AppUtils.getColorCode(widget.companyData?.companyStatus),
+                                              color: AppUtils.getColorCode(
+                                                  widget.companyData
+                                                      ?.companyStatus),
                                               fontFamily: 'RobotoRegular',
                                               fontSize: 12,
                                               letterSpacing:
@@ -828,7 +830,7 @@ class _OverViewState extends State<OverView> {
                 ),
                 // Segment Industry
                 Container(
-                  child: IndustrySegmentWidget("Industry & Segment",  getList()),
+                  child: IndustrySegmentWidget("Industry & Segment", getList()),
                 ),
                 // Container(
                 //   child: DirecorsSignatoryWidget("Directors & Signatories",widget.companyData?.currentDirectors),
@@ -1049,7 +1051,8 @@ class _OverViewState extends State<OverView> {
 
                 // Social Meadia list
                 Container(
-                  child: SocialMeadiaWidget("Social Media",widget.companyData?.social),
+                  child: SocialMeadiaWidget(
+                      "Social Media", widget.companyData?.social),
                 ),
                 // Name History details ********************************************************
                 Card(
@@ -1075,26 +1078,30 @@ class _OverViewState extends State<OverView> {
                           child: SizedBox(
                             // height: MediaQuery.of(context).size.shortestSide,
                             child: ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: widget.companyData?.nameHistory?.length,
-                                itemBuilder: (context,index){
+                                shrinkWrap: true,
+                                itemCount:
+                                    widget.companyData?.nameHistory?.length,
+                                itemBuilder: (context, index) {
                                   return Row(
                                     children: <Widget>[
                                       Expanded(
                                           child: Padding(
-                                            padding: const EdgeInsets.only(top: 8.0),
-                                            child: Text("${widget.companyData?.nameHistory?[index]}",
-                                                style: TextStyle(
-                                                    color:
-                                                    Color.fromRGBO(138, 138, 138, 1),
-                                                    fontFamily: 'RobotoMedium',
-                                                    fontSize: 12,
-                                                    letterSpacing:
+                                        padding:
+                                            const EdgeInsets.only(top: 8.0),
+                                        child: Text(
+                                            "${widget.companyData?.nameHistory?[index]}",
+                                            style: TextStyle(
+                                                color: Color.fromRGBO(
+                                                    138, 138, 138, 1),
+                                                fontFamily: 'RobotoMedium',
+                                                fontSize: 12,
+                                                letterSpacing:
                                                     0 /*percentages not used in flutter. defaulting to zero*/,
-                                                    fontWeight: FontWeight.normal,
-                                                    height: 1.5 /*PERCENT not supported*/
+                                                fontWeight: FontWeight.normal,
+                                                height:
+                                                    1.5 /*PERCENT not supported*/
                                                 )),
-                                          )),
+                                      )),
                                       // const Text("",
                                       //     style: TextStyle(
                                       //         color: Color.fromRGBO(138, 138, 138, 1),
@@ -1107,8 +1114,7 @@ class _OverViewState extends State<OverView> {
                                       //     )),
                                     ],
                                   );
-                                }
-                            ),
+                                }),
                           ),
                         ),
                       ],
