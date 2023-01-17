@@ -166,29 +166,32 @@ class _ChargesDetailsState extends State<ChargesDetails> {
                       color: AppTheme.colorGray3,
                     ),
                   ),
-                  Row(
-                    children: <Widget>[
-                      const Expanded(child: Text("Last Modified On",
-                        style: TextStyle(
-                            color: AppTheme.colorGray3,
-                            fontFamily: 'RobotoBold',
-                            fontSize: 12,
-                            letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                            fontWeight: FontWeight.normal,
-                            height: 1.5 /*PERCENT not supported*/
+                  Visibility(
+                    visible: widget.charg!.dateOfModification!.isNotEmpty ? true : false,
+                    child: Row(
+                      children: <Widget>[
+                        const Expanded(child: Text("Last Modified On",
+                          style: TextStyle(
+                              color: AppTheme.colorGray3,
+                              fontFamily: 'RobotoBold',
+                              fontSize: 12,
+                              letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                              fontWeight: FontWeight.normal,
+                              height: 1.5 /*PERCENT not supported*/
+                          ),
+                        )),
+                        Text("${AppUtils.getDDMMYY(widget.charg?.dateOfModification)}",
+                          style: TextStyle(
+                              color: AppTheme.lightGray138_1,
+                              fontFamily: 'RobotoRegular',
+                              fontSize: 12,
+                              letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                              fontWeight: FontWeight.normal,
+                              height: 1.5 /*PERCENT not supported*/
+                          ),
                         ),
-                      )),
-                      Text("${AppUtils.getDDMMYY(widget.charg?.dateOfModification)}",
-                        style: TextStyle(
-                            color: AppTheme.lightGray138_1,
-                            fontFamily: 'RobotoRegular',
-                            fontSize: 12,
-                            letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                            fontWeight: FontWeight.normal,
-                            height: 1.5 /*PERCENT not supported*/
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 4.0,bottom: 4.0),
@@ -226,36 +229,36 @@ class _ChargesDetailsState extends State<ChargesDetails> {
                       color: AppTheme.colorGray3,
                     ),
                   ),
-                  Row(
-                    children: <Widget>[
-                      const Expanded(child: Text("Satisfaction Date",
-                        style: TextStyle(
-                            color: AppTheme.colorGray3,
-                            fontFamily: 'RobotoBold',
-                            fontSize: 12,
-                            letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                            fontWeight: FontWeight.normal,
-                            height: 1.5 /*PERCENT not supported*/
-                        ),
-                      )),
-                      Text("${AppUtils.getDDMMYY(widget.charg?.dateOfSatisfaction)}",
-                        style: TextStyle(
-                            color: AppTheme.lightGray138_1,
-                            fontFamily: 'RobotoRegular',
-                            fontSize: 12,
-                            letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                            fontWeight: FontWeight.normal,
-                            height: 1.5 /*PERCENT not supported*/
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 4.0,bottom: 4.0),
-                    child: Divider(
-                      color: AppTheme.colorGray3,
-                    ),
-                  ),
+                  // Row(
+                  //   children: <Widget>[
+                  //     const Expanded(child: Text("Satisfaction Date",
+                  //       style: TextStyle(
+                  //           color: AppTheme.colorGray3,
+                  //           fontFamily: 'RobotoBold',
+                  //           fontSize: 12,
+                  //           letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                  //           fontWeight: FontWeight.normal,
+                  //           height: 1.5 /*PERCENT not supported*/
+                  //       ),
+                  //     )),
+                  //     Text("${AppUtils.getDDMMYY(widget.charg?.dateOfSatisfaction)}",
+                  //       style: TextStyle(
+                  //           color: AppTheme.lightGray138_1,
+                  //           fontFamily: 'RobotoRegular',
+                  //           fontSize: 12,
+                  //           letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                  //           fontWeight: FontWeight.normal,
+                  //           height: 1.5 /*PERCENT not supported*/
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(top: 4.0,bottom: 4.0),
+                  //   child: Divider(
+                  //     color: AppTheme.colorGray3,
+                  //   ),
+                  // ),
                   Row(
                     children: <Widget>[
                       const Expanded(child: Text("Amount",

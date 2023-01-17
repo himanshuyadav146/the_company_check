@@ -10,6 +10,7 @@ class ApiService{
     var responseJson;
     try {
       final response = await http.get(Uri.parse(_baseUrl + url));
+      print("Created URL :${_baseUrl + url}");
       responseJson = _response(response);
     } on SocketException {
       throw FetchDataException('No Internet connection');

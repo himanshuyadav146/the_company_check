@@ -39,6 +39,10 @@ class _SocialMeadiaWidgetState extends State<SocialMeadiaWidget> {
 
   @override
   Widget build(BuildContext context) {
+    var itemList = getSocialList();
+    setState(() {
+
+    });
     return  Card(
       elevation: 0,
       color: Colors.white,
@@ -64,16 +68,16 @@ class _SocialMeadiaWidgetState extends State<SocialMeadiaWidget> {
               child: SizedBox(
                 height: 40,
                 child: ListView.builder(
-                    itemCount: getSocialList().length,
+                    itemCount: itemList.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context,index){
                       return Padding(
                         padding: const EdgeInsets.only(right: 8.0),
                         child: InkWell(
                           onTap: (){
-                            AppUtils.launchInBrowser(getSocialList()[index].link);
+                            AppUtils.launchInBrowser(itemList[index].link);
                           },
-                          child: Image.asset(getSocialList()[index].imglink),
+                          child: Image.asset(itemList[index].imglink),
                         ),
                       );
                     }

@@ -4,6 +4,7 @@ import 'package:flutter_initicon/flutter_initicon.dart';
 
 import 'dart:math' as math;
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../theme/app_theme.dart';
 
 class AppUtils {
@@ -123,6 +124,8 @@ class AppUtils {
 
   static String getFormatedAmount(double? numberToFormat,int decimalDigits){
     var _formattedNumber = NumberFormat.compactCurrency(
+      name: "INR",
+      locale: 'en_IN',
       decimalDigits: decimalDigits,
       symbol: '\u{20B9} ', // if you want to add currency symbol then pass that in this else leave it empty.
     ).format(numberToFormat);
@@ -130,8 +133,22 @@ class AppUtils {
     return _formattedNumber;
   }
 
-  static String getIndianFormatedAmount(double? numberToFormat){
-    return NumberFormat.compactCurrency(locale: 'en_IN').format(numberToFormat);
+  static String getFormatedAmountInCR(double? numberToFormat,int decimalDigits){
+    var _formattedNumber = NumberFormat.compactCurrency(
+      name: "INR",
+      locale: 'en_IN',
+      decimalDigits: decimalDigits,
+      symbol: '\u{20B9}', // if you want to add currency symbol then pass that in this else leave it empty.
+    ).format(numberToFormat);
+    print('Formatted Number is: $_formattedNumber');
+    if(_formattedNumber.isNotEmpty){
+      if(_formattedNumber.contains("Cr")){
+        _formattedNumber = _formattedNumber.replaceAll("Cr", " Cr");
+      }else if(_formattedNumber.contains("L")){
+        _formattedNumber = _formattedNumber.replaceAll("L", " L");
+      }
+    }
+    return _formattedNumber;
   }
 
   static String getPercentageOfyears(double currentYear,double previousYear){
@@ -146,8 +163,10 @@ class AppUtils {
   }
 
   static Future<void> launchInBrowser(String? url) async {
-    // if(await canLaunch(url)){
-    //   await launch(url);
-    // }
+    if (await canLaunchUrl(Uri.parse(url!))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

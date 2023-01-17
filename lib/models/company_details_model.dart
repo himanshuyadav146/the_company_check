@@ -276,18 +276,21 @@ class Datum {
 class Address {
   Address({
     this.registeredAddress,
+    this.location,
     this.registeredCity,
     this.registeredState,
     this.registeredPinCode,
   });
 
   String? registeredAddress;
+  String? location;
   String? registeredCity;
   String? registeredState;
   String? registeredPinCode;
 
   factory Address.fromJson(Map<String, dynamic> json) => Address(
     registeredAddress: json["Registered_Address"],
+    location: json["Location"],
     registeredCity: json["Registered_City"],
     registeredState: json["Registered_State"],
     registeredPinCode: json["Registered_PinCode"],
@@ -295,6 +298,7 @@ class Address {
 
   Map<String, dynamic> toJson() => {
     "Registered_Address": registeredAddress,
+    "Location": location,
     "Registered_City": registeredCity,
     "Registered_State": registeredState,
     "Registered_PinCode": registeredPinCode,
@@ -342,7 +346,7 @@ class Charge {
   String? dateOfCreation;
   String? dateOfModification;
   String? dateOfSatisfaction;
-  double? amount;
+  dynamic? amount;
 
   factory Charge.fromJson(Map<String, dynamic> json) => Charge(
     status: json["Status"],
