@@ -1,9 +1,12 @@
+import 'dart:math';
+
 import 'package:d_chart/d_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:the_company_check/models/company_details_model.dart';
 import 'package:the_company_check/models/social_list_model.dart';
 import 'package:the_company_check/theme/app_theme.dart';
 
+import '../../charts/donet_chart.dart';
 import '../../widgets/charges_card.dart';
 import '../../widgets/custom_appbar.dart';
 
@@ -20,7 +23,41 @@ class _ChargesState extends State<Charges> {
 
   getData(){
   List<Map<String, dynamic>> dChartList = [];
-    for(var element in widget.charges!){
+  List<Map<String, dynamic>> dChartProceesList = [];
+  var l = widget.charges!.length;
+  var pos = 0;
+  for(var i=0;i<l;i++){
+    var element = widget.charges![i];
+    pos =0;
+    for(var j=i+1;j<l;j++){
+      var element2 = widget.charges![j];
+      if(element.chargeHolderName == element2.chargeHolderName &&
+      element.status == "Open" && element2.status == "Open"
+      ){
+        pos++;
+        dChartProceesList.add(
+            {
+              "domain":element.chargeHolderName,
+              "measure":element.amount + element2.amount
+            }
+
+        );
+      }
+    }
+    if(pos == 0){
+     dChartProceesList.add(
+         {
+           "domain":element.chargeHolderName,
+           "measure":element.amount
+         }
+     );
+
+      //dChartProceesList.add(element.amount);
+    }
+  }
+
+
+  for(var element in widget.charges!){
       dChartList.add(
         {
             "domain":element.chargeHolderName,
@@ -28,7 +65,8 @@ class _ChargesState extends State<Charges> {
         }
       );
     }
-   return dChartList;
+   // return dChartList;
+   return dChartProceesList;
   }
 
   @override
@@ -39,7 +77,7 @@ class _ChargesState extends State<Charges> {
             debugPrint(value);
           }
       ),
-      body: Container(
+      body: widget.charges !=null && widget.charges!.length > 0 ? Container(
         decoration: BoxDecoration(
           color: Colors.white
         ),
@@ -70,26 +108,7 @@ class _ChargesState extends State<Charges> {
               padding: EdgeInsets.all(16),
               child: AspectRatio(
                 aspectRatio: 16 / 9,
-                child: DChartPie(
-                  data: getData(),
-                  fillColor: (pieData, index) {
-                    switch (pieData['domain']) {
-                      case 'Flutter':
-                        return Colors.blue;
-                      case 'React Native':
-                        return Colors.blueAccent;
-                      case 'Ionic':
-                        return Colors.lightBlue;
-                      default:
-                        return Colors.orange;
-                    }
-                  },
-                  pieLabel: (pieData, index) {
-                    return "${pieData['domain']}:\n${pieData['measure']}%";
-                  },
-                  labelPosition: PieLabelPosition.outside,
-                  donutWidth: 20,
-                ),
+                child:DonetChartWidget(widget.charges),
               ),
             ),
             Column(
@@ -172,7 +191,8 @@ class _ChargesState extends State<Charges> {
             )
           ],
         ),
-      )
+      ) : const Text("No result found, Please try again",
+        style: TextStyle(fontSize: 20),)
     );
   }
 }

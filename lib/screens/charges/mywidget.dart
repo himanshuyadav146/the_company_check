@@ -343,7 +343,8 @@ class _MyRowState extends State<MyRow> {
             const Spacer(),
             SizedBox(
               width: 100,
-              child: Text(widget.myValue,
+              // child: Text(AppUtils.getFormatedAmountInCR(double.parse(widget.myValue), 2) ,
+              child: Text(("${widget.myValue}"),
               style: TextStyle(
                   color: AppTheme.lightGray138_1,
                   fontFamily: 'RobotoMedium',

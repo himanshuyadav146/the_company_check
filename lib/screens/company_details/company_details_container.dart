@@ -7,6 +7,7 @@ import 'package:the_company_check/screens/company_details/store/company_details_
 import 'package:the_company_check/screens/loader/loading_page.dart';
 import 'package:the_company_check/screens/people/people.dart';
 import 'package:the_company_check/utils/AppSingleton.dart';
+import '../../charts/donet_chart.dart';
 import '../../theme/app_theme.dart';
 
 
@@ -47,6 +48,7 @@ class _CompanyDetailsContainerState extends State<CompanyDetailsContainer> {
                     OverView(companyDetailsStore?.companyData),
                     People(companyDetailsStore?.directorsList,companyDetailsStore?.companyData),
                     Charges(companyDetailsStore?.companyData?.charges),
+                    // DonetChartWidget(companyDetailsStore?.companyData?.charges),
                     Financials(),
                     Center(
                       child: Text("Control"),

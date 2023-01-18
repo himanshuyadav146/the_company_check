@@ -162,11 +162,19 @@ class AppUtils {
     return res.toStringAsFixed(2);
   }
 
+  static void redirectOnWeb(String? url){
+    launchInBrowser("https://www.$url");
+  }
+
   static Future<void> launchInBrowser(String? url) async {
     if (await canLaunchUrl(Uri.parse(url!))) {
       await launchUrl(Uri.parse(url));
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  static isEmpatyString(String str){
+    return str.isNotEmpty;
   }
 }

@@ -5,6 +5,7 @@ import 'package:the_company_check/routs/route_name.dart';
 import 'package:the_company_check/theme/app_theme.dart';
 import 'package:the_company_check/widgets/custom_compac_button.dart';
 
+import '../../widgets/company_info_card.dart';
 import '../../widgets/custom_appbar.dart';
 import 'package:the_company_check/utils/app_utils.dart';
 
@@ -46,107 +47,20 @@ class _OverViewState extends State<OverView> {
           child: Container(
             child: Column(
               children: [
-                Card(
-                  margin: EdgeInsets.only(left: 0.0, right: 0.0, top: 0.0),
-                  child: Column(
+                Padding(
+                  padding: const EdgeInsets.only(top: 18.0),
+                  child: CompanyInfoCard(widget.companyData),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(45, 10, 45, 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
-                      ListTile(
-                        // leading: Image.asset('assets/images/googleimg.png'),   //
-                        leading: ConstrainedBox(
-                    constraints: BoxConstraints(
-                    minWidth: 44,
-                    minHeight: 44,
-                    maxWidth: 64,
-                    maxHeight: 64,
-                  ),
-                        child: AppUtils.getImage("https://images.thecompanycheck.com/companylogo/${widget.companyData?.logo}",""),),
-                        title: Card(
-                          elevation: 0,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                "${widget.companyData?.legalName}",
-                                textAlign: TextAlign.left,
-                                style: const TextStyle(
-                                  color: AppTheme.lightGray138_1,
-                                  fontFamily: 'RobotoBold',
-                                  fontSize: 18,
-                                  letterSpacing: 0,
-                                  fontWeight: FontWeight.normal,
-                                  height: 1.5,
-                                ),
-                              ),
-                              Visibility(
-                                visible: widget.companyData!.address!.location !=null ? true : false,
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                        height: 12,
-                                        width: 12,
-                                        child: Image.asset('assets/images/location.png')),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 8.0),
-                                      child: Text(
-                                          "${widget.companyData?.address?.location}",
-                                          style: const TextStyle(
-                                              color: Color.fromRGBO(59, 89, 161, 1),
-                                              fontFamily: 'RobotoMedium',
-                                              fontSize: 12,
-                                              letterSpacing:
-                                                  0 /*percentages not used in flutter. defaulting to zero*/,
-                                              fontWeight: FontWeight.normal,
-                                              height: 1.5 /*PERCENT not supported*/
-                                              )),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Visibility(
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                        height: 12,
-                                        width: 12,
-                                        child: Image.asset('assets/images/website_img.png')),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 8.0),
-                                      child: InkWell(
-                                        onTap: (){
-                                          AppUtils.launchInBrowser(widget.companyData?.website);
-                                        },
-                                        child: Text("${widget.companyData?.website}",
-                                            style: const TextStyle(
-                                                color: Color.fromRGBO(59, 89, 161, 1),
-                                                fontFamily: 'RobotoMedium',
-                                                fontSize: 12,
-                                                letterSpacing:
-                                                    0 /*percentages not used in flutter. defaulting to zero*/,
-                                                fontWeight: FontWeight.normal,
-                                                height: 1.5 /*PERCENT not supported*/
-                                                )),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.fromLTRB(45, 10, 45, 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: <Widget>[
-                            CustomCompacButton("Buy Report", () {
-                              CommonNavigation().navigateScreens(
-                                  context, RouteName.routNameFinancials);
-                            }, 59, 89, 161, 1, 255, 252, 248, 1),
-                          ],
-                        ),
-                      ),
+                      CustomCompacButton("Buy Report", () {
+                        CommonNavigation().navigateScreens(
+                            context, RouteName.routNameFinancials);
+                      }, 59, 89, 161, 1, 255, 252, 248, 1),
                     ],
                   ),
                 ),
@@ -398,68 +312,109 @@ class _OverViewState extends State<OverView> {
                               Padding(
                                 padding: const EdgeInsets.only(
                                     top: 4.0, bottom: 4.0),
-                                child: Row(
+                                child: widget.companyData?.bseNumber !="" &&
+                                    widget.companyData?.nseNumber !="" ? Row(
                                   children: <Widget>[
                                     Expanded(
-                                      child: Container(
-                                        child: const Text("Stock Symbol",
-                                            style: TextStyle(
-                                                color: AppTheme.colorGray4,
-                                                fontFamily: 'RobotoRegular',
-                                                fontSize: 12,
-                                                letterSpacing:
-                                                    0 /*percentages not used in flutter. defaulting to zero*/,
-                                                fontWeight: FontWeight.normal,
-                                                height:
-                                                    1.5 /*PERCENT not supported*/
-                                                )),
-                                      ),
+                                      child: const Text("Stock Symbol",
+                                          style: TextStyle(
+                                              color: AppTheme.colorGray4,
+                                              fontFamily: 'RobotoRegular',
+                                              fontSize: 12,
+                                              letterSpacing:
+                                                  0 /*percentages not used in flutter. defaulting to zero*/,
+                                              fontWeight: FontWeight.normal,
+                                              height:
+                                                  1.5 /*PERCENT not supported*/
+                                              )),
                                     ),
                                     Expanded(
                                         child: Align(
-                                          alignment: Alignment.centerRight,
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(left: 24.0),
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: <Widget>[
-                                                Row(
-                                                  children: <Widget>[
-                                                    Text("BSE : ${widget.companyData?.bseNumber}"),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(left: 8.0),
-                                                      child: SizedBox(
-                                                          height: 8,
-                                                          width: 8,
-                                                          child: Image.asset('assets/images/stock_symbol.png')
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: <Widget>[
-                                                    Text("NSE : ${widget.companyData?.nseNumber}",
-                                                    textAlign: TextAlign.left,),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(left: 8.0),
-                                                      child: SizedBox(
-                                                          height: 8,
-                                                          width: 8,
-                                                          child: Image.asset('assets/images/stock_symbol.png')
-                                                      ),
-                                                    )
-                                                  ],
-                                                )
-                                              ],
+                                      alignment: Alignment.centerRight,
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 50.0),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Container(
+                                              child: widget.companyData?.bseNumber !="" ? Row(
+                                                children: <Widget>[
+                                                  Text(
+                                                    "BSE : ${widget.companyData?.bseNumber}",
+                                                    style: TextStyle(
+                                                        color: AppTheme.colorGray,
+                                                        fontFamily:
+                                                            'RobotoRegular',
+                                                        fontSize: 12,
+                                                        letterSpacing:
+                                                            0 /*percentages not used in flutter. defaulting to zero*/,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        height:
+                                                            1.5 /*PERCENT not supported*/
+                                                        ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 8.0),
+                                                    child: SizedBox(
+                                                        height: 8,
+                                                        width: 8,
+                                                        child: Image.asset(
+                                                            'assets/images/stock_symbol.png')),
+                                                  )
+                                                ],
+                                              ) : null,
                                             ),
-                                          ),
-                                        )),
+                                            Container(
+                                              child:widget.companyData?.nseNumber !="" ? Row(
+                                                children: <Widget>[
+                                                  Text(
+                                                    "NSE : ${widget.companyData?.nseNumber}",
+                                                    textAlign: TextAlign.left,
+                                                    style: TextStyle(
+                                                        color: AppTheme.colorGray,
+                                                        fontFamily:
+                                                            'RobotoRegular',
+                                                        fontSize: 12,
+                                                        letterSpacing:
+                                                            0 /*percentages not used in flutter. defaulting to zero*/,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        height:
+                                                            1.5 /*PERCENT not supported*/
+                                                        ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 8.0),
+                                                    child: SizedBox(
+                                                        height: 8,
+                                                        width: 8,
+                                                        child: Image.asset(
+                                                            'assets/images/stock_symbol.png')),
+                                                  )
+                                                ],
+                                              ) : null,
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    )),
                                   ],
-                                ),
+                                ) : null,
                               ),
-                              Divider(
-                                color: AppTheme.colorGray,
+                              Container(
+                                child: widget.companyData?.bseNumber !="" &&
+                                    widget.companyData?.nseNumber !="" ? Divider(
+                                  color: AppTheme.colorGray,
+                                ) : null,
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(
@@ -843,7 +798,10 @@ class _OverViewState extends State<OverView> {
                                 padding: const EdgeInsets.only(
                                     top: 4.0, bottom: 4.0),
                                 child: Visibility(
-                                  visible: widget.companyData!.statusUnderCirp!.isNotEmpty ? true : false,
+                                  visible: widget.companyData!.statusUnderCirp!
+                                          .isNotEmpty
+                                      ? true
+                                      : false,
                                   child: Row(
                                     children: <Widget>[
                                       Expanded(
@@ -882,7 +840,10 @@ class _OverViewState extends State<OverView> {
                                 ),
                               ),
                               Visibility(
-                                visible: widget.companyData!.statusUnderCirp!.isNotEmpty ? true : false,
+                                visible: widget.companyData!.statusUnderCirp!
+                                        .isNotEmpty
+                                    ? true
+                                    : false,
                                 child: Divider(
                                   color: AppTheme.colorGray,
                                 ),
@@ -928,7 +889,11 @@ class _OverViewState extends State<OverView> {
                               child: SizedBox(
                                 width: 180,
                                 child: Visibility(
-                                  visible: widget.companyData?.address?.location !=null ? true : false,
+                                  visible:
+                                      widget.companyData?.address?.location !=
+                                              null
+                                          ? true
+                                          : false,
                                   child: Column(
                                     children: <Widget>[
                                       Align(
@@ -948,7 +913,8 @@ class _OverViewState extends State<OverView> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(top: 8.0),
+                                        padding:
+                                            const EdgeInsets.only(top: 8.0),
                                         child: Text(
                                           "${widget.companyData?.address?.location}",
                                           style: TextStyle(
@@ -995,18 +961,23 @@ class _OverViewState extends State<OverView> {
                                       padding: const EdgeInsets.only(top: 8.0),
                                       child: Align(
                                         alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          "${widget.companyData?.website}",
-                                          style: TextStyle(
-                                              color: AppTheme.colorGray6,
-                                              fontFamily: 'RobotoMedium',
-                                              fontSize: 12,
-                                              letterSpacing:
-                                                  0 /*percentages not used in flutter. defaulting to zero*/,
-                                              fontWeight: FontWeight.normal,
-                                              height:
-                                                  1.5 /*PERCENT not supported*/
-                                              ),
+                                        child: InkWell(
+                                          onTap: (){
+                                            AppUtils.redirectOnWeb(widget.companyData?.website);
+                                          },
+                                          child: Text(
+                                            "${widget.companyData?.website}",
+                                            style: TextStyle(
+                                                color: AppTheme.colorGray6,
+                                                fontFamily: 'RobotoMedium',
+                                                fontSize: 12,
+                                                letterSpacing:
+                                                    0 /*percentages not used in flutter. defaulting to zero*/,
+                                                fontWeight: FontWeight.normal,
+                                                height:
+                                                    1.5 /*PERCENT not supported*/
+                                                ),
+                                          ),
                                         ),
                                       ),
                                     ),

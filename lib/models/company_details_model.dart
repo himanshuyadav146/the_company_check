@@ -571,14 +571,23 @@ class Social {
   Social({
     this.linkedin,
     this.twitter,
+    this.facebook,
+    this.instagram,
+    this.youtube,
   });
 
   String? linkedin;
   String? twitter;
+  String? facebook;
+  String? instagram;
+  String? youtube;
 
   factory Social.fromJson(Map<String, dynamic> json) => Social(
     linkedin: json["Linkedin"],
     twitter: json["Twitter"],
+    facebook: json["Facebook"],
+    instagram: json["Instagram"],
+    youtube: json["Youtube"],
   );
 
   Map<String, dynamic> toJson() => {

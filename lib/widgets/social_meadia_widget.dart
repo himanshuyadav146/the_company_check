@@ -34,6 +34,30 @@ class _SocialMeadiaWidgetState extends State<SocialMeadiaWidget> {
           link: widget.social?.twitter
       ));
     }
+
+    if(widget?.social?.facebook !=null){
+      list.add(SocialListModel(
+          title: "",
+          imglink: 'assets/images/social_fb.png',
+          link: widget.social?.facebook
+      ));
+    }
+
+    if(widget?.social?.instagram !=null){
+      list.add(SocialListModel(
+          title: "",
+          imglink: 'assets/images/social_insta.png',
+          link: widget.social?.instagram
+      ));
+    }
+
+    if(widget?.social?.youtube !=null){
+      list.add(SocialListModel(
+          title: "",
+          imglink: 'assets/images/social_youtube.png',
+          link: widget.social?.youtube
+      ));
+    }
     return list;
   }
 

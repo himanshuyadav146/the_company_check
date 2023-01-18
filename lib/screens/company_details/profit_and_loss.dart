@@ -28,7 +28,17 @@ class ProfitAndLoss extends StatefulWidget {
 
 class _ProfitAndLossState extends State<ProfitAndLoss> {
   int selectedIndex = 0;
+  late String selectedYear;
 
+  @override
+  initState() {
+    selectedYear = "31,03,${widget.financialsModel?.data?.ratioDetails?[0].financialYear}";
+    super.initState();
+  }
+
+  getYear(String? year){
+    return selectedYear = "31,03,$year";
+  }
   getList(int index) {
     var balanceSheetAoc;
     if (widget.isProfitAndLoss) {
@@ -217,6 +227,7 @@ class _ProfitAndLossState extends State<ProfitAndLoss> {
                               child: GestureDetector(
                                 onTap: () {
                                   selectedIndex = index;
+                                  selectedYear = getYear(ratioDetail?.financialYear);
                                   setState(() {});
                                 },
                                 child: Padding(
@@ -235,7 +246,7 @@ class _ProfitAndLossState extends State<ProfitAndLoss> {
                   Padding(
                     padding: const EdgeInsets.only(top: 8.0),
                     child: Row(
-                      children: const <Widget>[
+                      children: <Widget>[
                         Expanded(
                           child: Align(
                             alignment: Alignment.centerLeft,
@@ -255,7 +266,7 @@ class _ProfitAndLossState extends State<ProfitAndLoss> {
                         ),
                         Expanded(
                           child: Text(
-                            "31,03, 2021",
+                            selectedYear,
                             style: TextStyle(
                                 color: AppTheme.colorGray2,
                                 fontFamily: 'RobotoMedium',
