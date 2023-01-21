@@ -23,15 +23,52 @@ class OverView extends StatefulWidget {
 }
 
 class _OverViewState extends State<OverView> {
-  List<IndustrySegment> getList() {
-    List<IndustrySegment>? list = List.empty(growable: true);
-    var elements = widget.companyData!.industrySegments;
-    if (elements != null) {
-      for (var element in elements) {
-        list.add(element);
+  List<String?> getList() {
+    List<String?> strList = [];
+    if(widget.companyData!.industrySegments!.isNotEmpty){
+      var elements = widget.companyData!.industrySegments;
+      if (elements != null) {
+        for (var element in elements) {
+          //strList = List<String>.from(elements);
+          strList.add(element.industry);
+          var segment = element.segment;
+          if(segment!.isNotEmpty){
+            for(var seg in segment){
+              strList.add(seg);
+            }
+          }
+        }
       }
     }
-    return list;
+    // else if(widget.companyData!.businessActivity!.isNotEmpty){
+    //   var elements = widget.companyData!.industrySegments;
+    //
+    //
+    // }
+    else if(widget.companyData!.sectors!.isNotEmpty){
+        var sectors = widget.companyData!.sectors;
+        if (sectors != null) {
+          for (var element in sectors) {
+            strList.add(element.sector);
+            var subSector = element.subSector;
+            if(subSector!.isNotEmpty){
+              for(var seg in subSector){
+                strList.add(seg);
+              }
+            }
+          }
+        }
+    }
+
+
+    // List<IndustrySegment>? list = List.empty(growable: true);
+    // var elements = widget.companyData!.industrySegments;
+    // if (elements != null) {
+    //   for (var element in elements) {
+    //     list.add(element);
+    //   }
+    // }
+    return strList;
   }
 
   @override
@@ -43,6 +80,7 @@ class _OverViewState extends State<OverView> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(color: Colors.white),
+
         child: SingleChildScrollView(
           child: Container(
             child: Column(
@@ -54,7 +92,7 @@ class _OverViewState extends State<OverView> {
                 Container(
                   padding: EdgeInsets.fromLTRB(45, 10, 45, 10),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
                       CustomCompacButton("Buy Report", () {
@@ -160,7 +198,8 @@ class _OverViewState extends State<OverView> {
                           children: [
                             Expanded(
                               child: Text(
-                                "${AppUtils.getFormatedAmountInCR(widget.companyData?.authorisedCapital, 2)}",
+                                "${widget.companyData?.authorisedCapital !=null ?
+                                AppUtils.getFormatedAmountInCR(widget.companyData?.authorisedCapital, 2): "    0"}",
                                 style: TextStyle(
                                   color: AppTheme.colorGray4,
                                   fontFamily: 'RobotoMedium',
@@ -173,7 +212,8 @@ class _OverViewState extends State<OverView> {
                             ),
                             Expanded(
                               child: Text(
-                                "${AppUtils.getFormatedAmountInCR(widget.companyData?.paidUpCapital, 2)}",
+                                "${widget.companyData?.paidUpCapital !=null ?
+                                AppUtils.getFormatedAmountInCR(widget.companyData?.paidUpCapital, 2): "    0"}",
                                 style: TextStyle(
                                   color: AppTheme.colorGray4,
                                   fontFamily: 'RobotoMedium',
@@ -185,7 +225,8 @@ class _OverViewState extends State<OverView> {
                               ),
                             ),
                             Text(
-                              "${AppUtils.getFormatedAmountInCR(widget.companyData?.openCharges, 2)}",
+                              "${widget.companyData?.openCharges!=null ?
+                              AppUtils.getFormatedAmountInCR(widget.companyData?.openCharges, 2) : "    0"}",
                               style: TextStyle(
                                 color: AppTheme.colorGray4,
                                 fontFamily: 'RobotoMedium',
@@ -481,7 +522,7 @@ class _OverViewState extends State<OverView> {
                                     Expanded(
                                         child: Align(
                                       alignment: Alignment.centerRight,
-                                      child: Text("Company No.",
+                                      child: Text("${widget.companyData?.registrationNumber}",
                                           style: TextStyle(
                                               color: AppTheme.lightGray138_1,
                                               fontFamily: 'RobotoRegular',
@@ -536,6 +577,52 @@ class _OverViewState extends State<OverView> {
                                               )),
                                     )),
                                   ],
+                                ),
+                              ),
+                              Divider(
+                                color: AppTheme.colorGray,
+                              ),
+                              Visibility(
+                                visible: widget.companyData?.companySubCategory!= null &&
+                                    widget.companyData?.companySubCategory !="",
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 4.0, bottom: 4.0),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: Container(
+                                          child: const Text("Company Sub Category",
+                                              style: TextStyle(
+                                                  color: AppTheme.colorGray4,
+                                                  fontFamily: 'RobotoRegular',
+                                                  fontSize: 12,
+                                                  letterSpacing:
+                                                  0 /*percentages not used in flutter. defaulting to zero*/,
+                                                  fontWeight: FontWeight.normal,
+                                                  height:
+                                                  1.5 /*PERCENT not supported*/
+                                              )),
+                                        ),
+                                      ),
+                                      Expanded(
+                                          child: Align(
+                                            alignment: Alignment.centerRight,
+                                            child: Text(
+                                                "${widget.companyData?.companySubCategory}",
+                                                style: TextStyle(
+                                                    color: AppTheme.lightGray138_1,
+                                                    fontFamily: 'RobotoRegular',
+                                                    fontSize: 12,
+                                                    letterSpacing:
+                                                    0 /*percentages not used in flutter. defaulting to zero*/,
+                                                    fontWeight: FontWeight.normal,
+                                                    height:
+                                                    1.5 /*PERCENT not supported*/
+                                                )),
+                                          )),
+                                    ],
+                                  ),
                                 ),
                               ),
                               Divider(

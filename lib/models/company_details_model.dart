@@ -163,7 +163,7 @@ class Datum {
     companySubCategory: json["Company_Sub_Category"],
     classOfCompany: json["Class_Of_Company"],
     authorisedCapital: json["Authorised_Capital"] == null ? null : double.parse(json["Authorised_Capital"].toString() ?? "0"),
-    paidUpCapital: json["Paid_Up_Capital"]  == null ? null : double.parse(json["Paid_Up_Capital"].toString() ?? "0"),
+    paidUpCapital: json["Paid_Up_Capital"]  == null || json["Paid_Up_Capital"]  == "" ? null : double.parse(json["Paid_Up_Capital"].toString() ?? "0"),
     activeCompliance: json["Active_Compliance"],
     dateOfIncorporation: json["Date_Of_Incorporation"],
     dateOfIncorporationFilter: json["Date_Of_Incorporation_Filter"],

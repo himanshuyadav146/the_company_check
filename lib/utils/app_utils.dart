@@ -134,6 +134,7 @@ class AppUtils {
   }
 
   static String getFormatedAmountInCR(double? numberToFormat,int decimalDigits){
+    print('Recived Number is: $numberToFormat');
     var _formattedNumber = NumberFormat.compactCurrency(
       name: "INR",
       locale: 'en_IN',
