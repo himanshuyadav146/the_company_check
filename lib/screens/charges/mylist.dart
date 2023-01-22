@@ -97,14 +97,15 @@ class _MyListState extends State<MyList> {
 
                           return Padding(
                             padding: const EdgeInsets.all(6.0),
-                            child: MyRow(
-                              mykey: mykey,
-                              myValue: myValue.toString(),
-                              isBalanceSheet: false,
-                              isProfitAndLoss: true,
-                              isRatio: false,
-                              percentage:"" ,
-                            ),
+                            child: Container(),
+                            // child: MyRow(
+                            //   mykey: mykey,
+                            //   myValue: myValue.toString(),
+                            //   isBalanceSheet: false,
+                            //   isProfitAndLoss: true,
+                            //   isRatio: false,
+                            //   percentage:"" ,
+                            // ),
                           );
                         }),
                   ),

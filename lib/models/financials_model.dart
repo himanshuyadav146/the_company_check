@@ -722,7 +722,7 @@ class BalanceSheetAOCNBFC {
   double? otherNonFinancialAssets;
   double? totalNonFinancialAssets;
   double? totalAssets;
-  double? docUrlid;
+  //double? docUrlid;
   String? docUrl;
   double? totalRevenueFromOperations;
   double? otherIncome;
@@ -773,7 +773,7 @@ class BalanceSheetAOCNBFC {
         this.otherNonFinancialAssets,
         this.totalNonFinancialAssets,
         this.totalAssets,
-        this.docUrlid,
+        //this.docUrlid,
         this.docUrl,
         this.totalRevenueFromOperations,
         this.otherIncome,
@@ -825,7 +825,7 @@ class BalanceSheetAOCNBFC {
     otherNonFinancialAssets = json['Other_Non_financial_Assets'];
     totalNonFinancialAssets = json['Total_Non_financial_Assets'];
     totalAssets = json['Total_Assets'];
-    docUrlid = json['DocUrlid'];
+  //  docUrlid = json['DocUrlid'];
     docUrl = json['DocUrl'];
     totalRevenueFromOperations = json['Total_Revenue_from_Operations'];
     otherIncome = json['Other_Income'];
@@ -880,7 +880,7 @@ class BalanceSheetAOCNBFC {
     data['Other_Non_financial_Assets'] = this.otherNonFinancialAssets;
     data['Total_Non_financial_Assets'] = this.totalNonFinancialAssets;
     data['Total_Assets'] = this.totalAssets;
-    data['DocUrlid'] = this.docUrlid;
+    // data['DocUrlid'] = this.docUrlid;
     data['DocUrl'] = this.docUrl;
     data['Total_Revenue_from_Operations'] = this.totalRevenueFromOperations;
     data['Other_Income'] = this.otherIncome;
@@ -1106,30 +1106,30 @@ class ProfitNLossAOCNBFC {
   String? yearOfData;
   String? natureOfData;
   String? dataSource;
-  int? interestIncome;
-  int? dividendIncome;
-  int? otherOperatingIncome;
-  int? totalRevenueFromOperations;
-  int? otherIncome;
-  int? totalIncome;
-  int? expenses;
-  int? financeCosts;
-  int? costOfMaterialsConsumed;
-  int? purchasesOfStockInTrade;
-  int? changesInInventories;
-  int? employeeBenefitsExpenses;
-  int? depreciationAndAmortization;
-  int? otherExpenses;
-  int? totalExpenses;
-  int? profitBeforeExceptionalItems;
-  int? exceptionalItems;
-  int? profitBeforeTax;
-  int? taxExpense;
-  int? profitFromContinuingOperations;
-  int? profitFromDiscontinuedOperations;
-  int? profitForThePeriod;
-  int? eBITA;
-  int? docUrlid;
+  double? interestIncome;
+  double? dividendIncome;
+  double? otherOperatingIncome;
+  double? totalRevenueFromOperations;
+  double? otherIncome;
+  double? totalIncome;
+  double? expenses;
+  double? financeCosts;
+  double? costOfMaterialsConsumed;
+  double? purchasesOfStockInTrade;
+  double? changesInInventories;
+  double? employeeBenefitsExpenses;
+  double? depreciationAndAmortization;
+  double? otherExpenses;
+  double? totalExpenses;
+  double? profitBeforeExceptionalItems;
+  double? exceptionalItems;
+  double? profitBeforeTax;
+  double? taxExpense;
+  double? profitFromContinuingOperations;
+  double? profitFromDiscontinuedOperations;
+  double? profitForThePeriod;
+  double? eBITA;
+ // double? docUrlid;
   String? docUrl;
 
   ProfitNLossAOCNBFC(
@@ -1165,7 +1165,7 @@ class ProfitNLossAOCNBFC {
         this.profitFromDiscontinuedOperations,
         this.profitForThePeriod,
         this.eBITA,
-        this.docUrlid,
+        //this.docUrlid,
         this.docUrl});
 
   ProfitNLossAOCNBFC.fromJson(Map<String, dynamic> json) {
@@ -1202,7 +1202,7 @@ class ProfitNLossAOCNBFC {
     json['Profit_from_Discontinued_Operations'];
     profitForThePeriod = json['Profit_for_the_Period'];
     eBITA = json['EBITA'];
-    docUrlid = json['DocUrlid'];
+   // docUrlid = json['DocUrlid'];
     docUrl = json['DocUrl'];
   }
 
@@ -1242,7 +1242,7 @@ class ProfitNLossAOCNBFC {
         this.profitFromDiscontinuedOperations;
     data['Profit_for_the_Period'] = this.profitForThePeriod;
     data['EBITA'] = this.eBITA;
-    data['DocUrlid'] = this.docUrlid;
+  //  data['DocUrlid'] = this.docUrlid;
     data['DocUrl'] = this.docUrl;
     return data;
   }

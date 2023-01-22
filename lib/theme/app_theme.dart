@@ -37,6 +37,7 @@ class AppTheme{
   static const Color colorGray5 = Color.fromRGBO(86, 84, 84, 1);
   static const Color colorPink1 = Color.fromRGBO(255, 252, 248, 1);
   static const Color colorGray6 = Color.fromRGBO(144, 144, 144, 1);
+  static const Color colorGray7 = Color.fromRGBO(228, 222, 222, 1);
 
 
   static final ThemeData lightTheme = ThemeData(

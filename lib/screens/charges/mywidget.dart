@@ -10,6 +10,13 @@ class MyRow extends StatefulWidget {
     required this.isBalanceSheet,
     required this.isProfitAndLoss,
      required this.percentage,
+     required this.isProfitNLossLLP,
+     required this.isProfitNLossAOCNBFC,
+     required this.isProfitNLossAoc,
+     required this.isBalanceSheetLLP,
+     required this.isBalanceSheetAOCNBFC,
+     required this.isBalanceSheetAoc,
+     required this.isRatioDetails,
     super.key,
   });
 
@@ -18,6 +25,14 @@ class MyRow extends StatefulWidget {
   bool isProfitAndLoss = true;
   bool isBalanceSheet = false;
   bool isRatio = false;
+   bool isProfitNLossLLP = false;
+   bool isProfitNLossAOCNBFC = false;
+   bool isProfitNLossAoc = false;
+   bool isBalanceSheetLLP = false;
+   bool isBalanceSheetAOCNBFC = false;
+   bool isBalanceSheetAoc = false;
+   bool isRatioDetails = false;
+
   final String percentage;
 
   @override
@@ -98,12 +113,139 @@ class _MyRowState extends State<MyRow> {
     return "";
   }
 
+  String getBalanceSheetLLP() {
+    switch (widget.mykey) {
+      case 'Contribution_received':
+        return 'CONTRIBUTION RECEIVED';
+      case 'Reserves_and_surplus':
+        return 'RESERVES & SURPLUS';
+      case 'Secured_loans':
+        return 'SECURED LOANS';
+      case 'Unsecured_loans':
+        return 'UNSECURED LOANS';
+      case 'Short_term_borrowings':
+        return 'SHORT TERM BORROWING';
+      case 'Creditors_trade_payables_Advance_from_customers':
+        return 'CREDITORS/TRADE PAYABLES';
+      case 'Other_liabilities':
+        return 'OTHER LIABILITIES';
+      case 'for_taxation':
+        return 'PROVISION FOR TAXATION';
+      case 'for_contingencies':
+        return 'PROVISION FOR CONTINGENCIES';
+      case 'for_insurance':
+        return 'PROVISION FOR INSURANCE';
+      case 'Other_provisions':
+        return 'OTHER PROVISIONS';
+      case 'Total_Liability':
+        return 'TOTAL LIABILITY';
+      case 'Gross_Fixed_assets':
+        return 'GROSS FIXED ASSETS';
+      case 'Less_depreciation_and_amortization':
+        return 'DEPRECIATION & AMORTIZATION';
+      case 'Net_fixed_assets':
+        return 'NET FIXED ASSETS';
+      case 'Investments':
+        return 'INVESTMENTS';
+      case 'Loans_and_advances':
+        return 'LOANS & ADVANCES';
+      case 'Inventories':
+        return 'INVENTORIES';
+      case 'Debtors_trade_receivables':
+        return 'DEBTORS / TRADE RECEIVABLES';
+      case 'Cash_and_cash_equivalents':
+        return 'CASH & CASH EQUIVALENTS';
+      case 'Other_assets':
+        return 'OTHER ASSETS';
+      case 'Total_Asset':
+        return 'TOTAL ASSET';
+      default:
+    }
+    return "";
+  }
+
+  String getBalanceSheetAOCNBFC() {
+    switch (widget.mykey) {
+      case 'Share_Capital':
+        return 'Share Capital';
+      case 'Other_Equity':
+        return 'Other Equity';
+      case 'Total_Equity':
+        return 'Total Equity';
+      case 'Derivative_Financial_Instruments':
+        return 'Derivative Financial Instruments';
+      case 'Payables':
+        return 'Payables';
+      case 'Debt_Securities':
+        return 'Debt Securities';
+      case 'Borrowings':
+        return 'Borrowings';
+      case 'Deposits':
+        return 'Deposits';
+      case 'Subordinated_Liabilities':
+        return 'Subordinated Liabilities';
+      case 'Other_Financial_Liabilities':
+        return 'Other Financial Liabilities';
+      case 'Total_Financial_Liabilities':
+        return 'Total Financial Liabilities';
+      case 'Net_Current_Tax_Liabilities':
+        return 'Net Current Tax Liabilities';
+      case 'Provisions':
+        return 'Provisions';
+      case 'Net_Deferred_Tax_Liabilities':
+        return 'Net Deferred Tax Liabilities';
+      case 'Other_Non_financial_Liabilities':
+        return 'Other Non-Financial Liabilities';
+      case 'Total_Non_financial_Liabilities':
+        return 'Total Non-Financial Liabilities';
+      case 'Total_Equity_and_Liabilities':
+        return 'Total Equity & Liabilites';
+      case 'Loans':
+        return 'Loans';
+      case 'Investments':
+        return 'Investments';
+      case 'Derivative_Financial_Instruments':
+        return 'Derivative Financial Instruments';
+      case 'Receivables':
+        return 'Recevables';
+      case 'Cash_and_Bank_Balance':
+        return 'Cash And Bank Balance';
+      case 'Other_Financial_Assets':
+        return 'Other Financial Assests';
+      case 'Total_Financial_Assets':
+        return 'Total Financial Assests';
+      case 'Tangible_Assets':
+        return 'Tangible Assests';
+      case 'Intangible_Assets':
+        return 'Intangible Assets';
+      case 'Capital_Work_in_progress':
+        return 'Capital Work-In-Progress';
+      case 'Inventories':
+        return 'Inventoris';
+      case 'Net_Current_Tax_Assets':
+        return 'Net Current Tax Assests';
+      case 'Net_Deferred_Tax_Assets':
+        return 'Net Defferd Tax Assests';
+      case 'Other_Non_financial_Assets':
+        return 'Other Non-Financial Assests';
+      case 'Total_Non_financial_Assets':
+        return 'Total Non-Financial Assests';
+      case 'Total_Assets':
+        return 'Total Assets';
+      default:
+    }
+    return "";
+  }
+
+
+
+
   String getProfitAndLossName(){
     switch (widget.mykey) {
       case 'Other_Income':
         return 'Other Income';
-      case 'Total_Revenue':   // Need to be check for this id
-        return 'Revenue From Operations';
+      // case 'Total_Revenue':   // Need to be check for this id
+      //   return 'Revenue From Operations';
       case 'Total_Revenue':
         return 'Total Revenue';
       case 'Cost_of_Material_consumed':
@@ -152,49 +294,16 @@ class _MyRowState extends State<MyRow> {
         return 'Tax Expense Of Discountinuing Operations';
       case 'Profit_Loss':
         return 'Profit/ (Loss)';
-      case 'Other_Income':
-        return 'Interst Income';
-      case 'Dividend_Income':
-        return 'Dividend Income';
-      case 'Other_Operating_Income':
-        return 'Other Operating Income';
-      case 'Total_Revenue_from_Operations':
-        return 'Total Revenue From Operations';
-      case 'Total_Income':
-        return 'Total Income';
-      case 'Finance_Costs':
-        return 'Finance Costs';
-      case 'Cost_of_Materials_Consumed':
-        return 'Cost Of Material Consumed';
-      case 'Purchases_of_Stock_in_trade':
-        return 'Purchases Of Stock-In-Trade';
-      case 'Changes_In_Inventories':
-        return 'Change In Inventories';
-      case 'Employee_Benefits_Expenses':
-        return 'Employee Benefit Expense';
-      case 'Depreciation_and_Amortization':
-        return 'Depreciation And Amortisation';
-      case 'Other_Expenses':
-        return 'Other Expenses';
-      case 'Total_Expenses':
-        return 'Total Expense';
-      case 'Profit_Before_Exceptional_Items':
-        return 'Profit Before Extraordinary & Exceptional Items';
-      case 'Exceptional_Items':
-        return 'Exceptional Items';
-      case 'Profit_Before_Tax':
-        return 'Profit Before Tax';
-      case 'Tax_Expense':
-        return 'Tax Expenses';
-      case 'Profit_from_Continuing_Operations':
-        return 'Profit From Continuing Operations';
-      case 'Profit_from_Discontinued_Operations':
-        return 'Profit From Discontinued Operations';
-      case 'Profit_for_the_Period':
-        return 'Profit For the Period';
+      default:
+        return '';
+    }
+  }
+
+  String getProfitAndLossLLP(){
+    switch (widget.mykey) {
       case 'Gross_turnover':
         return 'GROSS TURNOVER';
-      case 'Other_income':
+      case 'Other_income':   // Need to be check for this id
         return 'OTHER INCOME';
       case 'Total_Income':
         return 'TOTAL INCOME';
@@ -231,7 +340,58 @@ class _MyRowState extends State<MyRow> {
     }
   }
 
-  String getRatio(){
+  String getProfitAndLossAOCNBFC(){
+    switch (widget.mykey) {
+      case 'Other_Income':
+        return 'Interst Income';
+      case 'Dividend_Income':   // Need to be check for this id
+        return 'Dividend Income';
+      case 'Other_Operating_Income':
+        return 'Other Operating Income';
+      case 'Total_Revenue_from_Operations':
+        return 'Total Revenue From Operations';
+      case 'Other_Income':
+        return 'Other Income';
+      case 'Total_Income':
+        return 'Total Income';
+      case 'Finance_Costs':
+        return 'Finance Costs';
+      case 'Cost_of_Materials_Consumed':
+        return 'Cost Of Material Consumed';
+      case 'Purchases_of_Stock_in_trade':
+        return 'Purchases Of Stock-In-Trade';
+      case 'Changes_In_Inventories':
+        return 'Change In Inventories';
+      case 'Employee_Benefits_Expenses':
+        return 'Employee Benefit Expense';
+      case 'Ebitda':
+        return 'Ebitda';
+      case 'Depreciation_and_Amortization':
+        return 'Depreciation And Amortisation';
+      case 'Other_Expenses':
+        return 'Other Expenses';
+      case 'Total_Expenses':
+        return 'Total Expense';
+      case 'Profit_Before_Exceptional_Items':
+        return 'Profit Before Extraordinary & Exceptional Items';
+      case 'Exceptional_Items':
+        return 'Exceptional Items';
+      case 'Profit_Before_Tax':
+        return 'Profit Before Tax';
+      case 'Tax_Expense':
+        return 'Tax Expenses';
+      case 'Profit_from_Continuing_Operations':
+        return 'Profit From Continuing Operations';
+      case 'Profit_from_Discontinued_Operations':
+        return 'Profit From Discontinued Operations';
+      case 'Profit_for_the_Period':
+        return 'Profit For the Period';
+      default:
+        return '';
+    }
+  }
+
+  String getRatioStandalone(){
     switch (widget.mykey) {
       case 'CURRENT_RATIO_RA':
         return 'CURRENT RATIO';
@@ -277,6 +437,13 @@ class _MyRowState extends State<MyRow> {
         return 'TOTAL INVESTMENTS TO TOTAL ASSETS';
       case 'Total_Revenue_from_Operations_Total_Financial_Assets_RN':
         return 'REVENUE TO TOTAL FINANCIAL ASSETS';
+      default:
+        return '';
+    }
+  }
+
+  String getRatioLLP(){
+    switch (widget.mykey) {
       case 'Debt_Partners_Fund_RL':
         return 'DEBT TO PARTNERS FUND';
       case 'Net_Profit_Margin_RC':
@@ -315,11 +482,23 @@ class _MyRowState extends State<MyRow> {
     var txt ="";
     var isVisible = true;
     if(widget.isProfitAndLoss){
-      txt = getProfitAndLossName();
+      if(widget.isProfitNLossLLP){
+        txt = getProfitAndLossLLP();
+      }else if(widget.isProfitNLossAOCNBFC){
+        txt = getProfitAndLossAOCNBFC();
+      }else if(widget.isProfitNLossAoc){
+        txt = getProfitAndLossName();
+      }
     }else if(widget.isBalanceSheet){
-      txt = getBalanceSheet();
+      if(widget.isBalanceSheetLLP){
+        txt = getBalanceSheetLLP();
+      }else if(widget.isBalanceSheetAOCNBFC){
+        txt = getBalanceSheetAOCNBFC();
+      }else if(widget.isBalanceSheetAoc){
+        txt = getBalanceSheet();
+      }
     }else if(widget.isRatio){
-      txt =getRatio();
+      txt =getRatioStandalone();
     }
 
     return txt.isEmpty || widget.myValue.isEmpty ? Container() : Padding(

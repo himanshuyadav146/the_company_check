@@ -11,6 +11,14 @@ class ProfitAndLoss extends StatefulWidget {
   bool isProfitAndLoss = true;
   bool isBalanceSheet = false;
   bool isRatio = false;
+  bool isProfitNLossLLP = false;
+  bool isProfitNLossAOCNBFC = false;
+  bool isProfitNLossAoc = false;
+  bool isBalanceSheetLLP = false;
+  bool isBalanceSheetAOCNBFC = false;
+  bool isBalanceSheetAoc = false;
+  bool isRatioDetails = false;
+
   final FinancialsModel financialsModel;
 
   ProfitAndLoss(
@@ -43,19 +51,25 @@ class _ProfitAndLossState extends State<ProfitAndLoss> {
     var balanceSheetAoc;
     if (widget.isProfitAndLoss) {
       if(widget.financialsModel?.data?.profitNLossLLP != null){
+        widget.isProfitNLossLLP = true;
         balanceSheetAoc = widget?.financialsModel.data?.profitNLossLLP?[index];
       }else if(widget.financialsModel?.data?.profitNLossAOCNBFC != null){
+        widget.isProfitNLossAOCNBFC = true;
         balanceSheetAoc = widget?.financialsModel.data?.profitNLossAOCNBFC?[index];
       }else if(widget.financialsModel?.data?.profitNLossAoc != null){
+        widget.isProfitNLossAoc = true;
         balanceSheetAoc = widget?.financialsModel.data?.profitNLossAoc?[index];
       }
     }
     if (widget.isBalanceSheet) {
       if(widget.financialsModel?.data?.balanceSheetLLP != null){
+        widget.isBalanceSheetLLP = true;
         balanceSheetAoc = widget?.financialsModel.data?.balanceSheetLLP?[index];
       }else if(widget.financialsModel?.data?.balanceSheetAOCNBFC != null){
+        widget.isBalanceSheetAOCNBFC = true;
         balanceSheetAoc = widget?.financialsModel.data?.balanceSheetAOCNBFC?[index];
       }else if(widget.financialsModel?.data?.balanceSheetAoc != null){
+        widget.isBalanceSheetAoc = true;
         balanceSheetAoc = widget?.financialsModel.data?.balanceSheetAoc?[index];
       }
     }
@@ -68,7 +82,7 @@ class _ProfitAndLossState extends State<ProfitAndLoss> {
       //   balanceSheetAoc = widget?.financialsModel.data?.balanceSheetAoc?[index];
       // }
 
-
+      widget.isRatioDetails = true;
       balanceSheetAoc = widget.financialsModel?.data?.ratioDetails?[index];
     }
     return balanceSheetAoc;
@@ -96,12 +110,6 @@ class _ProfitAndLossState extends State<ProfitAndLoss> {
             .length ??
             0;
       }
-
-      // index = widget.financialsModel?.data?.profitNLossAoc?[selectedInd]
-      //         .toJson()
-      //         .keys
-      //         .length ??
-      //     0;
     }
     if (widget.isBalanceSheet) {
       if(widget.financialsModel?.data?.balanceSheetLLP != null){
@@ -123,14 +131,6 @@ class _ProfitAndLossState extends State<ProfitAndLoss> {
             .length ??
             0;
       }
-
-
-
-      // index = widget.financialsModel?.data?.balanceSheetAoc?[selectedInd]
-      //         .toJson()
-      //         .keys
-      //         .length ??
-      //     0;
     }
     if (widget.isRatio) {
       index = widget.financialsModel?.data?.ratioDetails?[selectedInd]
@@ -413,6 +413,13 @@ class _ProfitAndLossState extends State<ProfitAndLoss> {
                               isBalanceSheet: widget.isBalanceSheet,
                               isRatio: widget.isRatio,
                               percentage: percentage,
+                              isBalanceSheetAoc: widget.isBalanceSheetAoc,
+                              isBalanceSheetAOCNBFC: widget.isBalanceSheetAOCNBFC,
+                              isBalanceSheetLLP: widget.isBalanceSheetLLP,
+                              isProfitNLossAoc: widget.isProfitNLossAoc,
+                              isProfitNLossAOCNBFC: widget.isBalanceSheetAOCNBFC,
+                              isProfitNLossLLP: widget.isProfitNLossLLP,
+                              isRatioDetails: widget.isRatioDetails,
                             );
                           }),
                     ],

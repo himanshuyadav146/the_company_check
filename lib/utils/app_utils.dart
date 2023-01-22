@@ -40,14 +40,20 @@ class AppUtils {
     if(url.isNotEmpty){
       var resURL = getUpdatedURL(url);
       if(resURL !=null){
-        return Image.network(resURL);
+        return ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: Image.network(resURL)
+        );
       }else if(name!="" || name!=null){
         return Center(
           child: Initicon(
               text: "$name",
-              elevation: 4,
-            backgroundColor: AppTheme.tabTextColor,
-            size: 60,
+              elevation: 0,
+            backgroundColor: AppTheme.colorGray7,
+            size: 80,
+            style: TextStyle(
+              color:AppTheme.lightGray138_1
+            ),
           ),
         );
       }
