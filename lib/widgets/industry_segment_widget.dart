@@ -4,18 +4,13 @@ import 'package:the_company_check/models/company_details_model.dart';
 
 import '../theme/app_theme.dart';
 
-class IndustrySegmentWidget extends StatefulWidget {
+class IndustrySegmentWidget extends StatelessWidget {
    IndustrySegmentWidget(this.title, this.list,{Key? key}) : super(key: key);
   String title;
    List<String?> list;
    // List<IndustrySegment> list = set.
 
 
-  @override
-  State<IndustrySegmentWidget> createState() => _IndustrySegmentWidgetState();
-}
-
-class _IndustrySegmentWidgetState extends State<IndustrySegmentWidget> {
   @override
   Widget build(BuildContext context) {
     return  Card(
@@ -42,7 +37,7 @@ class _IndustrySegmentWidgetState extends State<IndustrySegmentWidget> {
               child: SizedBox(
                 height: 40,
                 child: ListView.builder(
-                    itemCount:widget.list?.length,
+                    itemCount:list?.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context,index){
                       return Card(
@@ -53,7 +48,7 @@ class _IndustrySegmentWidgetState extends State<IndustrySegmentWidget> {
                         child: Center(
                           child: Padding(
                             padding: const EdgeInsets.only(left: 20.0,right: 20.0,top: 5,bottom: 5),
-                            child: Text("${widget.list?[index]}",
+                            child: Text("${list?[index]}",
                               style: const TextStyle(
                                 color: AppTheme.colorGray4,
                                 fontFamily: 'RobotoRegular',

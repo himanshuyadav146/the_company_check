@@ -6,56 +6,56 @@ import 'package:the_company_check/utils/app_utils.dart';
 import '../models/social_list_model.dart';
 import '../theme/app_theme.dart';
 
-class SocialMeadiaWidget extends StatefulWidget {
+class SocialMeadiaWidget extends StatelessWidget {
    SocialMeadiaWidget(this.title, this.social, {Key? key}) : super(key: key);
   String title;
   Social? social;
 
-  @override
-  State<SocialMeadiaWidget> createState() => _SocialMeadiaWidgetState();
-}
-
-class _SocialMeadiaWidgetState extends State<SocialMeadiaWidget> {
+//   @override
+//   State<SocialMeadiaWidget> createState() => _SocialMeadiaWidgetState();
+// }
+//
+// class _SocialMeadiaWidgetState extends State<SocialMeadiaWidget> {
    List<SocialListModel> list=[];
 
   List<SocialListModel> getSocialList(){
-    if(widget?.social?.linkedin !=null){
+    if(social?.linkedin !=null){
       list.add(SocialListModel(
         title: "",
         imglink: 'assets/images/social_linked.png',
-        link: widget.social?.linkedin
+        link: social?.linkedin
       ));
     }
 
-    if(widget?.social?.twitter !=null){
+    if(social?.twitter !=null){
       list.add(SocialListModel(
           title: "",
           imglink: 'assets/images/social_twitter.png',
-          link: widget.social?.twitter
+          link: social?.twitter
       ));
     }
 
-    if(widget?.social?.facebook !=null){
+    if(social?.facebook !=null){
       list.add(SocialListModel(
           title: "",
           imglink: 'assets/images/social_fb.png',
-          link: widget.social?.facebook
+          link: social?.facebook
       ));
     }
 
-    if(widget?.social?.instagram !=null){
+    if(social?.instagram !=null){
       list.add(SocialListModel(
           title: "",
           imglink: 'assets/images/social_insta.png',
-          link: widget.social?.instagram
+          link: social?.instagram
       ));
     }
 
-    if(widget?.social?.youtube !=null){
+    if(social?.youtube !=null){
       list.add(SocialListModel(
           title: "",
           imglink: 'assets/images/social_youtube.png',
-          link: widget.social?.youtube
+          link: social?.youtube
       ));
     }
     return list;
@@ -64,9 +64,6 @@ class _SocialMeadiaWidgetState extends State<SocialMeadiaWidget> {
   @override
   Widget build(BuildContext context) {
     var itemList = getSocialList();
-    setState(() {
-
-    });
     return  Card(
       elevation: 0,
       color: Colors.white,
@@ -76,7 +73,7 @@ class _SocialMeadiaWidgetState extends State<SocialMeadiaWidget> {
           children: <Widget>[
             Align(
               alignment: Alignment.centerLeft,
-              child: Text("${widget.title}",
+              child: Text("${title}",
                 style: TextStyle(
                     color: AppTheme.colorGray4,
                     fontFamily: 'RobotoRegular',

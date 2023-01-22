@@ -20,13 +20,11 @@ class CompanySearchScreen extends StatefulWidget implements PreferredSizeWidget{
 }
 
 class _CompanySearchScreenState extends State<CompanySearchScreen> {
-  //SearchListModel? searchListModel = SearchListModel();
   CompanySearchStore  companySearchStore = CompanySearchStore();
   List<DatuSerch>? resData;
 
   @override
   void initState() {
-   // _getData();
     super.initState();
 
   }
@@ -57,7 +55,8 @@ class _CompanySearchScreenState extends State<CompanySearchScreen> {
                     padding: const EdgeInsets.only(left: 12.0, right: 12),
                     child: TextField(
                         style: const TextStyle(
-                            color: Colors.black38, fontWeight: FontWeight.w500),
+                            color: Colors.black38,
+                            fontWeight: FontWeight.w500),
                         onChanged: (value){
                           print(value);
                           _getData(value);

@@ -1249,48 +1249,51 @@ class _OverViewState extends State<OverView> {
                                 fontWeight: FontWeight.normal,
                                 height: 1.5 /*PERCENT not supported*/
                                 )),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 18.0),
-                          child: SizedBox(
-                            // height: MediaQuery.of(context).size.shortestSide,
-                            child: ListView.builder(
-                                shrinkWrap: true,
-                                itemCount:
-                                    widget.companyData?.nameHistory?.length,
-                                itemBuilder: (context, index) {
-                                  return Row(
-                                    children: <Widget>[
-                                      Expanded(
-                                          child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 8.0),
-                                        child: Text(
-                                            "${widget.companyData?.nameHistory?[index]}",
-                                            style: TextStyle(
-                                                color: Color.fromRGBO(
-                                                    138, 138, 138, 1),
-                                                fontFamily: 'RobotoMedium',
-                                                fontSize: 12,
-                                                letterSpacing:
-                                                    0 /*percentages not used in flutter. defaulting to zero*/,
-                                                fontWeight: FontWeight.normal,
-                                                height:
-                                                    1.5 /*PERCENT not supported*/
-                                                )),
-                                      )),
-                                      // const Text("",
-                                      //     style: TextStyle(
-                                      //         color: Color.fromRGBO(138, 138, 138, 1),
-                                      //         fontFamily: 'RobotoBold',
-                                      //         fontSize: 10,
-                                      //         letterSpacing:
-                                      //         0 /*percentages not used in flutter. defaulting to zero*/,
-                                      //         fontWeight: FontWeight.normal,
-                                      //         height: 1.5 /*PERCENT not supported*/
-                                      //     )),
-                                    ],
-                                  );
-                                }),
+                        Visibility(
+                          visible:widget!.companyData!.nameHistory !=null && widget!.companyData!.nameHistory!.length > 0 ? true : false,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 18.0),
+                            child: SizedBox(
+                              // height: MediaQuery.of(context).size.shortestSide,
+                              child: ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount:
+                                      widget.companyData?.nameHistory?.length,
+                                  itemBuilder: (context, index) {
+                                    return Row(
+                                      children: <Widget>[
+                                        Expanded(
+                                            child: Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 8.0),
+                                          child: Text(
+                                              "${widget.companyData?.nameHistory?[index]}",
+                                              style: TextStyle(
+                                                  color: Color.fromRGBO(
+                                                      138, 138, 138, 1),
+                                                  fontFamily: 'RobotoMedium',
+                                                  fontSize: 12,
+                                                  letterSpacing:
+                                                      0 /*percentages not used in flutter. defaulting to zero*/,
+                                                  fontWeight: FontWeight.normal,
+                                                  height:
+                                                      1.5 /*PERCENT not supported*/
+                                                  )),
+                                        )),
+                                        // const Text("",
+                                        //     style: TextStyle(
+                                        //         color: Color.fromRGBO(138, 138, 138, 1),
+                                        //         fontFamily: 'RobotoBold',
+                                        //         fontSize: 10,
+                                        //         letterSpacing:
+                                        //         0 /*percentages not used in flutter. defaulting to zero*/,
+                                        //         fontWeight: FontWeight.normal,
+                                        //         height: 1.5 /*PERCENT not supported*/
+                                        //     )),
+                                      ],
+                                    );
+                                  }),
+                            ),
                           ),
                         ),
                       ],
