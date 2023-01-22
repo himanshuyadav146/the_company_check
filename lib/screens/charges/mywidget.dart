@@ -250,12 +250,12 @@ class _MyRowState extends State<MyRow> {
         return 'Total Revenue';
       case 'Cost_of_Material_consumed':
         return 'Cost Of Material Consumed';
+      case 'Purchase_of_stock_in_trade':
+        return 'Stock In Trade';
       case 'Change_in_Finished_goods_inventory':
         return 'Finished Goods';
       case 'Change_in_work_in_progress_inventory':
         return 'Work-In-Progress';
-      case 'Purchase_of_stock_in_trade':
-        return 'Stock In Trade';
       case 'Employee_Benefit_Expense':
         return 'Employee Benefit Expense';
       case 'Managerial_Remuneration':

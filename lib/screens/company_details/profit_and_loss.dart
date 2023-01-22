@@ -417,7 +417,7 @@ class _ProfitAndLossState extends State<ProfitAndLoss> {
                               isBalanceSheetAOCNBFC: widget.isBalanceSheetAOCNBFC,
                               isBalanceSheetLLP: widget.isBalanceSheetLLP,
                               isProfitNLossAoc: widget.isProfitNLossAoc,
-                              isProfitNLossAOCNBFC: widget.isBalanceSheetAOCNBFC,
+                              isProfitNLossAOCNBFC: widget.isProfitNLossAOCNBFC,
                               isProfitNLossLLP: widget.isProfitNLossLLP,
                               isRatioDetails: widget.isRatioDetails,
                             );

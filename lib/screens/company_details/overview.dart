@@ -29,7 +29,6 @@ class _OverViewState extends State<OverView> {
       var elements = widget.companyData!.industrySegments;
       if (elements != null) {
         for (var element in elements) {
-          //strList = List<String>.from(elements);
           strList.add(element.industry);
           var segment = element.segment;
           if(segment!.isNotEmpty){
@@ -40,11 +39,6 @@ class _OverViewState extends State<OverView> {
         }
       }
     }
-    // else if(widget.companyData!.businessActivity!.isNotEmpty){
-    //   var elements = widget.companyData!.industrySegments;
-    //
-    //
-    // }
     else if(widget.companyData!.sectors!.isNotEmpty){
         var sectors = widget.companyData!.sectors;
         if (sectors != null) {
@@ -264,6 +258,7 @@ class _OverViewState extends State<OverView> {
                           padding: const EdgeInsets.only(top: 20.0),
                           child: Column(
                             children: [
+                             // Cin no block
                               Padding(
                                 padding: const EdgeInsets.only(
                                     top: 4.0, bottom: 4.0),
@@ -306,6 +301,158 @@ class _OverViewState extends State<OverView> {
                               Divider(
                                 color: AppTheme.colorGray,
                               ),
+                              // Company Legal Name block
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 4.0, bottom: 4.0),
+                                child: Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Container(
+                                        child: const Text("Company Legal Name",
+                                            style: TextStyle(
+                                                color: AppTheme.colorGray4,
+                                                fontFamily: 'RobotoRegular',
+                                                fontSize: 12,
+                                                letterSpacing:
+                                                0 /*percentages not used in flutter. defaulting to zero*/,
+                                                fontWeight: FontWeight.normal,
+                                                height:
+                                                1.5 /*PERCENT not supported*/
+                                            )),
+                                      ),
+                                    ),
+                                    Expanded(
+                                        child: Align(
+                                          alignment: Alignment.centerRight,
+                                          child: Text(
+                                              "${widget.companyData?.legalName}",
+                                              style: TextStyle(
+                                                  color: AppTheme.lightGray138_1,
+                                                  fontFamily: 'RobotoRegular',
+                                                  fontSize: 12,
+                                                  letterSpacing:
+                                                  0 /*percentages not used in flutter. defaulting to zero*/,
+                                                  fontWeight: FontWeight.normal,
+                                                  height:
+                                                  1.5 /*PERCENT not supported*/
+                                              )),
+                                        )),
+                                  ],
+                                ),
+                              ),
+                              Divider(
+                                color: AppTheme.colorGray,
+                              ),
+                              // Stack block
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 4.0, bottom: 4.0),
+                                child: widget.companyData?.bseNumber !="" &&
+                                    widget.companyData?.nseNumber !="" ? Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: const Text("Stock Symbol",
+                                          style: TextStyle(
+                                              color: AppTheme.colorGray4,
+                                              fontFamily: 'RobotoRegular',
+                                              fontSize: 12,
+                                              letterSpacing:
+                                              0 /*percentages not used in flutter. defaulting to zero*/,
+                                              fontWeight: FontWeight.normal,
+                                              height:
+                                              1.5 /*PERCENT not supported*/
+                                          )),
+                                    ),
+                                    Expanded(
+                                        child: Align(
+                                          alignment: Alignment.centerRight,
+                                          child: Padding(
+                                            padding:
+                                            const EdgeInsets.only(left: 50.0),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Container(
+                                                  child: widget.companyData?.bseNumber !="" ? Row(
+                                                    children: <Widget>[
+                                                      Text(
+                                                        "BSE : ${widget.companyData?.bseNumber}",
+                                                        style: TextStyle(
+                                                            color: AppTheme.colorGray,
+                                                            fontFamily:
+                                                            'RobotoRegular',
+                                                            fontSize: 12,
+                                                            letterSpacing:
+                                                            0 /*percentages not used in flutter. defaulting to zero*/,
+                                                            fontWeight:
+                                                            FontWeight.normal,
+                                                            height:
+                                                            1.5 /*PERCENT not supported*/
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                        const EdgeInsets.only(
+                                                            left: 8.0),
+                                                        child: SizedBox(
+                                                            height: 8,
+                                                            width: 8,
+                                                            child: Image.asset(
+                                                                'assets/images/stock_symbol.png')),
+                                                      )
+                                                    ],
+                                                  ) : null,
+                                                ),
+                                                Container(
+                                                  child:widget.companyData?.nseNumber !="" ? Row(
+                                                    children: <Widget>[
+                                                      Text(
+                                                        "NSE : ${widget.companyData?.nseNumber}",
+                                                        textAlign: TextAlign.left,
+                                                        style: TextStyle(
+                                                            color: AppTheme.colorGray,
+                                                            fontFamily:
+                                                            'RobotoRegular',
+                                                            fontSize: 12,
+                                                            letterSpacing:
+                                                            0 /*percentages not used in flutter. defaulting to zero*/,
+                                                            fontWeight:
+                                                            FontWeight.normal,
+                                                            height:
+                                                            1.5 /*PERCENT not supported*/
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                        const EdgeInsets.only(
+                                                            left: 8.0),
+                                                        child: SizedBox(
+                                                            height: 8,
+                                                            width: 8,
+                                                            child: Image.asset(
+                                                                'assets/images/stock_symbol.png')),
+                                                      )
+                                                    ],
+                                                  ) : null,
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        )),
+                                  ],
+                                ) : null,
+                              ),
+                              Container(
+                                child: widget.companyData?.bseNumber !="" &&
+                                    widget.companyData?.nseNumber !="" ? Divider(
+                                  color: AppTheme.colorGray,
+                                ) : null,
+                              ),
+                              // Company Status Block
                               Padding(
                                 padding: const EdgeInsets.only(
                                     top: 4.0, bottom: 4.0),
@@ -350,113 +497,7 @@ class _OverViewState extends State<OverView> {
                               Divider(
                                 color: AppTheme.colorGray,
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 4.0, bottom: 4.0),
-                                child: widget.companyData?.bseNumber !="" &&
-                                    widget.companyData?.nseNumber !="" ? Row(
-                                  children: <Widget>[
-                                    Expanded(
-                                      child: const Text("Stock Symbol",
-                                          style: TextStyle(
-                                              color: AppTheme.colorGray4,
-                                              fontFamily: 'RobotoRegular',
-                                              fontSize: 12,
-                                              letterSpacing:
-                                                  0 /*percentages not used in flutter. defaulting to zero*/,
-                                              fontWeight: FontWeight.normal,
-                                              height:
-                                                  1.5 /*PERCENT not supported*/
-                                              )),
-                                    ),
-                                    Expanded(
-                                        child: Align(
-                                      alignment: Alignment.centerRight,
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 50.0),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Container(
-                                              child: widget.companyData?.bseNumber !="" ? Row(
-                                                children: <Widget>[
-                                                  Text(
-                                                    "BSE : ${widget.companyData?.bseNumber}",
-                                                    style: TextStyle(
-                                                        color: AppTheme.colorGray,
-                                                        fontFamily:
-                                                            'RobotoRegular',
-                                                        fontSize: 12,
-                                                        letterSpacing:
-                                                            0 /*percentages not used in flutter. defaulting to zero*/,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        height:
-                                                            1.5 /*PERCENT not supported*/
-                                                        ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            left: 8.0),
-                                                    child: SizedBox(
-                                                        height: 8,
-                                                        width: 8,
-                                                        child: Image.asset(
-                                                            'assets/images/stock_symbol.png')),
-                                                  )
-                                                ],
-                                              ) : null,
-                                            ),
-                                            Container(
-                                              child:widget.companyData?.nseNumber !="" ? Row(
-                                                children: <Widget>[
-                                                  Text(
-                                                    "NSE : ${widget.companyData?.nseNumber}",
-                                                    textAlign: TextAlign.left,
-                                                    style: TextStyle(
-                                                        color: AppTheme.colorGray,
-                                                        fontFamily:
-                                                            'RobotoRegular',
-                                                        fontSize: 12,
-                                                        letterSpacing:
-                                                            0 /*percentages not used in flutter. defaulting to zero*/,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        height:
-                                                            1.5 /*PERCENT not supported*/
-                                                        ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            left: 8.0),
-                                                    child: SizedBox(
-                                                        height: 8,
-                                                        width: 8,
-                                                        child: Image.asset(
-                                                            'assets/images/stock_symbol.png')),
-                                                  )
-                                                ],
-                                              ) : null,
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    )),
-                                  ],
-                                ) : null,
-                              ),
-                              Container(
-                                child: widget.companyData?.bseNumber !="" &&
-                                    widget.companyData?.nseNumber !="" ? Divider(
-                                  color: AppTheme.colorGray,
-                                ) : null,
-                              ),
+                              // ROC Block
                               Padding(
                                 padding: const EdgeInsets.only(
                                     top: 4.0, bottom: 4.0),
@@ -499,6 +540,7 @@ class _OverViewState extends State<OverView> {
                               Divider(
                                 color: AppTheme.colorGray,
                               ),
+                              // Company Number
                               Padding(
                                 padding: const EdgeInsets.only(
                                     top: 4.0, bottom: 4.0),
@@ -540,6 +582,7 @@ class _OverViewState extends State<OverView> {
                               Divider(
                                 color: AppTheme.colorGray,
                               ),
+                              // Company Category
                               Padding(
                                 padding: const EdgeInsets.only(
                                     top: 4.0, bottom: 4.0),
@@ -582,6 +625,7 @@ class _OverViewState extends State<OverView> {
                               Divider(
                                 color: AppTheme.colorGray,
                               ),
+                              // Company Sub Category
                               Visibility(
                                 visible: widget.companyData?.companySubCategory!= null &&
                                     widget.companyData?.companySubCategory !="",
@@ -628,6 +672,7 @@ class _OverViewState extends State<OverView> {
                               Divider(
                                 color: AppTheme.colorGray,
                               ),
+                              // Company Class
                               Padding(
                                 padding: const EdgeInsets.only(
                                     top: 4.0, bottom: 4.0),
@@ -670,6 +715,7 @@ class _OverViewState extends State<OverView> {
                               Divider(
                                 color: AppTheme.colorGray,
                               ),
+                              // Incorporation date block
                               Padding(
                                 padding: const EdgeInsets.only(
                                     top: 4.0, bottom: 4.0),
@@ -712,6 +758,7 @@ class _OverViewState extends State<OverView> {
                               Divider(
                                 color: AppTheme.colorGray,
                               ),
+                              // Date of AGM block
                               Padding(
                                 padding: const EdgeInsets.only(
                                     top: 4.0, bottom: 4.0),
@@ -754,6 +801,7 @@ class _OverViewState extends State<OverView> {
                               Divider(
                                 color: AppTheme.colorGray,
                               ),
+                              // Date of balance sheet block
                               Padding(
                                 padding: const EdgeInsets.only(
                                     top: 4.0, bottom: 4.0),
@@ -797,6 +845,7 @@ class _OverViewState extends State<OverView> {
                               Divider(
                                 color: AppTheme.colorGray,
                               ),
+                              // Listing Status block
                               Padding(
                                 padding: const EdgeInsets.only(
                                     top: 4.0, bottom: 4.0),
@@ -839,6 +888,7 @@ class _OverViewState extends State<OverView> {
                               Divider(
                                 color: AppTheme.colorGray,
                               ),
+                              // ACTIVE compliance block
                               Padding(
                                 padding: const EdgeInsets.only(
                                     top: 4.0, bottom: 4.0),
@@ -881,6 +931,7 @@ class _OverViewState extends State<OverView> {
                               Divider(
                                 color: AppTheme.colorGray,
                               ),
+                              // Status Under CIRP block
                               Padding(
                                 padding: const EdgeInsets.only(
                                     top: 4.0, bottom: 4.0),

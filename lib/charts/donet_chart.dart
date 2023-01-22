@@ -21,7 +21,8 @@ class _DonetChartWidgetState extends State<DonetChartWidget> {
   @override
   initState() {
     _chartData = getCharData();
-    _newChartData = getData();
+    // _newChartData = getData();
+    _newChartData = getStatus();
     super.initState();
   }
   List<GDPData> getCharData(){
@@ -47,69 +48,40 @@ class _DonetChartWidgetState extends State<DonetChartWidget> {
     return chartData;
   }
 
-  List<CompanyData> getData(){
-    List<Map<String, dynamic>> dChartList = [];
-   // List<Map<String, dynamic>> dChartProceesList = [];
+
+  List<CompanyData> getStatus(){
     List<CompanyData> dChartProceesList = [];
-    var l = widget.charges!.length;
-    var pos = 0;
-    for(var i=0;i<l;i++){
-      var element = widget.charges![i];
-      pos =0;
-      for(var j=i+1;j<l;j++){
-        var element2 = widget.charges![j];
-        if(element.chargeHolderName == element2.chargeHolderName &&
-            element.status == "Open" && element2.status == "Open"
-        ){
-          pos++;
-          dChartProceesList.add(
-              // {
-              //   "domain":element.chargeHolderName,
-              //   "measure":element.amount + element2.amount
-              // }
-              CompanyData(element?.chargeHolderName, element.amount + element2.amount)
+    var totalOpen = widget?.charges?.where((element) => element.status == "Open")
+        .map((e) => e.amount as double).reduce((x, y) => x+y);
 
-          );
-        }
-      }
-      if(pos == 0){
-        dChartProceesList.add(
-            // {
-            //   "domain":element.chargeHolderName,
-            //   "measure":element.amount
-            // }
-            CompanyData(element?.chargeHolderName, element.amount + element.amount)
-        );
+    var totalClosed = widget?.charges?.where((element) => element.status == "Closed")
+        .map((e) => e.amount as double).reduce((x, y) => x+y);
 
-        //dChartProceesList.add(element.amount);
-      }
-    }
+     dChartProceesList.add(
+        CompanyData("Open", totalOpen!)
+    );
 
+    dChartProceesList.add(
+        CompanyData("Closed", totalClosed!)
+    );
 
-    for(var element in widget.charges!){
-      dChartList.add(
-          {
-            "domain":element.chargeHolderName,
-            "measure":element.amount
-          }
-      );
-    }
-    // return dChartList;
     return dChartProceesList;
   }
 
 
+
   @override
   Widget build(BuildContext context) {
+    getStatus();
     return SafeArea(
         child: Scaffold(
           body: SfCircularChart(
-            // legend: Legend(isVisible: true,overflowMode: LegendItemOverflowMode.scroll),
+            legend: Legend(isVisible: true,overflowMode: LegendItemOverflowMode.scroll),
             series: <CircularSeries>[
-              PieSeries<CompanyData,String>(
+              DoughnutSeries<CompanyData,String>(
                 dataSource: _newChartData,
-                xValueMapper: (CompanyData data,_) => data.domain,
-                yValueMapper: (CompanyData data,_) => data.measure
+                xValueMapper: (CompanyData data,_) => data.status,
+                yValueMapper: (CompanyData data,_) => data.amount
               )
             ],
           ),
@@ -124,8 +96,9 @@ class GDPData{
   final double gdp;
 }
 
+
 class CompanyData{
-  CompanyData(this.domain,this.measure);
-  final String? domain;
-  final double measure;
+  CompanyData(this.status,this.amount);
+  final String? status;
+  final double amount;
 }
