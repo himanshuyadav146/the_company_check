@@ -6,6 +6,8 @@ import 'package:the_company_check/screens/company_details/company_details_contai
 import 'package:the_company_check/screens/company_details/financials.dart';
 import 'package:the_company_check/screens/company_details/overview.dart';
 import 'package:the_company_check/screens/company_search/company_search.dart';
+import 'package:the_company_check/screens/home/home.dart';
+import 'package:the_company_check/screens/home/home_container.dart';
 import 'package:the_company_check/theme/app_theme.dart';
 import 'package:the_company_check/utils/AppSingleton.dart';
 
@@ -27,9 +29,11 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       initialRoute: '/',
       routes: {
-        '/':(ctx) => CompanyDetailsContainer(),
+        '/':(ctx) => const HomeContainer(),
         RouteName.routNameFinancials:(context) => const Financials(),
         RouteName.routNameCompanySearch:(context) => const CompanySearchScreen(),
+        RouteName.routNameHome:(context) => const Home(),
+        RouteName.routNameCompanyDetailContainer:(context) => const CompanyDetailsContainer(),
         RouteName.routNameChargesDetails:(context) => ChargesDetails(appSingleton.charg)
       },
       // onGenerateRoute: (settings){

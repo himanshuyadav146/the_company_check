@@ -3,6 +3,7 @@ import 'package:the_company_check/screens/charges/charges.dart';
 import 'package:the_company_check/screens/charges/mylist.dart';
 import 'package:the_company_check/screens/company_details/financials.dart';
 import 'package:the_company_check/screens/company_details/overview.dart';
+import 'package:the_company_check/screens/company_details/ratio.dart';
 import 'package:the_company_check/screens/company_details/store/company_details_store.dart';
 import 'package:the_company_check/screens/loader/loading_page.dart';
 import 'package:the_company_check/screens/people/people.dart';
@@ -48,8 +49,8 @@ class _CompanyDetailsContainerState extends State<CompanyDetailsContainer> {
                     OverView(companyDetailsStore?.companyData),
                     People(companyDetailsStore?.directorsList,companyDetailsStore?.companyData),
                     Charges(companyDetailsStore?.companyData?.charges),
-                    // DonetChartWidget(companyDetailsStore?.companyData?.charges),
-                    Financials(),
+                    // Financials(),
+                    Ratio(),
                     Center(
                       child: Text("Control"),
                     ),
