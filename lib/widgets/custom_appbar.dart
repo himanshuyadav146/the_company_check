@@ -20,7 +20,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: Colors.white,
         ),
         title: SizedBox(
-          height: 40,
+          height: 30,
           child: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
@@ -28,14 +28,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               child: Padding(
                   padding: const EdgeInsets.only(left: 12.0, right: 12),
                   child: TextField(
-                      style: const TextStyle(
-                          color: Colors.black38),
                       onTap: () {
                         FocusScope.of(context).requestFocus(new FocusNode());
                         CommonNavigation().navigateScreens(
                             context, RouteName.routNameCompanySearch);
                       },
                       decoration: const InputDecoration(
+                          contentPadding: EdgeInsets.all(10.0),
                           suffixIcon: Icon(Icons.search),
                           hintText: 'Search your company',
                           focusedBorder: InputBorder.none,

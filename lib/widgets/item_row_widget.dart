@@ -28,38 +28,21 @@ class ItemRowWidget extends StatelessWidget {
               ),),
           ),
           const Spacer(),
-          Expanded(
-            child: Text(amount.toString(),
-              style: TextStyle(
-                  color: AppTheme.colorGray2,
-                  fontFamily: 'RobotoRegular',
-                  fontSize: 12,
-                  letterSpacing:
-                  0 /*percentages not used in flutter. defaulting to zero*/,
-                  fontWeight: FontWeight.normal,
-                  height: 1.5 /*PERCENT not supported*/
-              ),),
-          ),
+          Text(amount.toString(),
+            style: TextStyle(
+                color: AppTheme.colorGray2,
+                fontFamily: 'RobotoRegular',
+                fontSize: 12,
+                letterSpacing:
+                0 /*percentages not used in flutter. defaulting to zero*/,
+                fontWeight: FontWeight.normal,
+                height: 1.5 /*PERCENT not supported*/
+            ),),
           const Spacer(),
-          Expanded(
-            flex: 1,
-              child: TextWidgetWithBg(
-                  per!.contains("-") ? "$per%" : "+$per%",
-                  !per!.contains("-")
-              )
+          TextWidgetWithBg(
+              per!.contains("-") ? "$per%" : "+$per%",
+              !per!.contains("-")
           )
-          // Expanded(
-          //   child: Text(per.toString(),
-          //     style: TextStyle(
-          //         color: AppTheme.colorGray2,
-          //         fontFamily: 'RobotoRegular',
-          //         fontSize: 12,
-          //         letterSpacing:
-          //         0 /*percentages not used in flutter. defaulting to zero*/,
-          //         fontWeight: FontWeight.normal,
-          //         height: 1.5 /*PERCENT not supported*/
-          //     ),),
-          // ),
         ],
       ),
     );

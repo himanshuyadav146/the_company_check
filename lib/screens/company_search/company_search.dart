@@ -50,7 +50,7 @@ class _CompanySearchScreenState extends State<CompanySearchScreen> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4), color: Colors.white),
               child: SizedBox(
-                height: 40,
+                height: 30,
                 child: Padding(
                     padding: const EdgeInsets.only(left: 12.0, right: 12),
                     child: TextField(
@@ -62,7 +62,8 @@ class _CompanySearchScreenState extends State<CompanySearchScreen> {
                           _getData(value);
                         },
                         decoration: const InputDecoration(
-                          suffixIcon: Icon(Icons.search),
+                            contentPadding: EdgeInsets.all(10.0),
+                            suffixIcon: Icon(Icons.search),
                             hintText: 'Search your company',
                             focusedBorder: InputBorder.none,
                             border: InputBorder.none,
@@ -99,7 +100,7 @@ class _CompanySearchScreenState extends State<CompanySearchScreen> {
                             //CommonNavigation(resData![i].currentCin).navigateScreens(context, RouteName.routNameOverview);
                             var appSingleton = AppSingleton();
                             appSingleton.cinNo = resData![i].currentCin!;
-                            CommonNavigation().navigateScreens(context, '/');
+                            CommonNavigation().navigateScreens(context, RouteName.routNameCompanyDetailContainer);
                           },
                         );
                       }

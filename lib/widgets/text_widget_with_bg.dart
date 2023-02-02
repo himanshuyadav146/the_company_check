@@ -16,7 +16,7 @@ class TextWidgetWithBg extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(5.0),
       child: Container(
-        width: 100.0,
+        width: 110.0,
         color: getColor(),
         child: Center(
           child: Padding(

@@ -90,6 +90,7 @@ class AppUtils {
         case "bmp":
         case "jpeg":
         case "tiff":
+        case "webp":
         case "0":{
             return url.replaceAll(imgExtensions, "webp");
           }
@@ -183,5 +184,17 @@ class AppUtils {
 
   static isEmpatyString(String str){
     return str.isNotEmpty;
+  }
+
+  static numDifferentiation(value) {
+    var val = value.abs();
+    if (val >= 10000000) {
+      // val = (val / 10000000).toFixed(2) + ' Cr';
+      val = (val / 10000000) + ' Cr';
+    } else if (val >= 100000) {
+      // val = (val / 100000).toFixed(2) + ' Lac';
+      val = (val / 100000) + ' Lac';
+    }
+    return val;
   }
 }

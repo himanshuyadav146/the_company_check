@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:the_company_check/screens/home/home.dart';
+import 'package:the_company_check/screens/home/store/home_store.dart';
 
 import '../../theme/app_theme.dart';
+import '../loader/loading_page.dart';
 
 class HomeContainer extends StatefulWidget {
   const HomeContainer({Key? key}) : super(key: key);
@@ -11,35 +13,40 @@ class HomeContainer extends StatefulWidget {
 }
 
 class _HomeContainerState extends State<HomeContainer> {
+  HomeStore homeStore = HomeStore();
+
+  @override
+  void initState() {
+    _getData();
+    super.initState();
+
+  }
+
+  void _getData() async {
+    await homeStore.getHomePageDetails();
+    setState(() {
+    });
+  }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return homeStore.isLoading ? const LoadingPage() : Scaffold(
       body: DefaultTabController(
-        length: 5,
+        length: 4,
         child: Scaffold(
           bottomNavigationBar: menu(),
           body: TabBarView(
             children: [
-              Home(),
-              Home(),
-              Home(),
-              Home(),
-              // if(companyDetailsStore?.companyData!=null) ...[
-              //   OverView(companyDetailsStore?.companyData),
-              //   People(companyDetailsStore?.directorsList,companyDetailsStore?.companyData),
-              //   Charges(companyDetailsStore?.companyData?.charges),
-              //   // Financials(),
-              //   Ratio(),
-              //   Center(
-              //     child: Text("Control"),
-              //   ),
-              // ] else ...[
-              //   Text("No data found on overview"),
-              //   Text("No data found on peoples"),
-              //   Text("No data found on changes"),
-              //   Text("No data found on financials"),
-              //   Text("No data found on Control"),
-              // ]
+              if(homeStore.response!=null)...[
+                Home(homeStore.response),
+                Container(child: Text("Orders"),),
+                Container(child: Text("Watch List"),),
+                Container(child: Text("Settings"),),
+              ] else ...[
+                Text("No data found on Orders"),
+                  Text("No data found on Watch List"),
+                  Text("No data found on Settings"),
+                  Text("No data found on financials"),
+              ]
             ],
           ),
         ),
@@ -51,25 +58,30 @@ class _HomeContainerState extends State<HomeContainer> {
     return Container(
       color: Colors.white,
       child: TabBar(
-        isScrollable: true,
+        isScrollable: false,
         labelColor: Color.fromRGBO(59, 89, 161, 1),
         unselectedLabelColor: Color.fromRGBO(59, 89, 161, 1),
         indicatorSize: TabBarIndicatorSize.tab,
-        indicatorPadding: EdgeInsets.all(5.0),
         indicatorColor: AppTheme.tabTextColor,
-        labelPadding: EdgeInsets.only(left: 12.0,right: 12.0,top: 8.0,bottom: 0.0),
+        labelPadding: EdgeInsets.zero,
+        padding: EdgeInsets.zero,
+        indicatorPadding: EdgeInsets.zero,
         tabs: [
           Tab(
-            text: "Overview",
+            icon: Icon(Icons.home_outlined,size: 20,),
+            text: "Home",
           ),
           Tab(
-            text: "Peoples",
+            icon: Icon(Icons.shopping_cart_outlined,size: 20),
+            text: "Orders",
           ),
           Tab(
-            text: "Charges",
+            icon: Icon(Icons.lock_clock_outlined,size: 20),
+            text: "Watch List",
           ),
           Tab(
-            text: "Financials",
+            icon: Icon(Icons.settings_outlined,size: 20),
+            text: "Settings",
           ),
 
         ],

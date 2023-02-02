@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:the_company_check/api/service_api.dart';
 import '../../../models/company_details_model.dart';
 import '../../../models/financials_model.dart';
+import '../../../models/home_model.dart';
 import '../../../models/search_list_model.dart';
 
 class CompanyDetailsRepository{
@@ -20,8 +21,11 @@ class CompanyDetailsRepository{
   Future<FinancialsModel> getFinancialsDetails(String str) async{
     final response = await _apiService.get("api/CompanyFinancials/$str");
     print("URL : api/CompanyFinancials/$str");
-    //final data = await json.decode(response);
     return FinancialsModel.fromJson(response);
-    // return FinancialsModel.fromJson(response);
+  }
+
+  Future<HomeModel> fetchHomePageDetails() async{
+    final response = await _apiService.get("api/company-homepage");
+    return HomeModel.fromJson(response);
   }
 }

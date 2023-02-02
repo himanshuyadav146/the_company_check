@@ -32,7 +32,6 @@ class MyApp extends StatelessWidget {
         '/':(ctx) => const HomeContainer(),
         RouteName.routNameFinancials:(context) => const Financials(),
         RouteName.routNameCompanySearch:(context) => const CompanySearchScreen(),
-        RouteName.routNameHome:(context) => const Home(),
         RouteName.routNameCompanyDetailContainer:(context) => const CompanyDetailsContainer(),
         RouteName.routNameChargesDetails:(context) => ChargesDetails(appSingleton.charg)
       },
