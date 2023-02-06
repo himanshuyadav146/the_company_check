@@ -467,7 +467,7 @@ class _RatioState extends State<Ratio> {
                         visible: currentYearInfo.netProfitMarginRC!=null && prevYearInfo.netProfitMarginRC!=null,
                           child: Column(
                                 children: <Widget>[
-                                  ItemRowWidget("Net Profit Margin",
+                                  ItemRowWidget("Net Profit Margin %",
                                       currentYearInfo.netProfitMarginRC,
                                       AppUtils.getPercentageOfyears(
                                           currentYearInfo.netProfitMarginRC!,
@@ -483,7 +483,7 @@ class _RatioState extends State<Ratio> {
                         visible: currentYearInfo.ebitdaMarginRA!=null && prevYearInfo.ebitdaMarginRA!=null,
                           child: Column(
                                 children: <Widget>[
-                                  ItemRowWidget("Ebitda Margin",
+                                  ItemRowWidget("Ebitda Margin %",
                                       currentYearInfo.ebitdaMarginRA,
                                       AppUtils.getPercentageOfyears(
                                           currentYearInfo.ebitdaMarginRA!,
@@ -498,7 +498,7 @@ class _RatioState extends State<Ratio> {
                         visible: currentYearInfo.returnOnEquityRC!=null && prevYearInfo.returnOnEquityRC!=null,
                           child: Column(
                                 children: <Widget>[
-                                  ItemRowWidget("Return On Equity",
+                                  ItemRowWidget("Return On Equity %",
                                       currentYearInfo.returnOnEquityRC,
                                       AppUtils.getPercentageOfyears(
                                           currentYearInfo.returnOnEquityRC!,
@@ -513,7 +513,7 @@ class _RatioState extends State<Ratio> {
                         visible: currentYearInfo.rETURNONCAPITALEMPLOYEDRA!=null && prevYearInfo.rETURNONCAPITALEMPLOYEDRA!=null,
                           child: Column(
                             children: <Widget>[
-                              ItemRowWidget("Return On Capital Employed",
+                              ItemRowWidget("Return On Capital Employed %",
                                   currentYearInfo.rETURNONCAPITALEMPLOYEDRA,
                                   AppUtils.getPercentageOfyears(
                                       currentYearInfo.rETURNONCAPITALEMPLOYEDRA!,
@@ -528,7 +528,7 @@ class _RatioState extends State<Ratio> {
                         visible: currentYearInfo.nETWORTHRATIORA!=null && prevYearInfo.nETWORTHRATIORA!=null,
                           child: Column(
                                 children: <Widget>[
-                                  ItemRowWidget("Net Worth Margin",
+                                  ItemRowWidget("Net Worth Margin %",
                                       currentYearInfo.nETWORTHRATIORA,
                                       AppUtils.getPercentageOfyears(
                                           currentYearInfo.nETWORTHRATIORA!,
@@ -543,7 +543,7 @@ class _RatioState extends State<Ratio> {
                         visible: currentYearInfo.returnOnPartnersFundRL!=null && prevYearInfo.returnOnPartnersFundRL!=null,
                           child: Column(
                                 children: <Widget>[
-                                  ItemRowWidget("Return On Partners Fund",
+                                  ItemRowWidget("Return On Partners Fund %",
                                       currentYearInfo.returnOnPartnersFundRL,
                                       AppUtils.getPercentageOfyears(
                                           currentYearInfo.returnOnPartnersFundRL!,
@@ -558,7 +558,7 @@ class _RatioState extends State<Ratio> {
                         visible: currentYearInfo.totalRevenueFromOperationsTotalFinancialAssetsRN!=null && prevYearInfo.totalRevenueFromOperationsTotalFinancialAssetsRN!=null,
                           child: Column(
                                 children: <Widget>[
-                                  ItemRowWidget("Revenue To Total Financial Assets",
+                                  ItemRowWidget("Revenue To Total Financial Assets %",
                                       currentYearInfo.totalRevenueFromOperationsTotalFinancialAssetsRN,
                                       AppUtils.getPercentageOfyears(
                                           currentYearInfo.totalRevenueFromOperationsTotalFinancialAssetsRN!,
@@ -615,7 +615,7 @@ class _RatioState extends State<Ratio> {
                         visible: currentYearInfo.revenueGrowthRC!=null && prevYearInfo.revenueGrowthRC!=null,
                           child: Column(
                                 children: <Widget>[
-                                  ItemRowWidget("Revenue Growth",
+                                  ItemRowWidget("Revenue Growth %",
                                       currentYearInfo.revenueGrowthRC,
                                       AppUtils.getPercentageOfyears(
                                           currentYearInfo.revenueGrowthRC!,

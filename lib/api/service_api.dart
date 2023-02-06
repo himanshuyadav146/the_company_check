@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../models/product_model.dart';
 import 'custom_exception.dart';
 
 class ApiService{
@@ -17,6 +18,18 @@ class ApiService{
     }
     return responseJson;
   }
+
+  // Future<List<ProductModel>> getList(String url) async{
+  //   var responseJson;
+  //   try {
+  //     final response = await http.get(Uri.parse(_baseUrl + url));
+  //     print("Created URL :${_baseUrl + url}");
+  //     responseJson = _response(response);
+  //   } on SocketException {
+  //     throw FetchDataException('No Internet connection');
+  //   }
+  //   return responseJson;
+  // }
 
   dynamic _response(http.Response response) {
     switch (response.statusCode) {

@@ -26,12 +26,12 @@ class _CompanyDetailsContainerState extends State<CompanyDetailsContainer> {
   void initState() {
     _getData();
     super.initState();
-
   }
 
   void _getData() async {
     var appSingleton = AppSingleton();
     await companyDetailsStore.getCompanyDetails(appSingleton.cinNo);
+    await companyDetailsStore.fetchProductList(appSingleton.cinNo);
     setState(() {
     });
   }

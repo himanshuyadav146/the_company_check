@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
@@ -5,6 +6,7 @@ import 'package:mobx/mobx.dart';
 import 'package:the_company_check/screens/company_details/repository/company_details_repository.dart';
 
 import '../../../models/company_details_model.dart';
+import '../../../models/product_model.dart';
 part 'company_details_store.g.dart';
 
 class CompanyDetailsStore = _CompanyDetailsStore with _$CompanyDetailsStore;
@@ -19,6 +21,9 @@ abstract class _CompanyDetailsStore with Store{
 
   @observable
    CompanyDetailsModel response = CompanyDetailsModel();
+
+  @observable
+  List<ProductModel>  responseProductList = [];
 
   @observable
   List<TDirector>? directorsList =[];
@@ -40,5 +45,13 @@ abstract class _CompanyDetailsStore with Store{
     directorsList?.addAll(companyData?.pastDirectors as List<TDirector>);
     isLoading = false;
     return "";
+  }
+
+  @action
+  Future<void> fetchProductList(String srt) async{
+    isLoading = true;
+    responseProductList = (await CompanyDetailsRepository().fetchProductList(srt));
+    isLoading = false;
+    print("Product List : ${responseProductList}");
   }
 }
