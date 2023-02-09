@@ -62,11 +62,7 @@ class HomeVerticalItemWidget extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            SizedBox(
-                                height: 30,
-                                width: 25,
-                                child: Image.asset('assets/images/location.png')
-                            ),
+                            Icon(Icons.location_on_outlined,size: 20,color: AppTheme.colorGray6,),
                             Text(count!,
                                 style: TextStyle(
                                     color: AppTheme.colorGray,

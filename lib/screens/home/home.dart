@@ -36,12 +36,11 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     HomeCompanyInfoCard('assets/images/companies_icon.png',"Companies",
-                        "8+",null),
-
+                        AppUtils.getNumberFormate(widget.response.data?.companyDetailsCount![0]?.totalCompanies, 2),null),
                     // HomeCompanyInfoCard('assets/images/companies_icon.png',"Companies",
                     //     AppUtils.numDifferentiation(widget.response.data?.companyDetailsCount![0]?.totalCompanies as int),null),
-                    HomeCompanyInfoCard('assets/images/group_companys.png',"Total LLPs","6 Lakh +",null),
-                    HomeCompanyInfoCard('assets/images/directors_kmp.png',"Directors & KMP","7 Lakh +",null),
+                    HomeCompanyInfoCard('assets/images/group_companys.png',"Total LLPs",AppUtils.getNumberFormate(widget.response.data?.companyDetailsCount![0]?.totalLlpCompanies, 2),null),
+                    HomeCompanyInfoCard('assets/images/directors_kmp.png',"Directors & KMP",AppUtils.getNumberFormate(widget.response.data?.companyDetailsCount![0]?.totalDirectors, 2),null),
                   ],
                 ),
                 Row(

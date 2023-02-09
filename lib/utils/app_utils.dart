@@ -140,6 +140,23 @@ class AppUtils {
     return _formattedNumber;
   }
 
+  static String getNumberFormate(int? numberToFormat,int decimalDigits){
+    if (numberToFormat! > 999 && numberToFormat < 99999) {
+      return "$numberToFormat";
+    } else if (numberToFormat > 99999 && numberToFormat < 999999) {
+      return "${(numberToFormat / 1000).toStringAsFixed(0)} L";
+    }else if(numberToFormat > 999999 && numberToFormat < 99999999){
+      return numberToFormat > 1000000 ? "${(numberToFormat / 1000000).toStringAsFixed(1)} L+" : "${(numberToFormat / 1000000).toStringAsFixed(1)} L";
+    }
+    else if (numberToFormat > 99999999 && numberToFormat < 999999999) {
+      return numberToFormat > 1000000 ? "${(numberToFormat / 1000000).toStringAsFixed(decimalDigits)} Cr+" : "${(numberToFormat / 1000000).toStringAsFixed(decimalDigits)} Cr";
+    } else if (numberToFormat > 999999999) {
+      return "${(numberToFormat / 1000000000).toStringAsFixed(decimalDigits)} B";
+    } else {
+      return numberToFormat.toString();
+    }
+  }
+
   static String getFormatedAmountInCR(double? numberToFormat,int decimalDigits){
     print('Recived Number is: $numberToFormat');
     var _formattedNumber = NumberFormat.compactCurrency(
@@ -167,6 +184,17 @@ class AppUtils {
       return "-100";
     }
     var res = (((currentYear - previousYear) * 100) / previousYear);
+    return res.toStringAsFixed(2);
+  }
+
+  static String getDiffOfyears(double currentYear,double previousYear){
+    if(previousYear==0){
+      return "0";
+    }
+    if(currentYear == 0){
+      return "-100";
+    }
+    var res = (currentYear - previousYear);
     return res.toStringAsFixed(2);
   }
 

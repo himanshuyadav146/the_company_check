@@ -46,7 +46,7 @@ class _CompanyDetailsContainerState extends State<CompanyDetailsContainer> {
               body: TabBarView(
                 children: [
                   if(companyDetailsStore?.companyData!=null) ...[
-                    OverView(companyDetailsStore?.companyData),
+                    OverView(companyDetailsStore?.companyData,companyDetailsStore?.responseProductList),
                     People(companyDetailsStore?.directorsList,companyDetailsStore?.companyData),
                     Charges(companyDetailsStore?.companyData?.charges),
                     // Financials(),

@@ -5,18 +5,21 @@ import 'package:the_company_check/routs/route_name.dart';
 import 'package:the_company_check/theme/app_theme.dart';
 import 'package:the_company_check/widgets/custom_compac_button.dart';
 
+import '../../models/product_model.dart';
 import '../../widgets/company_info_card.dart';
 import '../../widgets/custom_appbar.dart';
 import 'package:the_company_check/utils/app_utils.dart';
 
 import '../../widgets/directors_signatories_widget.dart';
 import '../../widgets/industry_segment_widget.dart';
+import '../../widgets/product_widget.dart';
 import '../../widgets/social_meadia_widget.dart';
 
 class OverView extends StatefulWidget {
-  const OverView(@required this.companyData, {super.key});
+  const OverView(@required this.companyData,this.responseProductList, {super.key});
 
   final Datum? companyData;
+  final List<ProductModel>? responseProductList;
 
   @override
   State<OverView> createState() => _OverViewState();
@@ -63,6 +66,10 @@ class _OverViewState extends State<OverView> {
     //   }
     // }
     return strList;
+  }
+
+  String? getLocation(){
+    return widget.companyData?.address?.location;
   }
 
   @override
@@ -1002,256 +1009,122 @@ class _OverViewState extends State<OverView> {
                 // ),
 
                 // Contact Details
-                Card(
-                  elevation: 0,
-                  margin: EdgeInsets.only(left: 0.0, right: 0.0, top: 2.0),
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(14.0, 22.0, 14.0, 22.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
-                        const Text("Contact Details",
+                Container(
+                  child: getLocation()!=null ?  Column(
+                    children: [
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: AppTheme.colorGray9,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(0),
+                          ),
+                        ),
+                        width: double.infinity,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text("Registered Address ",
                             style: TextStyle(
                                 color: AppTheme.colorGray4,
-                                fontFamily: 'RobotoMedium',
-                                fontSize: 18,
+                                fontFamily: 'RobotoRegular ',
+                                fontSize: 14,
                                 letterSpacing:
-                                    0 /*percentages not used in flutter. defaulting to zero*/,
+                                0 /*percentages not used in flutter. defaulting to zero*/,
                                 fontWeight: FontWeight.normal,
                                 height: 1.5 /*PERCENT not supported*/
-                                )),
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 16.0),
-                              child: SizedBox(
-                                width: 180,
-                                child: Visibility(
-                                  visible:
-                                      widget.companyData?.address?.location !=
-                                              null
-                                          ? true
-                                          : false,
-                                  child: Column(
-                                    children: <Widget>[
-                                      Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          "Location",
-                                          style: TextStyle(
-                                              color: AppTheme.colorGray,
-                                              fontFamily: 'RobotoRegular',
-                                              fontSize: 12,
-                                              letterSpacing:
-                                                  0 /*percentages not used in flutter. defaulting to zero*/,
-                                              fontWeight: FontWeight.normal,
-                                              height:
-                                                  1.5 /*PERCENT not supported*/
-                                              ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 8.0),
-                                        child: Text(
-                                          "${widget.companyData?.address?.location}",
-                                          style: TextStyle(
-                                              color: AppTheme.colorGray6,
-                                              fontFamily: 'RobotoMedium',
-                                              fontSize: 12,
-                                              letterSpacing:
-                                                  0 /*percentages not used in flutter. defaulting to zero*/,
-                                              fontWeight: FontWeight.normal,
-                                              height:
-                                                  1.5 /*PERCENT not supported*/
-                                              ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
                             ),
-                            const Spacer(),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 16.0),
-                              child: SizedBox(
-                                width: 120,
-                                child: Column(
-                                  children: <Widget>[
-                                    Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        "Website",
-                                        style: TextStyle(
-                                            color: AppTheme.colorGray,
-                                            fontFamily: 'RobotoRegular',
-                                            fontSize: 12,
-                                            letterSpacing:
-                                                0 /*percentages not used in flutter. defaulting to zero*/,
-                                            fontWeight: FontWeight.normal,
-                                            height:
-                                                1.5 /*PERCENT not supported*/
-                                            ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 8.0),
-                                      child: Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: InkWell(
-                                          onTap: (){
-                                            AppUtils.redirectOnWeb(widget.companyData?.website);
-                                          },
-                                          child: Text(
-                                            "${widget.companyData?.website}",
-                                            style: TextStyle(
-                                                color: AppTheme.colorGray6,
-                                                fontFamily: 'RobotoMedium',
-                                                fontSize: 12,
-                                                letterSpacing:
-                                                    0 /*percentages not used in flutter. defaulting to zero*/,
-                                                fontWeight: FontWeight.normal,
-                                                height:
-                                                    1.5 /*PERCENT not supported*/
-                                                ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 16.0),
-                              child: SizedBox(
-                                width: 180,
-                                child: Column(
-                                  children: <Widget>[
-                                    Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        "Telephone",
-                                        style: TextStyle(
-                                            color: AppTheme.colorGray,
-                                            fontFamily: 'RobotoRegular',
-                                            fontSize: 12,
-                                            letterSpacing:
-                                                0 /*percentages not used in flutter. defaulting to zero*/,
-                                            fontWeight: FontWeight.normal,
-                                            height:
-                                                1.5 /*PERCENT not supported*/
-                                            ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 8.0),
-                                      child: Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          "${widget.companyData?.address?.registeredCity}",
-                                          style: TextStyle(
-                                              color: AppTheme.colorGray6,
-                                              fontFamily: 'RobotoMedium',
-                                              fontSize: 12,
-                                              letterSpacing:
-                                                  0 /*percentages not used in flutter. defaulting to zero*/,
-                                              fontWeight: FontWeight.normal,
-                                              height:
-                                                  1.5 /*PERCENT not supported*/
-                                              ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
+                      ),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20.0,top: 20.0),
+                            child: SizedBox(
+                              width: 100,
+                              child: Text("${widget.companyData?.address?.location}",
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 4,),
                             ),
-                            const Spacer(),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 16.0),
-                              child: SizedBox(
-                                width: 120,
-                                child: Column(
-                                  children: <Widget>[
-                                    Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        "Email Address",
-                                        style: TextStyle(
-                                            color: AppTheme.colorGray,
-                                            fontFamily: 'RobotoRegular',
-                                            fontSize: 12,
-                                            letterSpacing:
-                                                0 /*percentages not used in flutter. defaulting to zero*/,
-                                            fontWeight: FontWeight.normal,
-                                            height:
-                                                1.5 /*PERCENT not supported*/
-                                            ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 8.0),
-                                      child: Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          "${widget.companyData?.website}",
-                                          style: TextStyle(
-                                              color: AppTheme.colorGray6,
-                                              fontFamily: 'RobotoMedium',
-                                              fontSize: 12,
-                                              letterSpacing:
-                                                  0 /*percentages not used in flutter. defaulting to zero*/,
-                                              fontWeight: FontWeight.normal,
-                                              height:
-                                                  1.5 /*PERCENT not supported*/
-                                              ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ) : null,
+                ),
+                // Website
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                    child: widget.companyData?.website!=null ? InkWell(
+                      onTap: (){
+                        AppUtils.redirectOnWeb("${widget.companyData?.website}");
+                      } ,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
+                        child: Text("${widget.companyData?.website}",
+                            style: TextStyle(
+                                color: AppTheme.colorGray4,
+                                fontFamily: 'RobotoRegular',
+                                fontSize: 12,
+                                letterSpacing:
+                                0 /*percentages not used in flutter. defaulting to zero*/,
+                                fontWeight: FontWeight.normal,
+                                height: 1.5 /*PERCENT not supported*/
+                            )),
+                      ),
+                    ): null,
                   ),
                 ),
 
                 // Social Meadia list
-                Container(
-                  child: SocialMeadiaWidget(
-                      "Social Media", widget.companyData?.social),
+                Visibility(
+                  visible: widget.companyData?.social!=null,
+                    child: SocialMeadiaWidget(
+                        "Social Media", widget.companyData?.social)
                 ),
-                // Name History details ********************************************************
-                Card(
-                  elevation: 0,
-                  margin: EdgeInsets.only(left: 0.0, right: 0.0, top: 2.0),
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(14.0, 22.0, 14.0, 22.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
-                        const Text("Name History",
-                            style: TextStyle(
-                                color: AppTheme.colorGray4,
-                                fontFamily: 'RobotoMedium',
-                                fontSize: 18,
-                                letterSpacing:
+                // Container(
+                //   child: widget.companyData?.social!=null ? SocialMeadiaWidget(
+                //       "Social Media", widget.companyData?.social) : null,
+                // ),
+                // Products
+                Container(
+                  child: widget.responseProductList!=null ? ProductWidget("Products",widget.responseProductList) : null,
+                ),
+                // Name History details ***********************************
+                Visibility(
+                  visible:widget!.companyData!.nameHistory !=null && widget!.companyData!.nameHistory!.length > 0 ? true : false,
+                  child: Card(
+                    elevation: 0,
+                    margin: EdgeInsets.only(left: 0.0, right: 0.0, top: 2.0),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(14.0, 22.0, 14.0, 22.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                           Container(
+                            decoration: const BoxDecoration(
+                              color: AppTheme.colorGray9,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(0),
+                              ),
+                            ),
+                            width: double.infinity,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text("Name History",
+                                style: TextStyle(
+                                    color: AppTheme.colorGray4,
+                                    fontFamily: 'RobotoRegular ',
+                                    fontSize: 14,
+                                    letterSpacing:
                                     0 /*percentages not used in flutter. defaulting to zero*/,
-                                fontWeight: FontWeight.normal,
-                                height: 1.5 /*PERCENT not supported*/
-                                )),
-                        Visibility(
-                          visible:widget!.companyData!.nameHistory !=null && widget!.companyData!.nameHistory!.length > 0 ? true : false,
-                          child: Padding(
+                                    fontWeight: FontWeight.normal,
+                                    height: 1.5 /*PERCENT not supported*/
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
                             padding: const EdgeInsets.only(top: 18.0),
                             child: SizedBox(
                               // height: MediaQuery.of(context).size.shortestSide,
@@ -1295,8 +1168,8 @@ class _OverViewState extends State<OverView> {
                                   }),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),

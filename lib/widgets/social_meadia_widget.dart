@@ -68,22 +68,22 @@ class SocialMeadiaWidget extends StatelessWidget {
       elevation: 0,
       color: Colors.white,
       child: Padding(
-        padding: const EdgeInsets.only(left: 8.0,top: 20.0,bottom: 20.0),
+        padding: const EdgeInsets.only(left: 20.0,top: 0.0,bottom: 20.0),
         child: Column(
           children: <Widget>[
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text("${title}",
-                style: TextStyle(
-                    color: AppTheme.colorGray4,
-                    fontFamily: 'RobotoRegular',
-                    fontSize: 18,
-                    letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                    fontWeight: FontWeight.normal,
-                    height: 1.5 /*PERCENT not supported*/
-                ),
-              ),
-            ),
+            // Align(
+            //   alignment: Alignment.centerLeft,
+            //   child: Text("${title}",
+            //     style: TextStyle(
+            //         color: AppTheme.colorGray4,
+            //         fontFamily: 'RobotoRegular',
+            //         fontSize: 18,
+            //         letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+            //         fontWeight: FontWeight.normal,
+            //         height: 1.5 /*PERCENT not supported*/
+            //     ),
+            //   ),
+            // ),
             Padding(
               padding: const EdgeInsets.only(left: 0.0,top: 20.0),
               child: SizedBox(
